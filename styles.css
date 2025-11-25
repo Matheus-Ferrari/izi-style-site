@@ -754,3 +754,109 @@ ul {
         right: 20px;
     }
 }
+
+/* ===== HEADER NORMALIZE — overrides seguros ===== */
+.main-header,
+.main-header .bar.container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 64px;              /* altura estável no desktop */
+}
+
+.main-header {
+  padding: 0 16px;
+}
+
+.site-logo img,
+.logo img,
+.main-header .logo img,
+.main-header .site-logo img {
+  height: 40px;              /* controla a logo para não "pular" */
+  width: auto;
+  display: block;
+}
+
+.main-nav {
+  margin-left: auto;         /* empurra a navegação para a direita */
+}
+
+.main-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Controles do topo padronizados (selects, inputs, botões) */
+.main-header select,
+.main-header input[type="text"],
+.main-header button,
+.main-header .btn,
+.main-header .btn-primary,
+.main-header .btn-cta,
+.main-header .btn-cta-large {
+  height: 36px;
+  line-height: 36px;
+  padding: 0 12px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+/* Evita o header empurrar o hero por margem colapsada */
+body > header.main-header + * {
+  margin-top: 16px;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  .main-header,
+  .main-header .bar.container {
+    height: 56px;
+    gap: 12px;
+  }
+  .main-header select,
+  .main-header input[type="text"],
+  .main-header button,
+  .main-header .btn,
+  .main-header .btn-primary,
+  .main-header .btn-cta,
+  .main-header .btn-cta-large {
+    height: 34px;
+    line-height: 34px;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-header,
+  .main-header .bar.container {
+    height: auto;            /* deixa crescer se quebrar linhas */
+    align-items: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .main-nav {
+    width: 100%;
+    margin-left: 0;
+  }
+  .main-nav ul {
+    flex-wrap: wrap;
+    gap: 10px 14px;
+  }
+  .menu-toggle { display: inline-flex; }
+}
+
+/* Ajuste fino de espaçamento entre selects/botões da barra */
+.main-header .actions,
+.main-header .controls,
+.main-header .cta-row {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+}
