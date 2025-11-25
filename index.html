@@ -222,20 +222,38 @@
     });
 
     // Dropdowns acessíveis
+    // Fechar todos
+    function closeAll(root){
+      root.querySelectorAll('.dropdown-toggle[aria-expanded="true"]').forEach(b=>{
+        b.setAttribute('aria-expanded','false');
+      });
+    }
+
     function setupDropdown(root){
-      const toggles = root.querySelectorAll('.dropdown-toggle, .sub-dropdown > .btn');
+      const toggles = root.querySelectorAll('.dropdown-toggle');
+
+      // Estado inicial: tudo fechado
+      toggles.forEach(b => b.setAttribute('aria-expanded','false'));
+
+      // Toggle com fechamento dos demais
       toggles.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const expanded = btn.getAttribute('aria-expanded') === 'true';
-          btn.setAttribute('aria-expanded', String(!expanded));
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = btn.getAttribute('aria-expanded') === 'true';
+          closeAll(root);
+          btn.setAttribute('aria-expanded', String(!isOpen));
         });
       });
+
+      // Clique fora fecha tudo
       document.addEventListener('click', (e) => {
         if(!root.querySelector('header').contains(e.target)){
-          toggles.forEach(b=> b.setAttribute('aria-expanded','false'));
+          closeAll(root);
         }
       });
     }
+
+    // Chamar com o document
     setupDropdown(document);
   </script>
 </body>

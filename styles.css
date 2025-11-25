@@ -81,10 +81,6 @@ ul {
     flex-direction: column; 
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block; 
-}
-
 .dropdown-menu li a {
     padding: 10px 15px;
     display: block;
@@ -112,10 +108,6 @@ ul {
     min-width: 200px;
     padding: 10px 0;
     border-radius: 5px;
-}
-
-.sub-dropdown:hover .sub-dropdown-menu {
-    display: block; 
 }
 
 .header-actions {
@@ -859,4 +851,30 @@ body > header.main-header + * {
   display: inline-flex;
   gap: 10px;
   align-items: center;
+}
+
+/* === Dropdown controlado por aria-expanded === */
+.dropdown-menu { display: none; }
+.dropdown button[aria-expanded="true"] + .dropdown-menu,
+.dropdown[aria-expanded="true"] .dropdown-menu {
+  display: block;
+}
+
+/* Foco: só exibir quando for realmente via teclado (focus-visible) */
+.main-header a,
+.main-header button {
+  outline: none;
+}
+.main-header a:focus-visible,
+.main-header button:focus-visible,
+.search-box input:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Inputs/selects do header não ficam "ativos" sem interação */
+.main-header select:focus,
+.main-header input[type="text"]:focus,
+.main-header button:focus {
+  box-shadow: none;
 }
