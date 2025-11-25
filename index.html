@@ -212,49 +212,78 @@
   </a>
 
   <script>
-    // Toggle do menu (mobile)
-    const header = document.querySelector('.main-header');
-    const toggleBtn = document.querySelector('.menu-toggle');
-    toggleBtn?.addEventListener('click', () => {
-      const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-      toggleBtn.setAttribute('aria-expanded', String(!expanded));
-      header.classList.toggle('header-mobile');
-    });
+    (function () {
+      function setupDropdowns(root = document) {
+        const buttons = Array.from(root.querySelectorAll('.dropdown-toggle, .dropdown > button'));
 
-    // Dropdowns acessíveis
-    // Fechar todos
-    function closeAll(root){
-      root.querySelectorAll('.dropdown-toggle[aria-expanded="true"]').forEach(b=>{
-        b.setAttribute('aria-expanded','false');
-      });
-    }
-
-    function setupDropdown(root){
-      const toggles = root.querySelectorAll('.dropdown-toggle');
-
-      // Estado inicial: tudo fechado
-      toggles.forEach(b => b.setAttribute('aria-expanded','false'));
-
-      // Toggle com fechamento dos demais
-      toggles.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const isOpen = btn.getAttribute('aria-expanded') === 'true';
-          closeAll(root);
-          btn.setAttribute('aria-expanded', String(!isOpen));
+        // estado inicial: todos fechados
+        buttons.forEach(btn => {
+          if (btn.getAttribute('aria-expanded') !== 'false') {
+            btn.setAttribute('aria-expanded', 'false');
+          }
+          const parent = btn.closest('.dropdown');
+          if (parent) parent.setAttribute('aria-expanded', 'false');
         });
-      });
 
-      // Clique fora fecha tudo
-      document.addEventListener('click', (e) => {
-        if(!root.querySelector('header').contains(e.target)){
-          closeAll(root);
+        // fecha todos (menos 'exceptBtn' se fornecido)
+        function closeAll(exceptBtn) {
+          buttons.forEach(b => {
+            if (b !== exceptBtn) {
+              b.setAttribute('aria-expanded', 'false');
+              const p = b.closest('.dropdown');
+              if (p) p.setAttribute('aria-expanded', 'false');
+            }
+          });
         }
-      });
-    }
 
-    // Chamar com o document
-    setupDropdown(document);
+        // abre/fecha por clique
+        buttons.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const isOpen = btn.getAttribute('aria-expanded') === 'true';
+            closeAll(btn);
+            const next = String(!isOpen);
+            btn.setAttribute('aria-expanded', next);
+            const parent = btn.closest('.dropdown');
+            if (parent) parent.setAttribute('aria-expanded', next);
+          });
+
+          // ao perder foco total do botão + menu, fecha
+          const dropdown = btn.closest('.dropdown');
+          if (dropdown) {
+            dropdown.addEventListener('focusout', (e) => {
+              // se o novo foco saiu do botão e do menu, fecha
+              const r = dropdown.contains(e.relatedTarget);
+              if (!r) {
+                btn.setAttribute('aria-expanded', 'false');
+                dropdown.setAttribute('aria-expanded', 'false');
+              }
+            });
+          }
+        });
+
+        // clique fora fecha tudo
+        document.addEventListener('click', (e) => {
+          const insideHeader = e.target.closest('header');
+          if (!insideHeader) closeAll();
+        });
+
+        // ESC fecha tudo
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            closeAll();
+          }
+        });
+      }
+
+      // inicia ao carregar
+      if (document.readyState !== 'loading') {
+        setupDropdowns();
+      } else {
+        document.addEventListener('DOMContentLoaded', () => setupDropdowns());
+      }
+    })();
   </script>
 </body>
 </html>

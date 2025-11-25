@@ -878,3 +878,72 @@ body > header.main-header + * {
 .main-header button:focus {
   box-shadow: none;
 }
+
+/* === FIX FINAL: remove aparência de link selecionado === */
+.dropdown-menu a {
+  background-color: transparent;
+  color: var(--text-dark);
+  outline: none;
+}
+
+/* Evita manter foco após clique */
+.dropdown-menu a:focus,
+.dropdown-menu a:active {
+  background-color: transparent !important;
+  color: var(--text-dark) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Mostra hover apenas quando o mouse realmente estiver sobre o item */
+.dropdown-menu a:hover {
+  background-color: var(--bg-light);
+  color: var(--primary-color);
+}
+
+/* ==== DROPDOWN – normalização de foco/hover ==== */
+
+/* Menu fechado por padrão; abre só com aria-expanded=true */
+.dropdown-menu { display: none; }
+.dropdown[aria-expanded="true"] > .dropdown-menu,
+.dropdown button[aria-expanded="true"] + .dropdown-menu {
+  display: block;
+}
+
+/* Nunca manter estilo "selecionado" por foco/active do navegador */
+.dropdown-menu a:focus,
+.dropdown-menu a:active {
+  background-color: transparent !important;
+  color: var(--text-dark) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Hover apenas em dispositivos com ponteiro fino e hover real */
+@media (hover: hover) and (pointer: fine) {
+  .dropdown-menu a:hover {
+    background-color: var(--bg-light);
+    color: var(--primary-color);
+  }
+}
+
+/* Zera qualquer sombra/outline em controles do header */
+.main-header select:focus,
+.main-header input[type="text"]:focus,
+.main-header button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Evita "seleção" residual em itens ativos ao clicar */
+.main-header a:focus-visible,
+.main-header button:focus-visible,
+.search-box input:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Não aplicar cor de 'active' herdada em links do menu */
+.main-nav a:active {
+  color: inherit;
+}
