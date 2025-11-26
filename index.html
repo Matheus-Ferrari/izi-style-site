@@ -1,289 +1,327 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home | IZI STYLE - Criação Personalizada</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home | IZI STYLE - Criação Personalizada</title>
 
-  <!-- CSS da home -->
-  <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css" />
 
-  <!-- Font Awesome (ícones) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 <body>
 
-  <header class="main-header" id="topo" aria-label="Cabeçalho principal">
-    <div class="bar container">
-      <a class="logo" href="#" aria-label="IZI STYLE - Início">
-        <img class="site-logo" src="logo-transparente.jpeg" alt="Logo IZI STYLE" loading="eager" />
-      </a>
+    <header class="main-header" id="topo" aria-label="Cabeçalho principal">
+    <div class="bar container">
+      <a class="logo" href="#" aria-label="IZI STYLE - Início">
+        <img class="site-logo" src="logo-transparente.jpeg" alt="Logo IZI STYLE" loading="eager" />
+      </a>
 
-      <nav class="main-nav" aria-label="Navegação principal">
-        <ul>
-          <li><a href="#" aria-current="page">Home</a></li>
-          <li><a href="#colecoes">Coleções</a></li>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="#" aria-current="page">Home</a></li>
+          <li><a href="#colecoes">Coleções</a></li>
 
-          <li class="dropdown">
-            <button class="dropdown-toggle btn" aria-haspopup="true" aria-expanded="false">
-              Momentos Especiais <i class="fas fa-chevron-down" aria-hidden="true"></i>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Para Casal</a></li>
-              <li><a href="#">Para Família</a></li>
-              <li><a href="#">Para Amigos</a></li>
-              <li class="sub-dropdown">
-                <button class="btn" aria-haspopup="true" aria-expanded="false">
-                  Datas Especiais <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                </button>
-                <ul class="sub-dropdown-menu" role="menu">
-                  <li><a href="#">Dia dos Namorados</a></li>
-                  <li><a href="#">Dia das Mães</a></li>
-                  <li><a href="#">Dia dos Pais</a></li>
-                  <li><a href="#">Carnaval</a></li>
-                  <li><a href="#">Dia dos Professores</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
+                    <li class="dropdown">
+            <button class="dropdown-toggle btn" aria-haspopup="true" aria-expanded="false">
+              Momentos Especiais <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Para Casal</a></li>
+              <li><a href="#">Para Família</a></li>
+              <li><a href="#">Para Amigos</a></li>
 
-          <li class="dropdown">
-            <button class="dropdown-toggle btn" aria-haspopup="true" aria-expanded="false">
-              Criar Arte <i class="fas fa-chevron-down" aria-hidden="true"></i>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="easy-style/index.html">Crie sua Arte</a></li>
-              <li><a href="easy-style/index.html">Criamos para Você</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+                            <li class="sub-dropdown">
+                <button class="btn" aria-haspopup="true" aria-expanded="false">
+                  Datas Especiais <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                </button>
+                <ul class="sub-dropdown-menu" role="menu">
+                  <li><a href="#">Dia dos Namorados</a></li>
+                  <li><a href="#">Dia das Mães</a></li>
+                  <li><a href="#">Dia dos Pais</a></li>
+                  <li><a href="#">Carnaval</a></li>
+                  <li><a href="#">Dia dos Professores</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
 
-      <div class="header-actions">
-        <form class="search-box" role="search" aria-label="Buscar no site" onsubmit="event.preventDefault()">
-          <label for="q" class="sr-only">O que você procura?</label>
-          <input id="q" type="search" placeholder="O que você procura?" />
-          <button type="submit" aria-label="Buscar"><i class="fas fa-search"></i></button>
-        </form>
-        <a class="btn btn--ghost" href="#conta">Minha conta</a>
-        <a class="btn btn--ghost" href="#ajuda">Ajuda</a>
-        <a class="btn btn--primary" href="#criar-conta">CRIAR SUA CONTA</a>
-        <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-area" aria-label="Abrir menu">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
-    </div>
-  </header>
+                    <li class="dropdown">
+            <button class="dropdown-toggle btn" aria-haspopup="true" aria-expanded="false">
+              Criar Arte <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="easy-style/index.html">Crie sua Arte</a></li>
+              <li><a href="easy-style/index.html">Criamos para Você</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
 
-  <section class="home-hero">
-    <div class="hero-background" aria-hidden="true">
-      <img class="graffiti-banner" src="banner.jpeg" alt="Grafite colorido ao fundo" />
-    </div>
+      <div class="header-actions">
+        <form class="search-box" role="search" aria-label="Buscar no site" onsubmit="event.preventDefault()">
+          <label for="q" class="sr-only">O que você procura?</label>
+          <input id="q" type="search" placeholder="O que você procura?" />
+          <button type="submit" aria-label="Buscar"><i class="fas fa-search"></i></button>
+        </form>
 
-    <div class="hero-content-wrapper">
-      <div class="hero-content" role="region" aria-label="Mensagem principal">
-        <h1>Crie algo IZI STYLE.</h1>
-        <h1>Seu estilo, sua arte.</h1>
-        <p class="hero-extra-line"><strong>Seja para onde você for… use IZI STYLE.</strong></p>
-        <p class="hero-subtitle">Comece a personalizar sua estampa. A imaginação é o limite.</p>
-        <div class="cta-buttons">
-          <a class="btn-cta-large primary-cta" href="easy-style/index.html">Crie sua Arte</a>
-          <a class="btn-cta-large secondary-cta" href="easy-style/index.html">Criamos para Você</a>
-        </div>
-      </div>
+        <a class="btn btn--ghost" href="#conta">Minha conta</a>
+        <a class="btn btn--ghost" href="#ajuda">Ajuda</a>
+        <a class="btn btn--primary" href="#criar-conta">CRIAR SUA CONTA</a>
 
-      <div class="video-placeholder" aria-label="Espaço para vídeo ou reels">
-        <i class="fas fa-mobile-alt" aria-hidden="true"></i>
-        <span>Seu Reels/Vídeo aqui</span>
-      </div>
-    </div>
-  </section>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-area" aria-label="Abrir menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
 
-  <section id="colecoes" class="featured-sections">
-    <div class="container">
-      <h2>✨ Coleções Populares</h2>
-      <div class="collection-grid">
-        <article class="collection-item">
-          <div class="collection-image-placeholder" aria-hidden="true"></div>
-          <h3>Coleção Dia dos Namorados</h3>
-          <a href="#">Ver itens</a>
-        </article>
-        <article class="collection-item">
-          <div class="collection-image-placeholder" aria-hidden="true"></div>
-          <h3>Artistas em Destaque</h3>
-          <a href="#">Ver itens</a>
-        </article>
-        <article class="collection-item">
-          <div class="collection-image-placeholder" aria-hidden="true"></div>
-          <h3>Personalize com Fotos</h3>
-          <a href="#">Ver itens</a>
-        </article>
-      </div>
-    </div>
-  </section>
+    <section class="home-hero hero-claro">
+      <div class="hero-content-wrapper">
+          <div class="hero-content" role="region" aria-label="Mensagem principal">
+              <h1>Crie algo IZI STYLE.</h1>
+              <h1>Seu estilo, sua arte.</h1>
 
-  <section class="benefits-section">
-    <div class="benefits-grid">
-      <div class="benefit-item">
-        <i class="fas fa-truck" aria-hidden="true"></i>
-        <h3>Receba em casa</h3>
-        <p>Enviamos para todo Brasil</p>
-      </div>
-      <div class="benefit-item">
-        <i class="fas fa-tag" aria-hidden="true"></i>
-        <h3>Primeira compra?</h3>
-        <p>Use o cupom <strong>WECOOL</strong> no carrinho</p>
-      </div>
-      <div class="benefit-item">
-        <i class="fas fa-lock" aria-hidden="true"></i>
-        <h3>Compre sem medo!</h3>
-        <p>Qualidade e satisfação garantida</p>
-      </div>
-      <div class="benefit-item">
-        <i class="fas fa-shield-alt" aria-hidden="true"></i>
-        <h3>Seus dados seguros</h3>
-        <p>Protegemos suas informações</p>
-      </div>
-    </div>
-  </section>
+              <p class="hero-extra-line">
+                  <strong>Seja para onde você for… use IZI STYLE.</strong>
+              </p>
+              <p class="hero-subtitle">Comece a personalizar sua estampa. A imaginação é o limite.</p>
 
-  <footer class="main-footer" id="rodape">
-    <div class="footer-newsletter container">
-      <h2>Faça parte do nosso squad</h2>
-      <p>Cadastre-se na newsletter!</p>
-      <form class="newsletter-form" onsubmit="event.preventDefault()">
-        <label for="email" class="sr-only">Seu email</label>
-        <input id="email" type="email" placeholder="Seu email" required />
-        <button type="submit">CADASTRAR</button>
-      </form>
-    </div>
+              <div class="cta-buttons">
+                  <a class="btn-cta-large primary-cta" href="easy-style/index.html">Crie sua Arte</a>
+                  <a class="btn-cta-large secondary-cta" href="easy-style/index.html">Criamos para Você</a>
+              </div>
+          </div>
+      </div>
+  </section>
+  
+    <section class="video-tutorial-section">
+    <div class="container video-container">
+      <h2>Crie a Sua Arte: Passo a Passo IZI</h2>
+      
+      <div class="video-player-wrapper">
+        <div class="graffiti-overlay" aria-hidden="true"></div>
+                    <i class="fas fa-play-circle video-icon" aria-hidden="true"></i>
+          <span>Play Tutorial Vídeo</span>
+      </div>
+    </div>
+  </section>
 
-    <div class="footer-columns">
-      <div class="footer-column">
-        <h4>Atendimento</h4>
-        <p>Horário de funcionamento:</p>
-        <p>Segunda a sexta, 9h às 18h</p>
-        <div class="contact-info">
-          <p><i class="fas fa-phone-alt"></i> (11) 9 7623-1926</p>
-          <p><i class="fas fa-envelope"></i> contato@izistyle.com.br</p>
-        </div>
-      </div>
-      <div class="footer-column">
-        <h4>Ajuda</h4>
-        <ul>
-          <li><a href="#">Políticas de Devolução</a></li>
-          <li><a href="#">Políticas de Imagem</a></li>
-          <li><a href="#">Políticas de Cookies</a></li>
-          <li><a href="#">Entregas e Prazos</a></li>
-          <li><a href="#">Termos de Uso</a></li>
-          <li><a href="#">Seja Criador!</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h4>Formas de pagamento</h4>
-        <p>[Ícones de Visa, Master, Elo, Pix]</p>
-        <h4>Site seguro</h4>
-        <p>[Ícone de Site Seguro]</p>
-      </div>
-      <div class="footer-column">
-        <h4>Onde nos encontrar</h4>
-        <div class="social-links">
-          <p><i class="fab fa-instagram"></i> @izistyleoficial</p>
-          <p><i class="fab fa-tiktok"></i> @izistyleoficial</p>
-        </div>
-      </div>
-    </div>
+    <section id="colecoes" class="featured-sections">
+    <div class="container">
+      <h2>✨ Coleções Populares</h2>
+      <div class="collection-grid">
+        <article class="collection-item">
+          <div class="collection-image-placeholder" aria-hidden="true"></div>
+          <h3>Coleção Dia dos Namorados</h3>
+          <a href="#">Ver itens</a>
+        </article>
 
-    <div class="footer-info-base">
-      <p class="brand-story">
-        Um casal apaixonado em eternizar momentos criou a IZI STYLE para transformar o comum em extraordinário.
-        Hoje, a marca oferece diversas opções para registrar e compartilhar histórias inesquecíveis. Faça a sua com a gente!
-      </p>
-      <div class="copyright">
-        <span>© 2025 IZI STYLE GROUP - Todos os Direitos Reservados</span>
-        <span class="footer-logo-w">W</span>
-      </div>
-    </div>
-  </footer>
+        <article class="collection-item">
+          <div class="collection-image-placeholder" aria-hidden="true"></div>
+          <h3>Artistas em Destaque</h3>
+          <a href="#">Ver itens</a>
+        </article>
 
-  <!-- WhatsApp -->
-  <a class="whatsapp-float" href="https://wa.me/5511976231926" target="_blank" aria-label="Conversar no WhatsApp">
-    <i class="fab fa-whatsapp" aria-hidden="true"></i>
-  </a>
+        <article class="collection-item">
+          <div class="collection-image-placeholder" aria-hidden="true"></div>
+          <h3>Personalize com Fotos</h3>
+          <a href="#">Ver itens</a>
+        </article>
+      </div>
+      
+    </div>
+  </section>
+  
+    <section class="ugc-gallery-section">
+    <div class="container">
+      <h2>🔥 O Squad IZI na Rua</h2>
+      <p class="ugc-subtitle">Inspire-se nas criações da nossa comunidade. Use a hashtag #IZIStyleSquad!</p>
+      <div class="ugc-grid">
+                <div class="ugc-item" aria-label="Criação de cliente 1"></div>
+        <div class="ugc-item" aria-label="Criação de cliente 2"></div>
+        <div class="ugc-item" aria-label="Criação de cliente 3"></div>
+        <div class="ugc-item" aria-label="Criação de cliente 4"></div>
+        <div class="ugc-item" aria-label="Criação de cliente 5"></div>
+        <div class="ugc-item" aria-label="Criação de cliente 6"></div>
+      </div>
+      <a href="#" class="btn btn--primary view-all-ugc">Ver Mais Criações</a>
+    </div>
+  </section>
 
-  <script>
-    (function () {
-      function setupDropdowns(root = document) {
-        const buttons = Array.from(root.querySelectorAll('.dropdown-toggle, .dropdown > button'));
 
-        // estado inicial: todos fechados
-        buttons.forEach(btn => {
-          if (btn.getAttribute('aria-expanded') !== 'false') {
-            btn.setAttribute('aria-expanded', 'false');
-          }
-          const parent = btn.closest('.dropdown');
-          if (parent) parent.setAttribute('aria-expanded', 'false');
-        });
+    <section class="benefits-section">
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <i class="fas fa-truck" aria-hidden="true"></i>
+        <h3>Receba em casa</h3>
+        <p>Enviamos para todo o Brasil com agilidade e segurança!</p>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        <h3>10% OFF na Primeira Compra</h3>
+        <p>Use o cupom <strong>IZISTYLE10</strong> no carrinho.</p>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-hands-helping" aria-hidden="true"></i>
+        <h3>Sua Satisfação Garantida!</h3>
+        <p>Trocas e devoluções fáceis. Nossa prioridade é você.</p>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+        <h3>Pagamento 100% Seguro</h3>
+        <p>Seus dados pessoais e financeiros são protegidos.</p>
+      </div>
+    </div>
+  </section>
 
-        // fecha todos (menos 'exceptBtn' se fornecido)
-        function closeAll(exceptBtn) {
-          buttons.forEach(b => {
-            if (b !== exceptBtn) {
-              b.setAttribute('aria-expanded', 'false');
-              const p = b.closest('.dropdown');
-              if (p) p.setAttribute('aria-expanded', 'false');
-            }
-          });
-        }
+    <footer class="main-footer" id="rodape">
+    <div class="footer-newsletter container">
+      <h2>Faça parte do nosso squad</h2>
+      <p>Cadastre-se na newsletter!</p>
+      <form class="newsletter-form" onsubmit="event.preventDefault()">
+        <label for="email" class="sr-only">Seu email</label>
+        <input id="email" type="email" placeholder="Seu email" required />
+        <button type="submit">CADASTRAR</button>
+      </form>
+    </div>
 
-        // abre/fecha por clique
-        buttons.forEach(btn => {
-          btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            const isOpen = btn.getAttribute('aria-expanded') === 'true';
-            closeAll(btn);
-            const next = String(!isOpen);
-            btn.setAttribute('aria-expanded', next);
-            const parent = btn.closest('.dropdown');
-            if (parent) parent.setAttribute('aria-expanded', next);
-          });
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h4>Atendimento</h4>
+        <p>Horário de funcionamento:</p>
+        <p>Segunda a sexta, 9h às 18h</p>
+        <div class="contact-info">
+          <p><i class="fas fa-phone-alt"></i> (11) 9 7623-1926</p>
+          <p><i class="fas fa-envelope"></i> contato@izistyle.com.br</p>
+        </div>
+      </div>
 
-          // ao perder foco total do botão + menu, fecha
-          const dropdown = btn.closest('.dropdown');
-          if (dropdown) {
-            dropdown.addEventListener('focusout', (e) => {
-              // se o novo foco saiu do botão e do menu, fecha
-              const r = dropdown.contains(e.relatedTarget);
-              if (!r) {
-                btn.setAttribute('aria-expanded', 'false');
-                dropdown.setAttribute('aria-expanded', 'false');
-              }
-            });
-          }
-        });
+      <div class="footer-column">
+        <h4>Ajuda</h4>
+        <ul>
+          <li><a href="#">Políticas de Devolução</a></li>
+          <li><a href="#">Políticas de Imagem</a></li>
+          <li><a href="#">Políticas de Cookies</a></li>
+          <li><a href="#">Entregas e Prazos</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">Seja Criador!</a></li>
+        </ul>
+      </div>
 
-        // clique fora fecha tudo
-        document.addEventListener('click', (e) => {
-          const insideHeader = e.target.closest('header');
-          if (!insideHeader) closeAll();
-        });
+      <div class="footer-column">
+        <h4>Formas de pagamento</h4>
+        <p>[Ícones de Visa, Master, Elo, Pix]</p>
+        <h4>Site seguro</h4>
+        <p>[Ícone de Site Seguro]</p>
+      </div>
 
-        // ESC fecha tudo
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape') {
-            closeAll();
-          }
-        });
-      }
+      <div class="footer-column">
+        <h4>Onde nos encontrar</h4>
+        <div class="social-links">
+          <p><i class="fab fa-instagram"></i> @izistyleoficial</p>
+          <p><i class="fab fa-tiktok"></i> @izistyleoficial</p>
+        </div>
+      </div>
+    </div>
 
-      // inicia ao carregar
-      if (document.readyState !== 'loading') {
-        setupDropdowns();
-      } else {
-        document.addEventListener('DOMContentLoaded', () => setupDropdowns());
-      }
-    })();
-  </script>
+    <div class="footer-info-base">
+      <p class="brand-story">
+        Um casal apaixonado em eternizar momentos criou a IZI STYLE para transformar o comum em extraordinário.
+        Hoje, a marca oferece diversas opções para registrar e compartilhar histórias inesquecíveis. Faça a sua com a gente!
+      </p>
+      <div class="copyright">
+        <span>© 2025 IZI STYLE GROUP - Todos os Direitos Reservados</span>
+        <span class="footer-logo-w">W</span>
+      </div>
+      
+    </div>
+  </footer>
+
+    <a class="whatsapp-float" href="https://wa.me/5511976231926" target="_blank" aria-label="Conversar no WhatsApp">
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <script>
+    (function () {
+      // MOBILE TOGGLE
+      const header = document.querySelector('.main-header');
+      const toggleBtn = document.querySelector('.menu-toggle');
+      toggleBtn?.addEventListener('click', (e) => {
+        e.preventDefault();
+        const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+        toggleBtn.setAttribute('aria-expanded', String(!expanded));
+        header.classList.toggle('header-mobile');
+      });
+
+      // DROPDOWNS CONTROLADOS POR ARIA
+      function setupDropdowns(root = document) {
+        const main = root.querySelector('header') || root;
+        const buttons = Array.from(main.querySelectorAll('.dropdown-toggle, .sub-dropdown > .btn'));
+
+        // Início: todos fechados
+        buttons.forEach(btn => {
+          btn.setAttribute('aria-expanded', 'false');
+          const parent = btn.closest('.dropdown');
+          if (parent) parent.setAttribute('aria-expanded', 'false');
+        });
+
+        // fecha todos (exceto o que passarmos)
+        function closeAll(exceptBtn) {
+          buttons.forEach(b => {
+            if (b !== exceptBtn) {
+              b.setAttribute('aria-expanded', 'false');
+              const p = b.closest('.dropdown');
+              if (p) p.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+
+        // Toggle por clique (sem “seleção” residual)
+        buttons.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const isOpen = btn.getAttribute('aria-expanded') === 'true';
+            closeAll(btn);
+            const next = String(!isOpen);
+            btn.setAttribute('aria-expanded', next);
+            const parent = btn.closest('.dropdown');
+            if (parent) parent.setAttribute('aria-expanded', next);
+            // remove foco visual imediato
+            btn.blur();
+          });
+
+          // Fecha ao sair do foco do bloco
+          const dropdown = btn.closest('.dropdown');
+          if (dropdown) {
+            dropdown.addEventListener('focusout', (e) => {
+              if (!dropdown.contains(e.relatedTarget)) {
+                btn.setAttribute('aria-expanded', 'false');
+                dropdown.setAttribute('aria-expanded', 'false');
+              }
+            });
+          }
+        });
+
+        // Clique fora fecha tudo
+        document.addEventListener('click', (e) => {
+          const insideHeader = e.target.closest('header');
+          if (!insideHeader) closeAll();
+        });
+
+        // ESC fecha tudo
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeAll();
+        });
+      }
+
+      if (document.readyState !== 'loading') {
+        setupDropdowns();
+      } else {
+        document.addEventListener('DOMContentLoaded', setupDropdowns);
+      }
+    })();
+  </script>
 </body>
 </html>
