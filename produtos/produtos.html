@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Produtos | IZI STYLE - Criação Personalizada</title>
+
+  <!-- CSS da home (reutilizado) -->
+  <link rel="stylesheet" href="../styles.css" />
+  
+  <!-- CSS específico de produtos -->
+  <link rel="stylesheet" href="produtos.css" />
+
+  <!-- Font Awesome (ícones) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+
+  <!-- HEADER (REUTILIZADO DO INDEX.HTML) -->
+  <header class="main-header" id="topo" aria-label="Cabeçalho principal">
+    <div class="bar container">
+      <a class="logo" href="../index.html" aria-label="IZI STYLE - Início">
+        <img class="site-logo" src="../logo-transparente.jpeg" alt="Logo IZI STYLE" loading="eager" />
+      </a>
+
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../index.html#colecoes">Coleções</a></li>
+
+            <!-- Dropdown 1 -->
+            <li class="dropdown">
+              <button class="dropdown-toggle btn" aria-haspopup="true" aria-expanded="false">
+                Momentos Especiais <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="produtos.html?categoria=casal">Para Casal</a></li>
+                <li><a href="produtos.html?categoria=familia">Para Família</a></li>
+                <li><a href="produtos.html?categoria=amigos">Para Amigos</a></li>
+
+                <!-- Sub-dropdown -->
+                <li class="sub-dropdown">
+                  <button class="btn" aria-haspopup="false" aria-expanded="false">
+                    Datas Especiais <i class="fas fa-chevron-right" aria-hidden="false"></i>
+                  </button>
+                  <ul class="sub-dropdown-menu" role="menu">
+                    <li><a href="produtos.html?categoria=namorados">Dia dos Namorados</a></li>
+                    <li><a href="produtos.html?categoria=maes">Dia das Mães</a></li>
+                    <li><a href="produtos.html?categoria=pais">Dia dos Pais</a></li>
+                    <li><a href="produtos.html?categoria=carnaval">Carnaval</a></li>
+                    <li><a href="produtos.html?categoria=professores">Dia dos Professores</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+          <!-- Dropdown 2 -->
+          <li class="dropdown">
+            <button class="dropdown-toggle btn" aria-haspopup="true" aria-expanded="false">
+              Criar Arte <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="../easy-style/index.html">Crie sua Arte</a></li>
+              <li><a href="../easy-style/index.html">Criamos para Você</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <form class="search-box" role="search" aria-label="Buscar no site" onsubmit="event.preventDefault()">
+          <label for="q" class="sr-only">O que você procura?</label>
+          <input id="q" type="search" placeholder="O que você procura?" />
+          <button type="submit" aria-label="Buscar"><i class="fas fa-search"></i></button>
+        </form>
+
+        <a class="btn btn--ghost" href="#conta">Minha conta</a>
+        <a class="btn btn--ghost" href="#ajuda">Ajuda</a>
+        <a class="btn btn--primary" href="#criar-conta">CRIAR SUA CONTA</a>
+
+        <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-area" aria-label="Abrir menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <section class="breadcrumb-section">
+    <div class="container">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+          <li><a href="../index.html"><i class="fas fa-home"></i> Início</a></li>
+          <li><span id="categoria-atual">Produtos</span></li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- SEÇÃO DE PRODUTOS -->
+  <section class="produtos-section">
+    <div class="container">
+      <div class="produtos-header">
+        <h1 id="titulo-categoria">Nossos Produtos</h1>
+        <p class="produtos-subtitle">Escolha o produto perfeito para você!</p>
+      </div>
+
+      <!-- GRID DE PRODUTOS (Será preenchido via JavaScript) -->
+      <div id="produtos-grid" class="produtos-grid">
+        <!-- Os cards serão inseridos aqui pelo JavaScript -->
+      </div>
+
+      <!-- Mensagem caso não haja produtos -->
+      <div id="sem-produtos" class="sem-produtos" style="display: none;">
+        <i class="fas fa-box-open"></i>
+        <h3>Nenhum produto encontrado</h3>
+        <p>Não encontramos produtos nesta categoria no momento.</p>
+        <a href="../index.html" class="btn-voltar">Voltar para Home</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (REUTILIZADO DO INDEX.HTML) -->
+  <footer class="main-footer" id="rodape">
+    <div class="footer-newsletter container">
+      <h2>Faça parte do nosso squad</h2>
+      <p>Cadastre-se na newsletter!</p>
+      <form class="newsletter-form" onsubmit="event.preventDefault()">
+        <label for="email" class="sr-only">Seu email</label>
+        <input id="email" type="email" placeholder="Seu email" required />
+        <button type="submit">CADASTRAR</button>
+      </form>
+    </div>
+
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h4>Atendimento</h4>
+        <p>Horário de funcionamento:</p>
+        <p>Segunda a sexta, 9h às 18h</p>
+        <div class="contact-info">
+          <p><i class="fas fa-phone-alt"></i> (11) 9 7623-1926</p>
+          <p><i class="fas fa-envelope"></i> contato@izistyle.com.br</p>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h4>Ajuda</h4>
+        <ul>
+          <li><a href="#">Políticas de Devolução</a></li>
+          <li><a href="#">Políticas de Imagem</a></li>
+          <li><a href="#">Políticas de Cookies</a></li>
+          <li><a href="#">Entregas e Prazos</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">Seja Criador!</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Formas de pagamento</h4>
+        <p>[Ícones de Visa, Master, Elo, Pix]</p>
+        <h4>Site seguro</h4>
+        <p>[Ícone de Site Seguro]</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Onde nos encontrar</h4>
+        <div class="social-links">
+          <p><i class="fab fa-instagram"></i> @izistyleoficial</p>
+          <p><i class="fab fa-tiktok"></i> @izistyleoficial</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-info-base">
+      <p class="brand-story">
+        Um casal apaixonado em eternizar momentos criou a IZI STYLE para transformar o comum em extraordinário.
+        Hoje, a marca oferece diversas opções para registrar e compartilhar histórias inesquecíveis. Faça a sua com a gente!
+      </p>
+      <div class="copyright">
+        <span>© 2025 IZI STYLE GROUP - Todos os Direitos Reservados</span>
+        <span class="footer-logo-w">W</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp -->
+  <a class="whatsapp-float" href="https://wa.me/5511976231926" target="_blank" aria-label="Conversar no WhatsApp">
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+  </a>
+
+  <!-- JS: produtos.js (carrega os produtos) -->
+  <script src="produtos.js"></script>
+
+  <!-- JS: dropdown + acessibilidade + mobile (REUTILIZADO) -->
+  <script>
+    (function () {
+      // MOBILE TOGGLE
+      const header = document.querySelector('.main-header');
+      const toggleBtn = document.querySelector('.menu-toggle');
+      toggleBtn?.addEventListener('click', (e) => {
+        e.preventDefault();
+        const expanded = toggleBtn.getAttribute('aria-expanded') === 'false';
+        toggleBtn.setAttribute('aria-expanded', String(!expanded));
+        header.classList.toggle('header-mobile');
+      });
+
+      // DROPDOWNS CONTROLADOS POR ARIA
+      function setupDropdowns(root = document) {
+        const main = root.querySelector('header') || root;
+        const dropdowns = Array.from(main.querySelectorAll('.dropdown'));
+        const subDropdowns = Array.from(main.querySelectorAll('.sub-dropdown'));
+
+        // Inicializa todos fechados
+        dropdowns.forEach(dd => dd.setAttribute('aria-expanded', 'false'));
+        subDropdowns.forEach(sd => {
+            const btn = sd.querySelector('.btn');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+
+        // Fecha todos os dropdowns
+        function closeAll(except = null) {
+            dropdowns.forEach(dd => {
+                if (dd !== except) dd.setAttribute('aria-expanded', 'false');
+            });
+            subDropdowns.forEach(sd => {
+                const btn = sd.querySelector('.btn');
+                if (btn && sd !== except) btn.setAttribute('aria-expanded', 'false');
+            });
+        }
+
+        // Toggle dropdown principal
+        dropdowns.forEach(dropdown => {
+            const toggle = dropdown.querySelector('.dropdown-toggle');
+            if (!toggle) return;
+
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const isOpen = dropdown.getAttribute('aria-expanded') === 'true';
+                closeAll(dropdown);
+                dropdown.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+                toggle.blur();
+            });
+        });
+
+        // Toggle sub-dropdown
+        subDropdowns.forEach(subDropdown => {
+            const btn = subDropdown.querySelector('.btn');
+            if (!btn) return;
+
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const isOpen = btn.getAttribute('aria-expanded') === 'true';
+                
+                // Fecha outros sub-dropdowns
+                subDropdowns.forEach(sd => {
+                    const b = sd.querySelector('.btn');
+                    if (b && b !== btn) b.setAttribute('aria-expanded', 'false');
+                });
+                
+                btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+                btn.blur();
+            });
+        });
+
+        // Clique fora fecha tudo
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('header')) {
+                closeAll();
+            }
+        });
+
+        // ESC fecha tudo
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeAll();
+            }
+        });
+      }
+
+      // Inicializa quando o DOM carregar
+      if (document.readyState !== 'loading') {
+        setupDropdowns();
+      } else {
+        document.addEventListener('DOMContentLoaded', setupDropdowns);
+      }
+    })();
+  </script>
+</body>
+</html>

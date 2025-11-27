@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Editor — Easy Style</title>
+  <style>
+    :root{--line:#e5e7eb;--muted:#6b7280;--text:#111827;--ok:#10b981}
+    html,body{margin:0;background:#fff;color:var(--text);font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial}
+    .bar{width:min(1120px,94vw);margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:10px 0}
+    .btn{appearance:none;border:1px solid #d1d5db;background:#fff;border-radius:10px;padding:10px;cursor:pointer}
+    .btn.primary{background:var(--ok);color:#fff;border-color:var(--ok)}
+    .btn.danger{border-color:#ef4444;color:#ef4444}
+    .container{width:min(1120px,94vw);margin:0 auto;padding:12px 0}
+    .row{display:grid;grid-template-columns:300px 1fr;gap:16px}
+    @media(max-width:900px){.row{grid-template-columns:1fr}}
+    .panel{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff}
+    .chips{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{border:1px solid var(--line);background:#f3f4f6;padding:8px 12px;border-radius:10px;cursor:pointer}
+    .chip[aria-pressed="true"]{background:#e6f7ef;border-color:var(--ok)}
+    .small{font-size:12px;color:var(--muted)}
+    canvas{max-width:100%;background:#fafafa;border:1px dashed var(--line);border-radius:12px;touch-action:none}
+    .stack{display:grid;gap:12px}
+    .stack-tight{display:grid;gap:8px}
+    .inline{display:flex;gap:12px;flex-wrap:wrap}
+    .slider{width:100%}
+    .hint{font-size:12px;color:var(--muted);margin-top:8px}
+  </style>
+</head>
+<body>
+  <div class="bar">
+    <strong>Easy Style — Editor</strong>
+    <div class="inline">
+      <button class="btn danger" id="delete" title="Excluir seleção (Del)">Excluir seleção</button>
+      <button class="btn" id="clear">Limpar tudo</button>
+      <a class="btn" href="index.html">Voltar ao produto</a>
+      <a class="btn" href="../index.html">Home</a>
+      <button class="btn primary" id="export">Exportar PNG</button>
+    </div>
+  </div>
+
+  <main class="container">
+    <p class="small">Editor fictício: upload de imagem, adicionar texto (com cor), mover, redimensionar e rotacionar na área segura.</p>
+    <div class="row">
+      <div class="panel">
+        <div class="stack">
+          <div class="stack-tight">
+            <b>Modelo</b>
+            <div class="chips" data-key="color">
+              <button class="chip" aria-pressed="true" data-value="branco">Branco</button>
+              <button class="chip" data-value="preto">Preto</button>
+            </div>
+          </div>
+
+          <label class="btn">Carregar imagem
+            <input type="file" id="upload" accept="image/*" style="display:none">
+          </label>
+
+          <button class="btn" id="addText">Adicionar texto</button>
+
+          <div class="inline">
+            <label class="small" style="flex:1">Escala
+              <input type="range" id="scale" class="slider" min="0.2" max="3" step="0.01" value="1">
+            </label>
+            <label class="small" style="flex:1">Rotação
+              <input type="range" id="rotate" class="slider" min="-180" max="180" step="1" value="0">
+            </label>
+          </div>
+
+          <div class="stack-tight">
+            <label class="small">Texto selecionado</label>
+            <input type="text" id="textInput" class="slider" placeholder="Edite o texto aqui">
+            <div class="chips" data-key="textColor">
+              <button class="chip" aria-pressed="true" data-value="#111827">Preto</button>
+              <button class="chip" data-value="#ffffff">Branco</button>
+              <button class="chip" data-value="#10b981">Verde</button>
+              <button class="chip" data-value="#2563eb">Azul</button>
+            </div>
+          </div>
+          <p class="hint">Dica: selecione um item e pressione <b>Delete</b> para removê-lo.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3 style="margin:.2rem 0">Personalize sua camiseta</h3>
+        <p class="small">Área segura ~35×40cm</p>
+        <canvas id="c" width="900" height="1100"></canvas>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // AJUSTADO PARA SUA ESTRUTURA (arquivos .png em /assets)
+    const SHIRT_WHITE = "assets/camiseta-branca.png";
+    const SHIRT_BLACK = "assets/camiseta-preta.png";
+    const DEFAULT_ART = "assets/arte-inicial.png";
+
+    const canvas = document.getElementById('c');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+    const delBtn = document.getElementById('delete');
+    const clearBtn = document.getElementById('clear');
+
+    const state = {
+      color: 'branco',
+      shirtImg: null,
+      artLayers: [],
+      selection: -1,
+      print: {x: 260, y: 280, w: 380, h: 460}
+    };
+
+    function loadImage(src){ return new Promise((res,rej)=>{ const im=new Image(); im.onload=()=>res(im); im.onerror=rej; im.src=src; }); }
+    function getParam(k){ const u=new URLSearchParams(location.search); return u.get(k); }
+
+    async function init(){
+      const fromUrl = getParam('color');
+      state.color = (fromUrl==='preto'||fromUrl==='branco') ? fromUrl : 'branco';
+      state.shirtImg = await loadImage(state.color==='branco'?SHIRT_WHITE:SHIRT_BLACK);
+
+      try{
+        const art = await loadImage(DEFAULT_ART);
+        if(art.width>0){
+          const w = Math.min(state.print.w*0.9, art.width);
+          const h = w * (art.height/art.width);
+          state.artLayers.push({type:'image', image:art, x: state.print.x + (state.print.w-w)/2, y: state.print.y + (state.print.h-h)/2, w, h, scale:1, rot:0, lock:false});
+          state.selection = state.artLayers.length-1;
+        }
+      }catch(e){}
+      draw();
+      document.querySelectorAll('[data-key="color"] .chip').forEach(b=>b.setAttribute('aria-pressed','false'));
+      document.querySelector(`[data-key="color"] .chip[data-value="${state.color}"]`)?.setAttribute('aria-pressed','true');
+      updateDeleteState();
+    }
+
+    function draw(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ctx.drawImage(state.shirtImg, 160, 60, 580, 840);
+      ctx.save(); ctx.setLineDash([8,6]); ctx.lineWidth=2; ctx.strokeStyle='#60a5fa'; ctx.strokeRect(state.print.x,state.print.y,state.print.w,state.print.h); ctx.restore();
+      state.artLayers.forEach((l,idx)=>{
+        ctx.save();
+        const cx=l.x+l.w/2, cy=l.y+l.h/2; ctx.translate(cx,cy); ctx.rotate((l.rot||0)*Math.PI/180); ctx.scale(l.scale||1,l.scale||1); ctx.translate(-l.w/2,-l.h/2);
+        if(l.type==='image') ctx.drawImage(l.image,0,0,l.w,l.h);
+        if(l.type==='text'){ ctx.font='bold 48px system-ui'; ctx.fillStyle=l.color||'#111827'; ctx.textAlign='left'; wrapText(ctx,l.text||'Seu texto',0,40,l.w,52); }
+        ctx.restore();
+        if(idx===state.selection){ const r=getLayerRect(l); ctx.save(); ctx.setLineDash([6,4]); ctx.strokeStyle='#10b981'; ctx.strokeRect(r.x,r.y,r.w,r.h); ctx.restore(); }
+      });
+    }
+
+    function getLayerRect(l){ const s=l.scale||1; return {x:l.x+(l.w/2)-(l.w*s/2), y:l.y+(l.h/2)-(l.h*s/2), w:l.w*s, h:l.h*s}; }
+    function hit(x,y){ for(let i=state.artLayers.length-1;i>=0;i--){ const r=getLayerRect(state.artLayers[i]); if(x>=r.x&&x<=r.x+r.w&&y>=r.y&&y<=r.y+r.h) return i; } return -1; }
+
+    // mouse + touch (mobile)
+    let dragging=false,dx=0,dy=0;
+    const getXY = (ev)=>{
+      const r=canvas.getBoundingClientRect();
+      const t = ev.touches ? ev.touches[0] : ev;
+      return { x: (t.clientX - r.left) * (canvas.width / r.width),
+               y: (t.clientY - r.top)  * (canvas.height / r.height) };
+    };
+    function start(x,y){ const i=hit(x,y); state.selection=i; if(i>=0){ dragging=true; const L=state.artLayers[i]; dx=x-L.x; dy=y-L.y; sync(); } updateDeleteState(); draw(); }
+    function move(x,y){ if(!dragging||state.selection<0) return; const L=state.artLayers[state.selection]; L.x=x-dx; L.y=y-dy; draw(); }
+
+    canvas.addEventListener('mousedown',e=>{const p=getXY(e); start(p.x,p.y);});
+    canvas.addEventListener('mousemove',e=>{const p=getXY(e); move(p.x,p.y);});
+    window.addEventListener('mouseup',()=>dragging=false);
+    canvas.addEventListener('touchstart',e=>{const p=getXY(e); start(p.x,p.y);});
+    canvas.addEventListener('touchmove',e=>{e.preventDefault(); const p=getXY(e); move(p.x,p.y);},{passive:false});
+    window.addEventListener('touchend',()=>dragging=false);
+
+    document.getElementById('upload').addEventListener('change', async (e)=>{
+      const file=e.target.files[0]; if(!file) return;
+      const url=URL.createObjectURL(file);
+      const im=await loadImage(url);
+      const w=Math.min(state.print.w, im.width);
+      const h=w*(im.height/im.width);
+      state.artLayers.push({type:'image', image:im, x: state.print.x+(state.print.w-w)/2, y: state.print.y+(state.print.h-h)/2, w, h, scale:1, rot:0});
+      state.selection=state.artLayers.length-1; draw(); sync(); updateDeleteState();
+    });
+
+    document.getElementById('addText').addEventListener('click', ()=>{
+      const baseColor = state.color==='preto' ? '#ffffff' : '#111827';
+      const w=state.print.w*0.9, h=120;
+      state.artLayers.push({type:'text', text:'Seu texto', color:baseColor, x: state.print.x+state.print.w*0.05, y: state.print.y+30, w, h, scale:1, rot:0});
+      state.selection=state.artLayers.length-1; draw(); sync(); updateDeleteState();
+    });
+
+    const scaleEl=document.getElementById('scale'), rotEl=document.getElementById('rotate'), textEl=document.getElementById('textInput');
+    [scaleEl,rotEl,textEl].forEach(el=>el.addEventListener('input',()=>{
+      const L=state.artLayers[state.selection]; if(!L) return;
+      if(el===scaleEl) L.scale=parseFloat(scaleEl.value);
+      if(el===rotEl) L.rot=parseFloat(rotEl.value);
+      if(el===textEl && L.type==='text') L.text=textEl.value;
+      draw();
+    }));
+
+    document.querySelectorAll('[data-key="textColor"] .chip').forEach(btn=>btn.addEventListener('click',()=>{
+      document.querySelectorAll('[data-key="textColor"] .chip').forEach(b=>b.setAttribute('aria-pressed','false'));
+      btn.setAttribute('aria-pressed','true');
+      const L=state.artLayers[state.selection]; if(!L||L.type!=='text') return;
+      L.color = btn.dataset.value; draw();
+    }));
+
+    document.querySelectorAll('[data-key="color"] .chip').forEach(btn=>btn.addEventListener('click', async ()=>{
+      document.querySelectorAll('[data-key="color"] .chip').forEach(b=>b.setAttribute('aria-pressed','false'));
+      btn.setAttribute('aria-pressed','true'); state.color=btn.dataset.value;
+      state.shirtImg = await loadImage(state.color==='branco'?SHIRT_WHITE:SHIRT_BLACK);
+      const L=state.artLayers[state.selection];
+      if(L && L.type==='text'){
+        if(state.color==='preto' && (!L.color || L.color==='#111827')) { L.color='#ffffff'; }
+        if(state.color==='branco' && (!L.color || L.color==='#ffffff')) { L.color='#111827'; }
+      }
+      draw();
+    }));
+
+    function updateDeleteState(){ delBtn.disabled = state.selection<0; }
+    function deleteSelected(){ if(state.selection<0) return; state.artLayers.splice(state.selection,1); state.selection = -1; draw(); sync(); updateDeleteState(); }
+    delBtn.addEventListener('click', deleteSelected);
+    clearBtn.addEventListener('click', ()=>{ state.artLayers=[]; state.selection=-1; draw(); sync(); updateDeleteState(); });
+    window.addEventListener('keydown', (e)=>{
+      if(e.key==='Delete' || e.key==='Backspace'){ deleteSelected(); }
+    });
+
+    document.getElementById('export').addEventListener('click', ()=>{
+      const a=document.createElement('a'); a.href=canvas.toDataURL('image/png'); a.download='camiseta-preview.png'; a.click();
+    });
+
+    function sync(){ const L=state.artLayers[state.selection]; if(!L){scaleEl.value=1;rotEl.value=0;textEl.value='';return;} scaleEl.value=L.scale||1; rotEl.value=L.rot||0; textEl.value=L.type==='text'?(L.text||''):''; }
+    function wrapText(ctx, text, x, y, maxWidth, lineHeight){ const words=text.split(' '); let line=''; for(let n=0;n<words.length;n++){ const test=line+words[n]+' '; const m=ctx.measureText(test); if(m.width>maxWidth && n>0){ ctx.fillText(line,x,y); line=words[n]+' '; y+=lineHeight; } else { line=test; } } ctx.fillText(line,x,y); }
+
+    init();
+  </script>
+</body>
+</html>
