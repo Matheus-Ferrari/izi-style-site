@@ -2,8 +2,8 @@
 
 /* 1. RESET E VARIAVEIS GLOBAIS */
 :root {
-    --primary-color: #f70a31; /* Cor de destaque (vermelho) */
-    --secondary-color: #333; /* Cor secundÃ¡ria para o segundo botÃ£o */
+    --primary-color: #f70a31;
+    --secondary-color: #333; 
     --text-dark: #333;
     --text-light: #555;
     --bg-light: #f9f9f9;
@@ -25,7 +25,7 @@ ul {
     list-style: none;
 }
 
-/* 2. ESTILIZAÃ‡ÃƒO DO CABEÃ‡ALHO (HEADER) */
+/* 2. ESTILIZAÇÃO DO CABEÇALHO (HEADER) */
 .main-header {
     display: flex;
     justify-content: space-between;
@@ -65,49 +65,6 @@ ul {
 
 .dropdown {
     position: relative;
-}
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%; 
-    left: 0;
-    background-color: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    min-width: 200px;
-    padding: 10px 0;
-    border-radius: 5px;
-    z-index: 50;
-    flex-direction: column; 
-}
-
-.dropdown-menu li a {
-    padding: 10px 15px;
-    display: block;
-    white-space: nowrap; 
-    transition: background-color 0.2s;
-    color: var(--text-dark); 
-}
-
-.dropdown-menu li a:hover {
-    background-color: var(--bg-light);
-    color: var(--primary-color);
-}
-
-.sub-dropdown {
-    position: relative;
-}
-
-.sub-dropdown-menu {
-    display: none;
-    position: absolute;
-    left: 100%; 
-    top: 0;
-    background-color: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    min-width: 200px;
-    padding: 10px 0;
-    border-radius: 5px;
 }
 
 .header-actions {
@@ -165,7 +122,7 @@ ul {
 }
 
 
-/* 3. CONTEÃšDO PRINCIPAL (HERO SECTION) */
+/* 3. CONTEÚDO PRINCIPAL (HERO SECTION) */
 .home-hero {
     position: relative;
     min-height: 80vh;
@@ -204,7 +161,7 @@ ul {
     padding: 20px 40px;
 }
 
-/* CONTEÃšDO: Ajustes de tamanho e fundo */
+/* CONTEÚDO: Ajustes de tamanho e fundo */
 .hero-content {
     max-width: 750px;
     min-height: 320px;
@@ -218,7 +175,7 @@ ul {
     border-radius: 10px;
 }
 
-/* TÃTULO PRINCIPAL (Primeiro H1) */
+/* TÝTULO PRINCIPAL (Primeiro H1) */
 .hero-content h1:first-child {
     font-size: 2.8em;
     font-weight: 700;
@@ -227,7 +184,7 @@ ul {
     text-align: center;
 }
 
-/* SUBTÃTULO (Segundo H1 consecutivo) */
+/* SUBTÝTULO (Segundo H1 consecutivo) */
 .hero-content h1 + h1 {
     font-size: 2.2em;
     font-weight: 700;
@@ -235,7 +192,7 @@ ul {
     text-align: center;
 }
 
-/* NOVO BLOCO PARA CENTRALIZAR O CONTEÃšDO SELECIONADO */
+/* NOVO BLOCO PARA CENTRALIZAR O CONTEÚDO SELECIONADO */
 .centered-block {
     text-align: center;
     width: 100%;
@@ -259,7 +216,7 @@ ul {
 }
 
 
-/* DOIS BOTÃ•ES CTA */
+/* DOIS BOTÕES CTA */
 .cta-buttons {
     display: flex;
     gap: 15px;
@@ -296,7 +253,7 @@ ul {
     color: var(--text-dark);
 }
 
-/* Placeholder do Celular/VÃ­deo */
+/* Placeholder do Celular/Vídeo */
 .video-placeholder {
     width: 350px;
     height: 520px;
@@ -318,7 +275,7 @@ ul {
     margin-bottom: 10px;
 }
 
-/* 4. SEÃ‡ÃƒO DE DESTAQUE (ColeÃ§Ãµes) */
+/* 4. SEÇÃO DE DESTAQUE (Coleções) */
 .featured-sections {
     padding: 60px 40px;
     background-color: white;
@@ -374,60 +331,60 @@ ul {
     color: white;
 }
 
-/* 6. SEÃ‡ÃƒO DE BENEFÃCIOS (BENEFITS) */
+/* 6. SEÇÃO DE BENEFÝCIOS (BENEFITS) */
 .benefits-section {
 padding: 20px 40px;
-background-color: var(--bg-light); /* Fundo cinza claro */
-Â text-align: center;
+background-color: var(--bg-light); 
+    text-align: center;
 }
 
 .benefits-grid {
- display: flex;
- justify-content: space-around;
-Â gap: 20px;
-Â max-width: 1200px;
-Â margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .benefit-item {
-Â background-color: white;
-Â  Â  padding: 30px 15px;
-Â  Â  border-radius: 8px;
-Â  Â  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-Â  Â  flex: 1;
-Â  Â  min-width: 200px;
+    background-color: white;
+    padding: 30px 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    min-width: 200px;
     
-    /* 1. ADICIONA TRANSIÃ‡ÃƒO SUAVE */
+    /* 1. ADICIONA TRANSIÇÃO SUAVE */
     transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
 }
 
 /* 2. ESTADO HOVER: Eleva e aumenta a sombra */
 .benefit-item:hover {
-    transform: translateY(-5px); /* Move o item 5px para cima (efeito de "surgir") */
-box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15); /* Aumenta a sombra para destaque */
+    transform: translateY(-5px); 
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15); 
 }
 
 .benefit-icon {
-font-size: 2.5em;
-color: var(--primary-color);
-margin-bottom: 10px;
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
 }
 
 .benefit-item h3 {
- font-size: 1.1em;
- color: var(--text-dark);
-margin-bottom: 5px;
+    font-size: 1.1em;
+    color: var(--text-dark);
+    margin-bottom: 5px;
 }
 
 .benefit-item p {
-Â font-size: 0.9em;
- color: var(--text-light);
+    font-size: 0.9em;
+    color: var(--text-light);
 }
 
-/* 6. SEÃ‡ÃƒO DE BENEFÃCIOS (BENEFITS) */
+/* 6. SEÇÃO DE BENEFÝCIOS (BENEFITS) */
 .benefits-section {
     padding: 20px 40px;
-    background-color: var(--bg-light); /* Fundo cinza claro */
+    background-color: var(--bg-light); 
     text-align: center;
 }
 
@@ -466,14 +423,14 @@ margin-bottom: 5px;
 }
 
 
-/* 7. RODAPÃ‰ (FOOTER) */
+/* 7. RODAPÉ (FOOTER) */
 .main-footer {
     background-color: var(--secondary-color); /* Fundo escuro */
     color: white;
     padding: 40px 40px 20px;
 }
 
-/* Newsletter Section (FaÃ§a parte do nosso squad) */
+/* Newsletter Section (Faça parte do nosso squad) */
 .footer-newsletter {
     text-align: center;
     padding: 0 0 40px;
@@ -482,12 +439,12 @@ margin-bottom: 5px;
 }
 
 /* ============================
-   Aliases de compatibilidade
-   (normalizam nomes equivalentes
-   usados no HTML)
+    Aliases de compatibilidade
+    (normalizam nomes equivalentes
+    usados no HTML)
    ============================ */
 
-/* Header / aÃ§Ãµes */
+/* Header / ações */
 .actions { display: flex; align-items: center; gap: 20px; }
 .btn { font-size: 0.95em; }
 .btn--primary { background: var(--primary-color); color: #fff; padding: 10px 18px; border-radius: 5px; font-weight: 700; border: none; cursor: pointer; }
@@ -515,7 +472,7 @@ margin-bottom: 5px;
 .device { width: 350px; height: 520px; background: var(--secondary-color); border-radius: 40px; border: 10px solid #fff; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; font-size: 1.1em; text-align: center; }
 .device i { font-size: 4em; margin-bottom: 10px; }
 
-/* SeÃ§Ãµes */
+/* Seções */
 .featured { padding: 60px 40px; background: #fff; text-align: center; }
 .featured h2 { font-size: 2em; color: var(--text-dark); margin-bottom: 40px; }
 .grid-3 { display: flex; justify-content: space-around; gap: 30px; max-width: 1200px; margin: 0 auto; }
@@ -642,7 +599,7 @@ margin-bottom: 5px;
     color: var(--primary-color);
 }
 
-/* 8. ÃCONE FLUTUANTE DO WHATSAPP */
+/* 8. ÝCONE FLUTUANTE DO WHATSAPP */
 .whatsapp-float {
     position: fixed;
     width: 50px;
@@ -797,42 +754,42 @@ margin-bottom: 5px;
     }
 }
 
-/* ===== HEADER NORMALIZE â€” overrides seguros ===== */
+/* ===== HEADER NORMALIZE — overrides seguros ===== */
 .main-header,
 .main-header .bar.container {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  height: 64px;              /* altura estÃ¡vel no desktop */
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    height: 64px;              
 }
 
 .main-header {
-  padding: 0 16px;
+    padding: 0 16px;
 }
 
 .site-logo img,
 .logo img,
 .main-header .logo img,
 .main-header .site-logo img {
-  height: 40px;              /* controla a logo para nÃ£o "pular" */
-  width: auto;
-  display: block;
-}
+    height: 40px;              
+    width: auto;
+    display: block;
+    }
 
 .main-nav {
-  margin-left: auto;         /* empurra a navegaÃ§Ã£o para a direita */
+  margin-left: auto;         
 }
 
 .main-nav ul {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-/* Controles do topo padronizados (selects, inputs, botÃµes) */
+/* Controles do topo padronizados (selects, inputs, botões) */
 .main-header select,
 .main-header input[type="text"],
 .main-header button,
@@ -840,195 +797,344 @@ margin-bottom: 5px;
 .main-header .btn-primary,
 .main-header .btn-cta,
 .main-header .btn-cta-large {
-  height: 36px;
-  line-height: 36px;
-  padding: 0 12px;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 12px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
 }
 
 /* Evita o header empurrar o hero por margem colapsada */
 body > header.main-header + * {
-  margin-top: 16px;
+    margin-top: 16px;
 }
 
 /* Responsivo */
 @media (max-width: 1024px) {
-  .main-header,
-  .main-header .bar.container {
-    height: 56px;
-    gap: 12px;
-  }
-  .main-header select,
-  .main-header input[type="text"],
-  .main-header button,
-  .main-header .btn,
-  .main-header .btn-primary,
-  .main-header .btn-cta,
-  .main-header .btn-cta-large {
-    height: 34px;
-    line-height: 34px;
-    padding: 0 10px;
-  }
+    .main-header,
+    .main-header .bar.container {
+        height: 56px;
+        gap: 12px;
+    }
+    .main-header select,
+    .main-header input[type="text"],
+    .main-header button,
+    .main-header .btn,
+    .main-header .btn-primary,
+    .main-header .btn-cta,
+    .main-header .btn-cta-large {
+        height: 34px;
+        line-height: 34px;
+        padding: 0 10px;
+    }
 }
 
 @media (max-width: 768px) {
-  .main-header,
-  .main-header .bar.container {
-    height: auto;            /* deixa crescer se quebrar linhas */
-    align-items: flex-start;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  .main-nav {
-    width: 100%;
-    margin-left: 0;
-  }
-  .main-nav ul {
-    flex-wrap: wrap;
-    gap: 10px 14px;
-  }
-  .menu-toggle { display: inline-flex; }
+    .main-header,
+    .main-header .bar.container {
+        height: auto;            /* deixa crescer se quebrar linhas */
+        align-items: flex-start;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    .main-nav {
+        width: 100%;
+        margin-left: 0;
+    }
+    .main-nav ul {
+        flex-wrap: wrap;
+        gap: 10px 14px;
+    }
+    .menu-toggle { display: inline-flex; }
 }
 
-/* Ajuste fino de espaÃ§amento entre selects/botÃµes da barra */
+/* Ajuste fino de espaçamento entre selects/botões da barra */
 .main-header .actions,
 .main-header .controls,
 .main-header .cta-row {
-  display: inline-flex;
-  gap: 10px;
-  align-items: center;
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
 }
 
-/* === Dropdown controlado por aria-expanded === */
-.dropdown-menu { 
-  display: none; 
-}
-.dropdown button[aria-expanded="true"] + .dropdown-menu,
-.dropdown[aria-expanded="true"] .dropdown-menu {
-  display: block;
-}
 
-/* Foco: sÃ³ exibir quando for realmente via teclado (focus-visible) */
+/* Foco: só exibir quando for realmente via teclado (focus-visible) */
 .main-header a,
 .main-header button {
-  outline: none;
+    outline: none;
 }
 .main-header a:focus-visible,
 .main-header button:focus-visible,
 .search-box input:focus-visible {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }
 
-/* Inputs/selects do header nÃ£o ficam "ativos" sem interaÃ§Ã£o */
+/* Inputs/selects do header não ficam "ativos" sem interação */
 .main-header select:focus,
 .main-header input[type="text"]:focus,
 .main-header button:focus {
-  box-shadow: none;
+    box-shadow: none;
 }
 
 /* Hover apenas em dispositivos com ponteiro fino e hover real */
 @media (hover: hover) and (pointer: fine) {
-  .dropdown-menu a:hover {
-    background-color: var(--bg-light);
-    color: var(--primary-color);
-  }
+    .dropdown-menu a:hover {
+        background-color: var(--bg-light);
+        color: var(--primary-color);
+    }
 }
 
 /* Zera qualquer sombra/outline em controles do header */
 .main-header select:focus,
 .main-header input[type="text"]:focus,
 .main-header button:focus {
-  outline: none !important;
-  box-shadow: none !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
-/* Evita "seleÃ§Ã£o" residual em itens ativos ao clicar */
+/* Evita "seleção" residual em itens ativos ao clicar */
 .main-header a:focus-visible,
 .main-header button:focus-visible,
 .search-box input:focus-visible {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }
 
-/* NÃ£o aplicar cor de 'active' herdada em links do menu */
+/* Não aplicar cor de 'active' herdada em links do menu */
 .main-nav a:active {
-  color: inherit;
+    color: inherit;
 }
 
 
-/* === FIX DROPDOWN: nÃ£o â€œfica selecionadoâ€ apÃ³s clique, abre sÃ³ com aria-expanded === */
+/* === FIX DROPDOWN: não “fica selecionado” após clique, abre só com aria-expanded === */
 
 /* garante que o header fica acima do hero/menus */
 header.main-header { position: relative; z-index: 1200; }
 
-/* menus fechados por padrÃ£o â€” usando visibilidade para evitar â€œgrudarâ€ */
-header.main-header .dropdown-menu{
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 200px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.12);
-  padding: 8px 0;
+/* menus fechados por padrão — usando visibilidade para evitar “grudar” */
 
-  /* fechado por padrÃ£o */
-  display: block;           /* mantÃ©m o fluxo; controlamos via visibilidade */
-  visibility: hidden;
-  opacity: 0;
-  transform: translateY(8px);
-  pointer-events: none;
+/* ===================================================
+    DROPDOWN SYSTEM - Método visibility + opacity
+    (Animação suave sem causar reflow)
+   =================================================== */
 
-  transition: opacity .15s ease, transform .15s ease,
-              visibility 0s linear .15s; /* esconde depois da animaÃ§Ã£o */
-  z-index: 1300;
+/* garante que o header fica acima do hero/menus */
+header.main-header { 
+    position: relative; 
+    z-index: 1200; 
 }
 
-/* abre apenas quando aria-expanded="true" */
-header.main-header .dropdown[aria-expanded="true"] > .dropdown-menu,
-header.main-header .dropdown button[aria-expanded="true"] + .dropdown-menu{
-  visibility: visible;
-  opacity: 1;
-  transform: none;
-  pointer-events: auto;
-  transition-delay: 0s;
+/* Dropdown container precisa de position relative */
+.dropdown {
+    position: relative;
 }
 
-/* itens do menu â€“ nunca â€œmantÃ©m seleÃ§Ã£oâ€ por foco/active do navegador */
-header.main-header .dropdown-menu a{
-  display: block;
-  padding: 10px 16px;
-  white-space: nowrap;
-  color: var(--text-dark);
-  background: transparent;
-  transition: background-color .2s, color .2s;
-  -webkit-tap-highlight-color: transparent; /* reduz highlight em mobile */
+/* DROPDOWN MENU - Estado padrão (fechado) */
+.dropdown-menu,
+header.main-header .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.12);
+    padding: 8px 0;
+    
+    /* FORÇA LAYOUT VERTICAL */
+    display: flex;
+    flex-direction: column;  /* Itens em COLUNA */
+    align-items: stretch;    /* Ocupa toda largura */
+    
+    /* Fechado por padrão - usa visibility ao invés de display */
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    
+    transition: opacity .15s ease, transform .15s ease,
+                visibility 0s linear .15s;
+    z-index: 1300;
 }
 
-/* hover sÃ³ em devices com hover real (evita parecer selecionado em touch) */
-@media (hover: hover) and (pointer: fine){
-  header.main-header .dropdown-menu a:hover{
-    background: var(--bg-light);
-    color: var(--primary-color);
-  }
+/* DROPDOWN MENU - Estado aberto (aria-expanded="true") */
+.dropdown[aria-expanded="true"] > .dropdown-menu,
+header.main-header .dropdown[aria-expanded="true"] > .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    transition-delay: 0s;
 }
 
-/* limpa estados que â€œgrudamâ€ apÃ³s clique */
+/* Items dentro do dropdown */
+.dropdown-menu li {
+    list-style: none;
+    display: block; 
+    width: 100%;
+    margin: 0;               
+    padding: 0;               
+}
+
+.dropdown-menu a,
+header.main-header .dropdown-menu a {
+    display: block;           
+    width: 100%;              
+    white-space: nowrap;
+    color: var(--text-dark);
+    background: transparent;
+    text-decoration: none;
+    transition: background-color .2s, color .2s;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;   
+}
+
+/* Hover apenas em dispositivos com mouse real */
+@media (hover: hover) and (pointer: fine) {
+    .dropdown-menu a:hover,
+    header.main-header .dropdown-menu a:hover {
+        background: var(--bg-light);
+        color: var(--primary-color);
+    }
+}
+
+/* Limpa estados que "grudam" após clique */
 header.main-header .dropdown-menu a:focus,
-header.main-header .dropdown-menu a:active{
-  background: transparent !important;
-  color: var(--text-dark) !important;
-  outline: none !important;
-  box-shadow: none !important;
+header.main-header .dropdown-menu a:active {
+    background: transparent !important;
+    color: var(--text-dark) !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
-/* mantÃ©m acessibilidade por teclado */
-header.main-header .dropdown-menu a:focus-visible{
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
+/* Mantém acessibilidade por teclado */
+header.main-header .dropdown-menu a:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* ===================================================
+    SUB-DROPDOWN (Datas Especiais)
+   =================================================== */
+
+.sub-dropdown {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Botão do sub-dropdown */
+.sub-dropdown > .btn {
+    width: 100%;
+    text-align: left;
+    padding: 10px 16px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-dark);
+    font-size: 1em;
+    transition: background-color 0.2s, color 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;   /* Inclui padding na largura */
+}
+
+/* Hover no botão do sub-dropdown */
+@media (hover: hover) and (pointer: fine) {
+    .sub-dropdown > .btn:hover {
+        background-color: var(--bg-light);
+        color: var(--primary-color);
+    }
+}
+
+/* SUB-DROPDOWN MENU - Estado padrão (fechado) */
+.sub-dropdown-menu {
+    position: absolute;
+    left: 100%;       /* Aparece À DIREITA do botão */
+    top: 0;           /* Alinhado no topo (mesma linha) */
+    min-width: 200px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.12);
+    padding: 8px 0;
+    z-index: 1400;
+    
+    /* FORÇA LAYOUT VERTICAL */
+    display: flex;
+    flex-direction: column;  /* Itens em COLUNA */
+    align-items: stretch;    /* Ocupa toda largura */
+    
+    /* Fechado por padrão */
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-8px);  /* Move para direita */
+    pointer-events: none;
+    
+    transition: opacity .15s ease, transform .15s ease,
+                visibility 0s linear .15s;
+}
+
+/* SUB-DROPDOWN MENU - Estado aberto */
+.sub-dropdown > .btn[aria-expanded="true"] + .sub-dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    transition-delay: 0s;
+}
+
+/* Links dentro do sub-dropdown */
+.sub-dropdown-menu li {
+    list-style: none;
+    display: block;     
+    width: 100%;         
+    margin: 0;             
+    padding: 0;            
+}
+
+.sub-dropdown-menu li a {
+    display: block;           
+    width: 100%;              
+    padding: 10px 16px;
+    white-space: nowrap;
+    color: var(--text-dark);
+    background: transparent;
+    text-decoration: none;
+    transition: background-color .2s, color .2s;
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;   
+}
+
+/* Hover nos links do sub-dropdown */
+@media (hover: hover) and (pointer: fine) {
+    .sub-dropdown-menu li a:hover {
+        background-color: var(--bg-light);
+        color: var(--primary-color);
+    }
+}
+
+/* Limpa estados que "grudam" após clique */
+.sub-dropdown > .btn:focus,
+.sub-dropdown > .btn:active,
+.sub-dropdown-menu a:focus,
+.sub-dropdown-menu a:active {
+    background: transparent !important;
+    color: var(--text-dark) !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Mantém acessibilidade por teclado */
+.sub-dropdown > .btn:focus-visible,
+.sub-dropdown-menu a:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }
