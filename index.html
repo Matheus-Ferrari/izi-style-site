@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home | IZI STYLE - Criação Personalizada</title>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+
+  <header class="main-header" id="topo" aria-label="Cabeçalho principal">
+    <div class="bar container">
+      <a class="logo" href="#" aria-label="IZI STYLE - Início">
+        <img class="site-logo" src="logo-transparente.jpeg" alt="Logo IZI STYLE" loading="eager" />
+      </a>
+
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="#" aria-current="page">Home</a></li>
+          <li><a href="#colecoes">Coleções</a></li>
+
+            <li class="dropdown">
+              <button class="dropdown-toggle btn" aria-haspopup="true" aria-expanded="false">
+                Momentos Especiais <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Para Casal</a></li>
+                <li><a href="#">Para Família</a></li>
+                <li><a href="#">Para Amigos</a></li>
+
+                <li class="sub-dropdown">
+                  <button class="btn" aria-haspopup="false" aria-expanded="false">
+                    Datas Especiais <i class="fas fa-chevron-right" aria-hidden="false"></i>
+                  </button>
+                  <ul class="sub-dropdown-menu" role="menu">
+                    <li><a href="#">Dia dos Namorados</a></li>
+                    <li><a href="#">Dia das Mães</a></li>
+                    <li><a href="#">Dia dos Pais</a></li>
+                    <li><a href="#">Carnaval</a></li>
+                    <li><a href="#">Dia dos Professores</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+          <li class="dropdown">
+            <button class="dropdown-toggle btn" aria-haspopup="true" aria-expanded="false">
+              Criar Arte <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="easy-style/index.html">Crie sua Arte</a></li>
+              <li><a href="easy-style/index.html">Criamos para Você</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <form class="search-box" role="search" aria-label="Buscar no site" onsubmit="event.preventDefault()">
+          <label for="q" class="sr-only">O que você procura?</label>
+          <input id="q" type="search" placeholder="O que você procura?" />
+          <button type="submit" aria-label="Buscar"><i class="fas fa-search"></i></button>
+        </form>
+
+        <a class="btn btn--ghost" href="#conta">Minha conta</a>
+        <a class="btn btn--ghost" href="#ajuda">Ajuda</a>
+        <a class="btn btn--primary" href="#criar-conta">CRIAR SUA CONTA</a>
+
+        <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-area" aria-label="Abrir menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+  <section class="home-hero new-style">
+    <div class="hero-content-wrapper centered-hero-content-wrapper">
+      <div class="hero-content" role="region" aria-label="Mensagem principal">
+        <h1>Crie algo IZI STYLE.</h1>
+        <h1>Seu estilo, sua arte.</h1>
+
+        <p class="hero-extra-line">
+          <strong>Seja para onde você for… use IZI STYLE.</strong>
+        </p>
+        <p class="hero-subtitle">Comece a personalizar sua estampa. A imaginação é o limite.</p>
+
+        <div class="cta-buttons">
+          <a class="btn-cta-large primary-cta" href="easy-style/index.html">Crie sua Arte</a>
+          <a class="btn-cta-large secondary-cta" href="easy-style/index.html">Criamos para Você</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="brand-video-section" aria-label="Vídeo de apresentação da marca">
+    <div class="video-overlay"></div>
+    <div class="video-placeholder-large">
+      <i class="fas fa-play-circle" aria-hidden="true"></i>
+      <span>Espaço para Vídeo da Marca (Retangular)</span>
+    </div>
+  </section>
+  <section id="colecoes" class="featured-sections">
+    <div class="container">
+      <h2>✨ Coleções Populares</h2>
+      <div class="collection-grid">
+        <article class="collection-item">
+          <div class="collection-image-placeholder" aria-hidden="true"></div>
+          <h3>Coleção Dia dos Namorados</h3>
+          <a href="#">Ver itens</a>
+        </article>
+
+        <article class="collection-item">
+          <div class="collection-image-placeholder" aria-hidden="true"></div>
+          <h3>Artistas em Destaque</h3>
+          <a href="#">Ver itens</a>
+        </article>
+
+        <article class="collection-item">
+          <div class="collection-image-placeholder" aria-hidden="true"></div>
+          <h3>Personalize com Fotos</h3>
+          <a href="#">Ver itens</a>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="benefits-section">
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <i class="fas fa-truck" aria-hidden="true"></i>
+        <h3>Receba em casa</h3>
+        <p>Enviamos para todo o Brasil com agilidade e segurança!</p>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-tag" aria-hidden="true"></i>
+        <h3>10% OFF na Primeira Compra</h3>
+        <p>Use o cupom <strong>IZISTYLE10</strong> no carrinho.</p>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-hands-helping" aria-hidden="true"></i>
+        <h3>Sua Satisfação Garantida!</h3>
+        <p>Trocas e devoluções fáceis. Nossa prioridade é você.</p>
+      </div>
+      <div class="benefit-item">
+        <i class="fas fa-shield-alt" aria-hidden="true"></i>
+        <h3>Pagamento 100% Seguro</h3>
+        <p>Seus dados pessoais e financeiros são protegidos.</p>
+      </div>
+    </div>
+  </section>
+  <section class="testimonials-section">
+    <div class="container">
+      <h2>💬 O que nossos clientes dizem</h2>
+      
+      <div class="testimonials-carousel">
+        <button class="carousel-btn prev" aria-label="Anterior">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="carousel-container">
+          <div class="carousel-track">
+            <div class="testimonial-card active">
+              <div class="testimonial-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-text">"Adorei minha camiseta personalizada! A qualidade é incrível e o atendimento foi super rápido. Já encomendei mais para toda a família!"</p>
+              <div class="testimonial-author-wrapper">
+                <div class="author-photo" aria-hidden="true"></div> 
+                <div class="testimonial-author">
+                  <strong>Mariana Silva</strong>
+                  <span>São Paulo, SP</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-text">"Presenteei meu namorado com uma camisa customizada e ele amou! O processo de criação é muito fácil e intuitivo. Super recomendo!"</p>
+              <div class="testimonial-author-wrapper">
+                <div class="author-photo" aria-hidden="true"></div> 
+                <div class="testimonial-author">
+                  <strong>Julia Costa</strong>
+                  <span>Rio de Janeiro, RJ</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-text">"Fiz camisetas para o aniversário do meu filho e todos adoraram! Qualidade excelente e chegou antes do prazo. Muito satisfeito!"</p>
+              <div class="testimonial-author-wrapper">
+                <div class="author-photo" aria-hidden="true"></div> 
+                <div class="testimonial-author">
+                  <strong>Carlos Mendes</strong>
+                  <span>Belo Horizonte, MG</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-text">"A IZI STYLE transformou nossa ideia em realidade! Criamos uniformes personalizados para nossa empresa e ficou perfeito. Parabéns pelo trabalho!"</p>
+              <div class="testimonial-author-wrapper">
+                <div class="author-photo" aria-hidden="true"></div> 
+                <div class="testimonial-author">
+                  <strong>Ana Paula Oliveira</strong>
+                  <span>Curitiba, PR</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-text">"Qualidade impecável e preço justo! Já sou cliente há meses e nunca me decepcionei. A entrega é sempre rápida e o produto vem bem embalado."</p>
+              <div class="testimonial-author-wrapper">
+                <div class="author-photo" aria-hidden="true"></div> 
+                <div class="testimonial-author">
+                  <strong>Ricardo Santos</strong>
+                  <span>Porto Alegre, RS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <button class="carousel-btn next" aria-label="Próximo">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+      
+      <div class="carousel-dots"></div>
+    </div>
+  </section>
+  <footer class="main-footer" id="rodape">
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h4>Atendimento</h4>
+        <p>Horário de funcionamento:</p>
+        <p>Segunda a sexta, 9h às 18h</p>
+        <div class="contact-info">
+          <p><i class="fas fa-phone-alt"></i> (11) 9 7623-1926</p>
+          <p><i class="fas fa-envelope"></i> contato@izistyle.com.br</p>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h4>Ajuda</h4>
+        <ul>
+          <li><a href="#">Políticas de Devolução</a></li>
+          <li><a href="#">Políticas de Imagem</a></li>
+          <li><a href="#">Políticas de Cookies</a></li>
+          <li><a href="#">Entregas e Prazos</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">Seja Criador!</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Formas de pagamento</h4>
+        <p>[Ícones de Visa, Master, Elo, Pix]</p>
+        <h4>Site seguro</h4>
+        <p>[Ícone de Site Seguro]</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Onde nos encontrar</h4>
+        <div class="social-links">
+          <p><i class="fab fa-instagram"></i> @izistyleoficial</p>
+          <p><i class="fab fa-tiktok"></i> @izistyleoficial</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-info-base">
+      <p class="brand-story">
+        Um casal apaixonado em eternizar momentos criou a IZI STYLE para transformar o comum em extraordinário.
+        Hoje, a marca oferece diversas opções para registrar e compartilhar histórias inesquecíveis. Faça a sua com a gente!
+      </p>
+      <div class="copyright">
+        <span>© 2025 IZI STYLE GROUP - Todos os Direitos Reservados</span>
+        <span class="footer-logo-w">W</span>
+      </div>
+    </div>
+  </footer>
+  <a class="whatsapp-float" href="https://wa.me/5511976231926" target="_blank" aria-label="Conversar no WhatsApp">
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+  </a>
+<script>
+    (function () {
+      console.log('?? Script iniciado!');
+      
+      // MOBILE TOGGLE
+      const header = document.querySelector('.main-header');
+      const toggleBtn = document.querySelector('.menu-toggle');
+      toggleBtn?.addEventListener('click', (e) => {
+        e.preventDefault();
+        const expanded = toggleBtn.getAttribute('aria-expanded') === 'false';
+        toggleBtn.setAttribute('aria-expanded', String(!expanded));
+        header.classList.toggle('header-mobile');
+      });
+
+      // DROPDOWNS CONTROLADOS POR ARIA
+      function setupDropdowns(root = document) {
+        console.log('?? setupDropdowns() chamada');
+        
+        const main = root.querySelector('header') || root;
+        const dropdowns = Array.from(main.querySelectorAll('.dropdown'));
+        const subDropdowns = Array.from(main.querySelectorAll('.sub-dropdown'));
+
+        console.log('? Encontrados:', dropdowns.length, 'dropdowns e', subDropdowns.length, 'sub-dropdowns');
+
+        // Inicializa todos fechados
+        dropdowns.forEach(dd => dd.setAttribute('aria-expanded', 'false'));
+        subDropdowns.forEach(sd => {
+            const btn = sd.querySelector('.btn');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+
+        // Fecha todos os dropdowns
+        function closeAll(except = null) {
+            dropdowns.forEach(dd => {
+                if (dd !== except) dd.setAttribute('aria-expanded', 'false');
+            });
+            subDropdowns.forEach(sd => {
+                const btn = sd.querySelector('.btn');
+                if (btn && sd !== except) btn.setAttribute('aria-expanded', 'false');
+            });
+        }
+
+        // Toggle dropdown principal
+        dropdowns.forEach((dropdown, index) => {
+            const toggle = dropdown.querySelector('.dropdown-toggle');
+            if (!toggle) {
+                console.warn('?? Dropdown', index, 'não tem botão .dropdown-toggle');
+                return;
+            }
+
+            console.log('?? Adicionando listener no dropdown', index, ':', toggle.textContent.trim());
+
+            toggle.addEventListener('click', (e) => {
+                //console.log('??? CLIQUE detectado no dropdown:', toggle.textContent.trim());
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const isOpen = dropdown.getAttribute('aria-expanded') === 'true';
+                //console.log('?? Estado atual:', isOpen ? 'ABERTO' : 'FECHADO');
+                
+                closeAll(dropdown);
+                const novoEstado = !isOpen ? 'true' : 'false';
+                dropdown.setAttribute('aria-expanded', novoEstado);
+                
+                //console.log('? Novo estado:', novoEstado);
+                //console.log('?? aria-expanded agora:', dropdown.getAttribute('aria-expanded'));
+                
+                toggle.blur();
+            });
+        });
+
+        // Toggle sub-dropdown
+        subDropdowns.forEach((subDropdown, index) => {
+            const btn = subDropdown.querySelector('.btn');
+            if (!btn) return;
+
+            console.log('?? Adicionando listener no sub-dropdown', index, ':', btn.textContent.trim());
+
+            btn.addEventListener('click', (e) => {
+                //console.log('??? CLIQUE no sub-dropdown:', btn.textContent.trim());
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const isOpen = btn.getAttribute('aria-expanded') === 'true';
+                //console.log('?? Sub-dropdown estado:', isOpen ? 'ABERTO' : 'FECHADO');
+                
+                // Fecha outros sub-dropdowns
+                subDropdowns.forEach(sd => {
+                    const b = sd.querySelector('.btn');
+                    if (b && b !== btn) b.setAttribute('aria-expanded', 'false');
+                });
+                
+                btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+                //console.log('? Sub-dropdown novo estado:', btn.getAttribute('aria-expanded'));
+                btn.blur();
+            });
+        });
+
+        // Clique fora fecha tudo
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('header')) {
+                closeAll();
+            }
+        });
+
+        // ESC fecha tudo
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                //console.log('?? ESC pressionado - fechando tudo');
+                closeAll();
+            }
+        });
+        
+        console.log('? setupDropdowns() finalizado!');
+      }
+
+      // Inicializa quando o DOM carregar
+      if (document.readyState !== 'loading') {
+        //console.log('?? DOM já carregado - iniciando dropdowns');
+        setupDropdowns();
+      } else {
+        console.log('? Aguardando DOM carregar...');
+        document.addEventListener('DOMContentLoaded', () => {
+          //console.log('?? DOM carregado - iniciando dropdowns');
+          setupDropdowns();
+        });
+      }
+      
+      //console.log('?? Script configurado!');
+    })();
+  </script>
+  
+</body>
+</html>

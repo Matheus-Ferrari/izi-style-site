@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Easy Style — Camiseta</title>
+  <style>
+    :root{--line:#e5e7eb;--text:#111827;--muted:#6b7280;--chip:#f3f4f6;--sel:#e6f7ef;--green:#10b981}
+    *{box-sizing:border-box}
+    html,body{margin:0;background:#fff;color:var(--text);font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial}
+    .container{width:min(1120px,94vw);margin:0 auto;padding:16px 0}
+    header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:20}
+    header .bar{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+    .brand{font-weight:800;letter-spacing:.3px}
+    .cta{appearance:none;border:1px solid var(--green);background:var(--green);color:#fff;border-radius:10px;padding:10px 14px;cursor:pointer}
+    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px}
+    .mock{border:1px solid var(--line);border-radius:12px;padding:22px;display:flex;align-items:center;justify-content:center}
+    .mock .frame{width:66%;aspect-ratio:3/4;background:#f9fafb;border:1px dashed var(--line);border-radius:12px;display:grid;place-items:center;color:#9ca3af;overflow:hidden}
+    .mock .frame img{max-width:88%;max-height:88%;object-fit:contain;opacity:.95;filter:saturate(1.05)}
+    .title{margin:.2rem 0;font-size:32px}
+    .price{font-size:26px;font-weight:800}
+    .group{margin-top:14px}
+    .group h3{margin:0 0 8px 0;font-size:14px;color:#374151}
+    .chips{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{border:1px solid var(--line);background:var(--chip);padding:8px 12px;border-radius:10px;cursor:pointer}
+    .chip[aria-pressed="true"]{border-color:var(--green);background:var(--sel)}
+    .sw{display:inline-block;width:16px;height:16px;border-radius:999px;border:1px solid #d1d5db;margin-right:6px;vertical-align:middle}
+    .sw.w{background:#fff}.sw.b{background:#000}
+    .summary{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;display:grid;gap:8px}
+    .line{display:flex;justify-content:space-between;color:#4b5563}
+    .actions{display:flex;justify-content:flex-end}
+    footer{margin:40px 0 20px;border-top:1px solid var(--line);padding-top:10px;color:#6b7280}
+    dialog::backdrop{background:rgba(0,0,0,.45)}
+    dialog{border:none;border-radius:12px;padding:0;max-width:min(1140px,96vw)}
+    .modal{border:1px solid var(--line);border-radius:12px;background:#fff;display:grid;grid-template-rows:auto 1fr}
+    .mb{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid var(--line)}
+    .close{appearance:none;background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 10px;cursor:pointer}
+    .frame-editor{width:min(1080px,94vw);height:76vh;border:0}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}.mock .frame{width:90%} .title{font-size:26px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container bar">
+      <div class="brand">Easy Style</div>
+      <a href="../index.html" style="color:#6b7280;text-decoration:none">← Voltar para a Home</a>
+      <button class="cta" id="open">Iniciar Design</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <div class="mock">
+        <div class="frame">
+          <img src="assets/arte-inicial.png" alt="Prévia de arte">
+        </div>
+      </div>
+      <div>
+        <p style="color:#6b7280;font-size:14px">Início / Crie sua arte / Personalizador / Camiseta</p>
+        <h1 class="title">Camiseta</h1>
+        <div class="price">R$ 78,30</div>
+        <p style="color:#6b7280">Crie sua própria arte online de forma exclusiva! <span style="font-size:12px;">Envio em até 72h úteis + frete</span></p>
+
+        <div class="group">
+          <h3>Localização da Estampa</h3>
+          <div class="chips" data-key="placement">
+            <button class="chip" aria-pressed="true" data-value="frente">Frente</button>
+            <button class="chip" data-value="verso">Verso</button>
+            <button class="chip" data-value="manga_esq">Manga Esq</button>
+            <button class="chip" data-value="manga_dir">Manga Dir</button>
+          </div>
+        </div>
+
+        <div class="group">
+          <h3>Tamanho</h3>
+          <div class="chips" data-key="size">
+            <button class="chip" aria-pressed="true" data-value="P">P</button>
+            <button class="chip" data-value="M">M</button>
+            <button class="chip" data-value="G">G</button>
+            <button class="chip" data-value="GG">GG</button>
+            <button class="chip" data-value="XG">XG</button>
+            <button class="chip" data-value="G1">G1</button>
+            <button class="chip" data-value="G2">G2</button>
+            <button class="chip" data-value="G3">G3</button>
+          </div>
+        </div>
+
+        <div class="group">
+          <h3>Cor</h3>
+          <div class="chips" data-key="color">
+            <button class="chip" aria-pressed="true" data-value="branco"><span class="sw w"></span>Branco</button>
+            <button class="chip" data-value="preto"><span class="sw b"></span>Preto</button>
+          </div>
+        </div>
+
+        <div class="summary">
+          <div class="line"><span>Localização</span><span id="sumPlace">Frente</span></div>
+          <div class="line"><span>Tamanho</span><span id="sumSize">P</span></div>
+          <div class="line"><span>Cor</span><span id="sumColor">Branco</span></div>
+          <div class="line"><span>Preço das opções</span><span id="sumOpts">R$ 0,00</span></div>
+          <div class="actions"><button class="cta" id="open2">Iniciar Design</button></div>
+          <p style="font-size:12px;color:#6b7280;margin:0">* Protótipo offline para demonstração (sem checkout).</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="container">Protótipo estático inspirado em páginas de personalização. © Easy Style 2025</footer>
+
+  <dialog id="dlg">
+    <div class="modal">
+      <div class="mb">
+        <div><b>Designer</b> • <span id="mirror" style="color:#6b7280;font-size:14px">Frente • P • Branco</span></div>
+        <button class="close" id="close">Fechar</button>
+      </div>
+      <div style="display:flex;justify-content:center;padding:10px 10px 16px">
+        <iframe class="frame-editor" id="frame" src="editor.html"></iframe>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    const state = {placement:'frente',size:'P',color:'branco'};
+    const labels = {placement:{frente:'Frente',verso:'Verso',manga_esq:'Manga Esq',manga_dir:'Manga Dir'}};
+    function update(){ 
+      document.getElementById('sumPlace').textContent = labels.placement[state.placement];
+      document.getElementById('sumSize').textContent = state.size;
+      document.getElementById('sumColor').textContent = state.color==='branco'?'Branco':'Preto';
+      document.getElementById('mirror').textContent = `${labels.placement[state.placement]} • ${state.size} • ${state.color==='branco'?'Branco':'Preto'}`;
+    }
+    document.querySelectorAll('.chips').forEach(g=>{
+      const key=g.dataset.key;
+      g.querySelectorAll('.chip').forEach(btn=>btn.addEventListener('click',()=>{
+        g.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed','false'));
+        btn.setAttribute('aria-pressed','true'); state[key]=btn.dataset.value; update();
+      }));
+    });
+    const dlg=document.getElementById('dlg');
+    function openEditor(){
+      // passa a cor escolhida para o editor (só para exemplo visual)
+      document.getElementById('frame').src = `editor.html?color=${state.color}`;
+      dlg.showModal();
+    }
+    document.getElementById('open').onclick=openEditor;
+    document.getElementById('open2').onclick=openEditor;
+    document.getElementById('close').onclick=()=>dlg.close();
+    update();
+  </script>
+</body>
+</html>
