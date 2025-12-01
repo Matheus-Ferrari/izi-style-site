@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coleção de Natal | IZI STYLE</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
+</head>
+<body class="natal-page">
+
+  <canvas id="snow-canvas" aria-hidden="true"></canvas>
+
+  <!-- Header (copiado do index.html) -->
+  <header class="main-header" id="topo" aria-label="Cabeçalho principal">
+    <div class="bar container">
+      <a class="logo" href="#" aria-label="IZI STYLE - Início">
+        <img class="site-logo" src="logo-transparente.jpeg" alt="Logo IZI STYLE" loading="eager" />
+      </a>
+
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#colecoes">Coleções</a></li>
+          <li class="dropdown">
+            <button class="dropdown-toggle btn" aria-haspopup="true" aria-expanded="false">Momentos Especiais <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Para Casal</a></li>
+              <li><a href="#">Para Família</a></li>
+              <li><a href="#">Para Amigos</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <button class="dropdown-toggle btn" aria-haspopup="true" aria-expanded="false">Criar Arte <i class="fas fa-chevron-down" aria-hidden="true"></i></button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="easy-style/index.html">Crie sua Arte</a></li>
+              <li><a href="easy-style/index.html">Criamos para Você</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <form class="search-box" role="search" aria-label="Buscar no site" onsubmit="event.preventDefault()">
+          <label for="q2" class="sr-only">O que você procura?</label>
+          <input id="q2" type="search" placeholder="O que você procura?" />
+          <button type="submit" aria-label="Buscar"><i class="fas fa-search"></i></button>
+        </form>
+
+        <a class="btn btn--ghost" href="#conta">Minha conta</a>
+        <a class="btn btn--ghost" href="#ajuda">Ajuda</a>
+        <a class="btn btn--primary" href="#criar-conta">CRIAR SUA CONTA</a>
+
+        <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-area" aria-label="Abrir menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section: destaque da coleção -->
+  <section class="natal-hero-banner" aria-label="Destaque da Coleção de Natal">
+    <div class="container natal-hero-inner">
+      <div class="natal-hero-left">
+        <img src="easy-style/imagens/natal-hero-placeholder.svg" alt="Destaque da Coleção de Natal" class="natal-hero-image" />
+      </div>
+      <div class="natal-hero-right">
+        <h1>Garanta o melhor natal da sua vida!</h1>
+        <p>Para o Natal, compre com segurança dentro de:</p>
+
+        <div class="countdown" aria-live="polite" aria-atomic="true">
+          <div class="countdown-item">
+            <div class="countdown-value" id="cd-days">0</div>
+            <div class="countdown-label">Dias</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-value" id="cd-hours">0</div>
+            <div class="countdown-label">Horas</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-value" id="cd-minutes">0</div>
+            <div class="countdown-label">Minutos</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-value" id="cd-seconds">0</div>
+            <div class="countdown-label">Segundos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Página: Coleção de Natal -->
+  <main class="colecao-natal-main">
+    <div class="container">
+      <!-- título removido: conteúdo principal de destaque foi movido para a hero -->
+
+      <section class="produtos-natal-grid">
+        <article class="produto-card">
+          <div class="produto-thumb"></div>
+          <span class="produto-label">Natal 2025</span>
+          <h2 class="produto-nome">Camiseta Família Natal</h2>
+          <div class="produto-rating" aria-label="Avaliação do produto">
+            <span class="stars" aria-hidden="true">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </span>
+            <span class="reviews">(1103)</span>
+          </div>
+          <p class="produto-preco">A partir de R$ 49,90</p>
+        </article>
+
+        <article class="produto-card">
+          <div class="produto-thumb"></div>
+          <span class="produto-label">Natal 2025</span>
+          <h2 class="produto-nome">Moletom Edição Especial</h2>
+          <div class="produto-rating" aria-label="Avaliação do produto">
+            <span class="stars" aria-hidden="true">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </span>
+            <span class="reviews">(842)</span>
+          </div>
+          <p class="produto-preco">A partir de R$ 89,90</p>
+        </article>
+
+        <article class="produto-card">
+          <div class="produto-thumb"></div>
+          <span class="produto-label">Natal 2025</span>
+          <h2 class="produto-nome">Kit Família - Camisa + Touca</h2>
+          <div class="produto-rating" aria-label="Avaliação do produto">
+            <span class="stars" aria-hidden="true">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </span>
+            <span class="reviews">(2.345)</span>
+          </div>
+          <p class="produto-preco">A partir de R$ 139,90</p>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer (copiado do index.html) -->
+  <footer class="main-footer" id="rodape">
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h4>Atendimento</h4>
+        <p>Horário de funcionamento:</p>
+        <p>Segunda a sexta, 9h às 18h</p>
+        <div class="contact-info">
+          <p><i class="fas fa-phone-alt"></i> (11) 9 7623-1926</p>
+          <p><i class="fas fa-envelope"></i> contato@izistyle.com.br</p>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h4>Ajuda</h4>
+        <ul>
+          <li><a href="#">Políticas de Devolução</a></li>
+          <li><a href="#">Políticas de Imagem</a></li>
+          <li><a href="#">Políticas de Cookies</a></li>
+          <li><a href="#">Entregas e Prazos</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">Seja Criador!</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Formas de pagamento</h4>
+        <div class="icones-pagamento">
+            <img src="easy-style/Icones/Visa.png" alt="Visa" class="icone-pagamento">
+            <img src="easy-style/Icones/Mastercard.png" alt="Mastercard" class="icone-pagamento">
+            <img src="easy-style/Icones/Pix.png" alt="Pix" class="icone-pagamento">
+            <img src="easy-style/Icones/Boleto.png" alt="Boleto" class="icone-pagamento">
+        </div>
+        <h4>Site seguro</h4>
+        <p><i class="fas fa-shield-alt" aria-hidden="true"></i> Site seguro</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Onde nos encontrar</h4>
+        <div class="social-links">
+          <p><i class="fab fa-instagram"></i> @izistyleoficial</p>
+          <p><i class="fab fa-tiktok"></i> @izistyleoficial</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-info-base">
+      <p class="brand-story">IZISTYLE: Nascida de uma visão de estilo e inovação, somos dedicados a transformar suas ideias em peças únicas. Nossa prioridade é a personalização, a qualidade e a sua total satisfação.</p>
+      <div class="copyright">
+        <span>© 2025 IZI STYLE GROUP - Todos os Direitos Reservados</span>
+        <span class="footer-logo-w">W</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Snow effect (lightweight canvas) - densified and improved contrast for fundo bege
+    (function() {
+      const canvas = document.getElementById('snow-canvas');
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+      let flakes = [];
+      // densidade base: largura * altura dividido por valor menor -> mais flocos
+      function calcFlakeCount(w, h) {
+        const base = Math.floor((w * h) / 30000) || 120;
+        // reduzir em telas muito pequenas para performance
+        if (w < 360) return Math.max(30, Math.floor(base / 4));
+        if (w < 480) return Math.max(40, Math.floor(base / 3));
+        return base;
+      }
+      let flakeCountBase = calcFlakeCount(width, height);
+
+      function rand(min, max) { return Math.random() * (max - min) + min; }
+
+      function createFlakes() {
+        for (let i = 0; i < flakeCountBase; i++) {
+          flakes.push({ x: Math.random() * width, y: Math.random() * height, r: rand(0.9, 4.2), d: rand(0.6, 2.0), vx: rand(-0.6, 0.6) });
+        }
+      }
+
+      function resize() { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; flakes = []; flakeCountBase = calcFlakeCount(width, height); createFlakes(); }
+
+      function update() {
+        ctx.clearRect(0,0,width,height);
+        // mais opaco para contrastar com bege claro
+        ctx.fillStyle = 'rgba(255,255,255,0.95)';
+        ctx.beginPath();
+        for (let i = 0; i < flakes.length; i++) {
+          const f = flakes[i];
+          ctx.moveTo(f.x, f.y);
+          ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
+        }
+        ctx.fill();
+
+        for (let i = 0; i < flakes.length; i++) {
+          const f = flakes[i];
+          f.y += f.d + 0.4;
+          f.x += Math.sin(f.y * 0.01) * 0.6 + f.vx;
+          if (f.y > height + 10) { f.y = -10; f.x = Math.random() * width; }
+          if (f.x > width + 10) { f.x = -10; }
+          if (f.x < -10) { f.x = width + 10; }
+        }
+        requestAnimationFrame(update);
+      }
+
+      window.addEventListener('resize', resize);
+      createFlakes();
+      requestAnimationFrame(update);
+    })();
+
+    // Contador regressivo para o Natal (dias, horas, minutos, segundos)
+    (function() {
+      function pad(v) { return String(v).padStart(2, '0'); }
+      function updateCountdown() {
+        const now = new Date();
+        let year = now.getFullYear();
+        // alvo: 25 de dezembro do ano atual; se já passou, usar próximo ano
+        let target = new Date(year, 11, 25, 0, 0, 0);
+        if (now > target) target = new Date(year + 1, 11, 25, 0, 0, 0);
+        const diff = Math.max(0, target - now);
+        const seconds = Math.floor(diff / 1000);
+        const days = Math.floor(seconds / (3600 * 24));
+        const hours = Math.floor((seconds % (3600 * 24)) / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const secs = Math.floor(seconds % 60);
+
+        const elDays = document.getElementById('cd-days');
+        const elHours = document.getElementById('cd-hours');
+        const elMin = document.getElementById('cd-minutes');
+        const elSec = document.getElementById('cd-seconds');
+        if (elDays) elDays.textContent = days;
+        if (elHours) elHours.textContent = pad(hours);
+        if (elMin) elMin.textContent = pad(minutes);
+        if (elSec) elSec.textContent = pad(secs);
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    })();
+  </script>
+</body>
+</html>
