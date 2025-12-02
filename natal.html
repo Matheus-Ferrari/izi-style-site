@@ -66,11 +66,32 @@
   <section class="natal-hero-banner" aria-label="Destaque da Coleção de Natal">
     <div class="container natal-hero-inner">
       <div class="natal-hero-left">
-        <img src="easy-style/imagens/natal-hero-placeholder.svg" alt="Destaque da Coleção de Natal" class="natal-hero-image" />
+        <div class="natal-carousel" aria-roledescription="carousel">
+          <button class="carousel-btn carousel-prev" aria-label="Slide anterior">&#10094;</button>
+          <div class="carousel-viewport">
+            <div class="carousel-track">
+              <div class="carousel-slide" data-slide="1">
+                <img src="easy-style/imagens/Imagem-natal.png" alt="Destaque Natal 1" class="carousel-image" loading="eager" />
+              </div>
+              <div class="carousel-slide" data-slide="2">
+                <img src="easy-style/imagens/imagem-nataldois.png" alt="Destaque Natal 2" class="carousel-image" loading="lazy" />
+              </div>
+              <div class="carousel-slide" data-slide="3">
+                <img src="easy-style/imagens/familia-unida.png" alt="Destaque Natal 3" class="carousel-image" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <button class="carousel-btn carousel-next" aria-label="Próximo slide">&#10095;</button>
+          <div class="carousel-dots" role="tablist" aria-hidden="false">
+            <button class="dot active" data-index="0" aria-label="Slide 1"></button>
+            <button class="dot" data-index="1" aria-label="Slide 2"></button>
+            <button class="dot" data-index="2" aria-label="Slide 3"></button>
+          </div>
+        </div>
       </div>
       <div class="natal-hero-right">
-        <h1>Garanta o melhor natal da sua vida!</h1>
-        <p>Para o Natal, compre com segurança dentro de:</p>
+        <h1 class="natal-hero-title">Garanta o melhor natal da sua vida!</h1>
+        <p class="natal-hero-sub">Para o Natal, compre com segurança dentro de:</p>
 
         <div class="countdown" aria-live="polite" aria-atomic="true">
           <div class="countdown-item">
@@ -101,9 +122,8 @@
 
       <section class="produtos-natal-grid">
         <article class="produto-card">
-          <div class="produto-thumb"></div>
-          <span class="produto-label">Natal 2025</span>
-          <h2 class="produto-nome">Camiseta Família Natal</h2>
+          <img src="easy-style/imagens/familia-unida.png" alt="Personalização Nomes Família" class="card-imagem-produto produto-thumb" loading="eager" />
+          <h2 class="produto-nome">Personalização Nomes Família</h2>
           <div class="produto-rating" aria-label="Avaliação do produto">
             <span class="stars" aria-hidden="true">
               <i class="fas fa-star"></i>
@@ -114,13 +134,12 @@
             </span>
             <span class="reviews">(1103)</span>
           </div>
-          <p class="produto-preco">A partir de R$ 49,90</p>
+          <p class="produto-preco">A partir de R$ 79,90</p>
         </article>
 
         <article class="produto-card">
-          <div class="produto-thumb"></div>
-          <span class="produto-label">Natal 2025</span>
-          <h2 class="produto-nome">Moletom Edição Especial</h2>
+          <img src="easy-style/imagens/Imagem-natal.png" alt="Presente de Natal Personalizado" class="card-imagem-produto produto-thumb" loading="lazy" />
+          <h2 class="produto-nome">Presente de Natal Personalizado</h2>
           <div class="produto-rating" aria-label="Avaliação do produto">
             <span class="stars" aria-hidden="true">
               <i class="fas fa-star"></i>
@@ -129,15 +148,14 @@
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
             </span>
-            <span class="reviews">(842)</span>
+            <span class="reviews">(1250)</span>
           </div>
-          <p class="produto-preco">A partir de R$ 89,90</p>
+          <p class="produto-preco">A partir de R$ 99,90</p>
         </article>
 
         <article class="produto-card">
-          <div class="produto-thumb"></div>
-          <span class="produto-label">Natal 2025</span>
-          <h2 class="produto-nome">Kit Família - Camisa + Touca</h2>
+          <img src="easy-style/imagens/imagem-nataldois.png" alt="Kit Camiseta + Touca Natal" class="card-imagem-produto produto-thumb" loading="lazy" />
+          <h2 class="produto-nome">Kit Camiseta + Touca Natal</h2>
           <div class="produto-rating" aria-label="Avaliação do produto">
             <span class="stars" aria-hidden="true">
               <i class="fas fa-star"></i>
@@ -146,9 +164,9 @@
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
             </span>
-            <span class="reviews">(2.345)</span>
+            <span class="reviews">(2500)</span>
           </div>
-          <p class="produto-preco">A partir de R$ 139,90</p>
+          <p class="produto-preco">A partir de R$ 149,90</p>
         </article>
       </section>
     </div>
@@ -210,6 +228,73 @@
   </footer>
 
   <script>
+    // Carrossel com autoplay: prev/next, dots, swipe e pausa ao interagir
+    (function(){
+      const carousel = document.querySelector('.natal-carousel');
+      const track = document.querySelector('.carousel-track');
+      if (!carousel || !track) return;
+      const slides = Array.from(track.children);
+      const prevBtn = carousel.querySelector('.carousel-prev');
+      const nextBtn = carousel.querySelector('.carousel-next');
+      const dots = Array.from(carousel.querySelectorAll('.carousel-dots .dot'));
+      let index = 0;
+      const AUTOPLAY_INTERVAL = 5000; // 5 segundos
+      let autoplayTimer = null;
+
+      function updateUI() {
+        track.style.transform = `translateX(${ -index * 100 }%)`;
+        dots.forEach((d,di)=> d.classList.toggle('active', di===index));
+      }
+
+      function goTo(i){
+        index = (i + slides.length) % slides.length;
+        updateUI();
+        resetAutoplay();
+      }
+
+      function next(){ goTo(index+1); }
+      function prev(){ goTo(index-1); }
+
+      prevBtn.addEventListener('click', prev);
+      nextBtn.addEventListener('click', next);
+
+      dots.forEach((d, i)=> d.addEventListener('click', ()=> goTo(i)));
+
+      // touch / pointer support (drag to swipe)
+      let startX = 0; let deltaX = 0; let isDown = false;
+      track.addEventListener('pointerdown', (e)=>{ isDown=true; startX = e.clientX; track.style.transition='none'; pauseAutoplay(); track.setPointerCapture(e.pointerId); });
+      track.addEventListener('pointermove', (e)=>{ if(!isDown) return; deltaX = e.clientX - startX; track.style.transform = `translateX(${ -index * 100 + (deltaX / track.clientWidth) * 100 }%)`; });
+      track.addEventListener('pointerup', (e)=>{ if(!isDown) return; isDown=false; track.style.transition='transform 0.45s cubic-bezier(.22,.9,.36,1)'; track.releasePointerCapture(e.pointerId); if (Math.abs(deltaX) > 60) { if (deltaX < 0) next(); else prev(); } else goTo(index); deltaX=0; resumeAutoplay(); });
+      track.addEventListener('pointercancel', ()=>{ isDown=false; deltaX=0; resumeAutoplay(); });
+
+      // keyboard navigation
+      document.addEventListener('keydown', (e)=>{
+        if (e.key === 'ArrowLeft') prev();
+        if (e.key === 'ArrowRight') next();
+      });
+
+      // pause autoplay on hover/focus, resume on leave
+      carousel.addEventListener('mouseenter', pauseAutoplay);
+      carousel.addEventListener('mouseleave', resumeAutoplay);
+      carousel.addEventListener('focusin', pauseAutoplay);
+      carousel.addEventListener('focusout', resumeAutoplay);
+
+      function startAutoplay(){
+        if (autoplayTimer) clearInterval(autoplayTimer);
+        autoplayTimer = setInterval(()=> { next(); }, AUTOPLAY_INTERVAL);
+      }
+      function pauseAutoplay(){ if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; } }
+      function resumeAutoplay(){ if (!autoplayTimer) startAutoplay(); }
+      function resetAutoplay(){ pauseAutoplay(); startAutoplay(); }
+
+      // initialize
+      updateUI();
+      startAutoplay();
+
+      // cleanup on page unload
+      window.addEventListener('beforeunload', ()=> { if (autoplayTimer) clearInterval(autoplayTimer); });
+    })();
+
     // Snow effect (lightweight canvas) - densified and improved contrast for fundo bege
     (function() {
       const canvas = document.getElementById('snow-canvas');

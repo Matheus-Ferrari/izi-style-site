@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Produto - Coleção de Natal | Izi Style</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Página PDP específica - mantém integração com styles.css */
+        body.pdp-page { background: #FBF8F0; }
+        main.pdp { max-width:1200px; margin: 28px auto; padding: 20px; }
+        .pdp-grid { display: flex; gap: 32px; align-items: flex-start; }
+        /* Coluna esquerda - visualização */
+        .pdp-left { flex: 0 0 55%; display:flex; flex-direction:column; gap:16px; align-items:center }
+        .mockup-wrap { position: relative; width: 100%; max-width: 620px; }
+        .shirt-mockup {
+            width:100%; position: relative; border-radius: 16px; overflow: visible;
+            box-shadow: 0 18px 50px rgba(0,0,0,0.12); display:block; background: transparent; padding: 12px;
+        }
+        .shirt-image { width: 100%; display:block; border-radius:12px; }
+        /* classes de cor: namesOverlay receberá .light ou .dark */
+
+        /* overlay of names */
+        .names-overlay {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 66%;
+            pointer-events: none;
+            text-align: center;
+            /* top será calculado dinamicamente via JS para centralizar o título no peito */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px; /* espaçamento fixo entre as linhas */
+        }
+        .name-line { display:block; font-family: 'Press Start 2P', monospace; font-weight:400; letter-spacing:0.6px; line-height:1; text-transform:uppercase; font-size:26px }
+        .names-overlay.light .name-line { color: #111; text-shadow: none; }
+        .names-overlay.dark .name-line { color: #fff; text-shadow: 0 1px 0 rgba(0,0,0,0.35); }
+        /* cores de texto customizáveis */
+        .names-overlay.text-white .name-line { color: #fff !important; text-shadow: 0 1px 0 rgba(0,0,0,0.35); }
+        .names-overlay.text-green .name-line { color: #22c55e; text-shadow: 0 1px 0 rgba(0,0,0,0.35); }
+        .names-overlay.text-red .name-line { color: #ef4444; text-shadow: 0 1px 0 rgba(0,0,0,0.35); }
+
+        /* Coluna direita - configurador */
+        .pdp-right { flex: 0 0 42%; display:flex; flex-direction:column; gap:16px }
+        .product-title { font-size: 1.6rem; font-weight: 900; color: #111; }
+        .product-sub { color: #666; margin-top:6px }
+        .price { font-size: 1.4rem; font-weight: 800; color: #222; margin-top: 6px }
+
+        /* selection groups */
+        .opt-group { background:#fff; padding:12px; border-radius:10px; box-shadow: 0 6px 18px rgba(0,0,0,0.04) }
+        .opt-group h4 { margin-bottom:8px; font-size:0.95rem }
+        .opts { display:flex; gap:8px; flex-wrap:wrap }
+        .opt { padding:10px 14px; border-radius:8px; border:2px solid #e6e6e6; cursor:pointer; background:#fff; user-select:none }
+        .opt.active { border-color: var(--primary-color); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+        .opt.radio { min-width:64px; text-align:center }
+
+        /* quantity (names) buttons */
+        .qty-buttons { display:flex; gap:8px; flex-wrap:wrap }
+        .qty-btn { width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; border-radius:8px; border:2px solid #e6e6e6; cursor:pointer }
+        .qty-btn.active { border-color: var(--primary-color); background: linear-gradient(180deg,#fff,#fff); }
+
+        .names-inputs { margin-top:8px; display:flex; flex-direction:column; gap:8px }
+        .names-inputs input { padding:8px 10px; border-radius:8px; border:1px solid #ddd }
+
+        /* accordion */
+        .accordion { background:#fff; border-radius:10px; padding:0; overflow:hidden }
+        .accordion button { width:100%; text-align:left; padding:12px 16px; border:none; background:white; cursor:pointer; font-weight:700 }
+        .accordion .panel { padding:12px 16px; border-top:1px solid #f0f0f0; color:#444 }
+
+        /* text color selection */
+        .text-color-opts { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px }
+        .text-color-opt { width:40px; height:40px; border-radius:50%; border:3px solid #e6e6e6; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s }
+        .text-color-opt.text-white { background:#fff }
+        .text-color-opt.text-green { background:#22c55e }
+        .text-color-opt.text-red { background:#ef4444 }
+        .text-color-opt.active { border-color:var(--primary-color); box-shadow: 0 0 0 2px rgba(247,10,49,0.3) }
+
+        /* accessories section */
+        .accessories-opts { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px }
+        /* thumbnail buttons for accessories */
+        .accessories-opts { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px }
+        .acc-thumb { width:40px; height:40px; padding:4px; display:inline-flex; align-items:center; justify-content:center; border-radius:8px; border:2px solid #e6e6e6; background:#fff; cursor:pointer; transition:all .15s; }
+        .acc-thumb img { width:100%; height:100%; object-fit:contain; display:block; background:transparent }
+        .acc-thumb.active { border-color: var(--primary-color); box-shadow: 0 6px 18px rgba(0,0,0,0.12); transform: translateY(-2px); }
+
+        /* accessory layer */
+        /* accessory layer positioned relative to mockup; top é ajustado via JS para ficar abaixo do último nome */
+        .accessory-layer { position:absolute; pointer-events:none; z-index:10; left:50%; transform:translateX(-50%); width:60%; height:auto; top:0; display:none; align-items:flex-start; justify-content:center; overflow:visible }
+        .accessory-layer.active { display:flex }
+        .accessory-layer img { width:100%; height:auto; object-fit:contain; display:block; background: transparent }
+
+        /* action buttons */
+        .actions-row { display:flex; gap:12px; margin-top:10px }
+        .btn-ghost { background:#fff; border:1px solid #ddd; padding:12px 14px; border-radius:8px; cursor:pointer }
+        .btn-primary { background:var(--primary-color); color:#fff; padding:12px 14px; border-radius:8px; border:none; cursor:pointer }
+
+        /* modal zoom */
+        .zoom-modal { position:fixed; left:0; top:0; right:0; bottom:0; background:rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; z-index:2400; }
+        .zoom-modal .zoom-inner { width:90%; max-width:900px; background:#fff; padding:18px; border-radius:10px }
+
+        @media (max-width: 900px) {
+            .pdp-grid { flex-direction: column }
+            .pdp-left, .pdp-right { flex: 1 1 100% }
+            .shirt-surface { width: 80%; top:6% }
+            .names-overlay { width: 80% }
+        }
+    </style>
+</head>
+<body class="pdp-page">
+        <!-- HEADER (copiado exatamente de index.html) -->
+        <header class="main-header" id="topo" aria-label="Cabeçalho principal">
+            <div class="bar container">
+                <a class="logo" href="#" aria-label="IZI STYLE - Início">
+                    <img class="site-logo" src="logo-transparente.jpeg" alt="Logo IZI STYLE" loading="eager" />
+                </a>
+
+                <nav class="main-nav" aria-label="Navegação principal">
+                    <ul>
+                        <li><a href="#" aria-current="page">Home</a></li>
+                        <li><a href="#colecoes">Coleções</a></li>
+
+                            <li class="dropdown">
+                                <button class="dropdown-toggle btn" aria-haspopup="true" aria-expanded="false">
+                                    Momentos Especiais <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Para Casal</a></li>
+                                    <li><a href="#">Para Família</a></li>
+                                    <li><a href="#">Para Amigos</a></li>
+
+                                    <li class="sub-dropdown">
+                                        <button class="btn" aria-haspopup="false" aria-expanded="false">
+                                            Datas Especiais <i class="fas fa-chevron-right" aria-hidden="false"></i>
+                                        </button>
+                                        <ul class="sub-dropdown-menu" role="menu">
+                                            <li><a href="#">Dia dos Namorados</a></li>
+                                            <li><a href="#">Dia das Mães</a></li>
+                                            <li><a href="#">Dia dos Pais</a></li>
+                                            <li><a href="#">Carnaval</a></li>
+                                            <li><a href="#">Dia dos Professores</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        <li class="dropdown">
+                            <button class="dropdown-toggle btn" aria-haspopup="true" aria-expanded="false">
+                                Criar Arte <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="easy-style/index.html">Crie sua Arte</a></li>
+                                <li><a href="easy-style/index.html">Criamos para Você</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <form class="search-box" role="search" aria-label="Buscar no site" onsubmit="event.preventDefault()">
+                        <label for="q" class="sr-only">O que você procura?</label>
+                        <input id="q" type="search" placeholder="O que você procura?" />
+                        <button type="submit" aria-label="Buscar"><i class="fas fa-search"></i></button>
+                    </form>
+
+                    <a class="btn btn--ghost" href="#conta">Minha conta</a>
+                    <a class="btn btn--ghost" href="#ajuda">Ajuda</a>
+                    <a class="btn btn--primary" href="#criar-conta">CRIAR SUA CONTA</a>
+
+                    <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-area" aria-label="Abrir menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+    <main class="pdp" role="main">
+        <div class="pdp-grid">
+            <section class="pdp-left" aria-label="Visualização do produto">
+                <div class="mockup-wrap">
+                    <div id="shirtMockup" class="shirt-mockup">
+                        <!-- imagem principal do mockup -->
+                        <img id="shirtImg" class="shirt-image" src="easy-style/imagens/camiseta-branca-natal.png" alt="Camiseta - mockup">
+                        <!-- acessórios como camadas -->
+                        <div class="accessory-layer active" id="accFloral">
+                            <img src="easy-style/imagens/floral_vermelho.png" alt="Floral Vermelho">
+                        </div>
+                        <div class="accessory-layer" id="accFloralGreen">
+                            <img src="easy-style/imagens/floral_verde.png" alt="Floral Verde">
+                        </div>
+                        <div class="accessory-layer" id="accFloralRosas">
+                            <img src="easy-style/imagens/floral_rosas.png" alt="Floral Rosas">
+                        </div>
+                        <div class="accessory-layer" id="accPresents">
+                            <img src="easy-style/imagens/presentes_natal.png" alt="Presentes Natal">
+                        </div>
+                        <!-- overlay apenas com nomes (posicionado sobre a imagem) -->
+                        <div id="namesOverlay" class="names-overlay light" aria-hidden="true"></div>
+                    </div>
+                </div>
+                <div style="width:100%; display:flex; justify-content:center; gap:12px;">
+                    <button id="zoomBtn" class="btn-ghost">Visualizar Produto</button>
+                </div>
+            </section>
+
+            <aside class="pdp-right" aria-label="Configuração do produto">
+                <div>
+                    <h1 class="product-title">Camiseta Personalizada - Árvore de Nomes</h1>
+                    <div class="product-sub">Escolha o tipo, cor, tamanho e personalize os nomes para a sua árvore.</div>
+                    <div class="price">A partir de R$ 79,90</div>
+                </div>
+
+                <div class="opt-group" aria-labelledby="tipo">
+                    <h4 id="tipo">Tipo</h4>
+                    <div class="opts" id="tipoOpts">
+                        <div class="opt radio active" data-type="female">Feminino</div>
+                        <div class="opt radio" data-type="male">Masculino</div>
+                    </div>
+                </div>
+
+                <div class="opt-group" aria-labelledby="cores">
+                    <h4 id="cores">Cor</h4>
+                    <div class="opts" id="coresOpts">
+                        <div class="opt radio active" data-color="white">Branco</div>
+                        <div class="opt radio" data-color="black">Preto</div>
+                    </div>
+                </div>
+
+                <div class="opt-group" aria-labelledby="tamanhos">
+                    <h4 id="tamanhos">Tamanho</h4>
+                    <div class="opts" id="tamanhoOpts">
+                        <div class="opt radio" data-size="P">P</div>
+                        <div class="opt radio active" data-size="M">M</div>
+                        <div class="opt radio" data-size="G">G</div>
+                        <div class="opt radio" data-size="GG">GG</div>
+                    </div>
+                </div>
+
+                <div class="opt-group" aria-labelledby="quantidade">
+                    <h4 id="quantidade">Número de nomes</h4>
+                    <div class="qty-buttons" id="qtyButtons"></div>
+                    <div class="names-inputs" id="namesInputs" aria-live="polite"></div>
+                </div>
+
+                <div class="opt-group" aria-labelledby="fontcolor">
+                    <h4 id="fontcolor">Cor do Texto</h4>
+                    <div class="text-color-opts" id="textColorOpts">
+                        <div class="text-color-opt text-white active" data-color="white" title="Branco"></div>
+                        <div class="text-color-opt text-green" data-color="green" title="Verde"></div>
+                        <div class="text-color-opt text-red" data-color="red" title="Vermelho"></div>
+                    </div>
+                </div>
+
+                <div class="opt-group" aria-labelledby="acessorios">
+                    <h4 id="acessorios">Acessórios</h4>
+                    <div class="accessories-opts" id="accessoriesOpts">
+                        <!-- Miniaturas de acessórios -->
+                        <button class="acc-thumb" data-acc="none" title="Sem Acessório" aria-pressed="false">
+                            <img src="easy-style/imagens/none_thumb.png" alt="Sem acessório" loading="lazy">
+                        </button>
+                        <button class="acc-thumb active" data-acc="floral" title="Floral Vermelho" aria-pressed="true">
+                            <img src="easy-style/imagens/floral_vermelho.png" alt="Floral Vermelho" loading="lazy">
+                        </button>
+                        <button class="acc-thumb" data-acc="florals" title="Floral Verde" aria-pressed="false">
+                            <img src="easy-style/imagens/floral_verde.png" alt="Floral Verde" loading="lazy">
+                        </button>
+                        <button class="acc-thumb" data-acc="floral_rosas" title="Floral Rosas" aria-pressed="false">
+                            <img src="easy-style/imagens/floral_rosas.png" alt="Floral Rosas" loading="lazy">
+                        </button>
+                        <button class="acc-thumb" data-acc="presents" title="Presentes" aria-pressed="false">
+                            <img src="easy-style/imagens/presentes_natal.png" alt="Presentes Natal" loading="lazy">
+                        </button>
+                    </div>
+                </div>
+
+                <div class="opt-group" aria-labelledby="quantidade">
+                    <h4 id="quantidade">Número de nomes</h4>
+                    <div class="qty-buttons" id="qtyButtons"></div>
+                    <div class="names-inputs" id="namesInputs" aria-live="polite"></div>
+                </div>
+
+                <div class="accordion" id="accordion">
+                    <button type="button" data-acc="mat">Material</button>
+                    <div class="panel" id="mat">Algodão premium 220g/m², toque macio e confortável. Costura reforçada e caimento pensado para durar.</div>
+                    <button type="button" data-acc="qual">Qualidade</button>
+                    <div class="panel" id="qual">Estampa DTG (Direct to Garment) que oferece cores vibrantes, alta definição e resistência à lavagem.</div>
+                </div>
+
+                <div class="actions-row">
+                    <button id="visualizarAction" class="btn-ghost">Visualizar Produto</button>
+                    <button id="addCart" class="btn-primary">Adicionar ao Carrinho</button>
+                    <button id="calcFrete" class="btn-ghost">Calcular Frete</button>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+        <!-- FOOTER (copiado exatamente de index.html) -->
+        <footer class="main-footer" id="rodape">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h4>Atendimento</h4>
+                    <p>Horário de funcionamento:</p>
+                    <p>Segunda a sexta, 9h às 18h</p>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone-alt"></i> (11) 9 7623-1926</p>
+                        <p><i class="fas fa-envelope"></i> contato@izistyle.com.br</p>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Ajuda</h4>
+                    <ul>
+                        <li><a href="#">Políticas de Devolução</a></li>
+                        <li><a href="#">Políticas de Imagem</a></li>
+                        <li><a href="#">Políticas de Cookies</a></li>
+                        <li><a href="#">Entregas e Prazos</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Seja Criador!</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Formas de pagamento</h4>
+                    <div class="icones-pagamento">
+                            <img src="easy-style/Icones/Visa.png" alt="Visa" class="icone-pagamento">
+                            <img src="easy-style/Icones/Mastercard.png" alt="Mastercard" class="icone-pagamento">
+                            <img src="easy-style/Icones/Pix.png" alt="Pix" class="icone-pagamento">
+                            <img src="easy-style/Icones/Boleto.png" alt="Boleto" class="icone-pagamento">
+                    </div>
+                    <h4>Site seguro</h4>
+                    <p><i class="fas fa-shield-alt" aria-hidden="true"></i> Site seguro</p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Onde nos encontrar</h4>
+                    <div class="social-links">
+                        <p><i class="fab fa-instagram"></i> @izistyleoficial</p>
+                        <p><i class="fab fa-tiktok"></i> @izistyleoficial</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-info-base">
+                <p class="brand-story">
+                    IZISTYLE: Nascida de uma visão de estilo e inovação, somos dedicados a transformar suas ideias em peças únicas. Nossa prioridade é a personalização, a qualidade e a sua total satisfação.
+                </p>
+                <div class="copyright">
+                    <span>© 2025 IZI STYLE GROUP - Todos os Direitos Reservados</span>
+                    <span class="footer-logo-w">W</span>
+                </div>
+            </div>
+        </footer>
+
+    <!-- modal zoom (hidden) -->
+    <div id="zoomModal" class="zoom-modal" style="display:none">
+        <div class="zoom-inner">
+            <button id="closeZoom" class="btn-ghost" style="float:right">Fechar</button>
+            <div style="clear:both"></div>
+            <div id="zoomContent" style="padding:10px; display:flex; justify-content:center">
+                <!-- cloned mockup will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function(){
+            // Inicialização
+            const tipoOpts = document.getElementById('tipoOpts');
+            const coresOpts = document.getElementById('coresOpts');
+            const tamanhoOpts = document.getElementById('tamanhoOpts');
+            const qtyButtons = document.getElementById('qtyButtons');
+            const namesInputs = document.getElementById('namesInputs');
+            const namesOverlay = document.getElementById('namesOverlay');
+            const shirtImg = document.getElementById('shirtImg');
+            const shirtSurface = document.getElementById('shirtMockup'); // surface container used for positioning
+
+            // Cria botões 2..9
+            for(let i=2;i<=9;i++){
+                const b=document.createElement('button');
+                b.className='qty-btn'; b.type='button'; b.innerText=i;
+                b.dataset.qty=i;
+                b.addEventListener('click', ()=> selectQty(i,b));
+                qtyButtons.appendChild(b);
+            }
+
+            // Helpers para seleção de opções
+            function clearActive(container){ Array.from(container.querySelectorAll('.opt')).forEach(x=>x.classList.remove('active')); }
+            function setActive(el){ el.classList.add('active') }
+
+            // Tipo
+            tipoOpts.addEventListener('click', e=>{
+                const el = e.target.closest('.opt'); if(!el) return;
+                clearActive(tipoOpts); setActive(el);
+                const t = el.dataset.type; shirtSurface.dataset.type=t;
+                shirtSurface.classList.toggle('female', t==='female');
+                shirtSurface.classList.toggle('male', t==='male');
+            });
+
+            // Cor: troca imagem e ajusta cor do texto overlay
+            coresOpts.addEventListener('click', e=>{
+                const el = e.target.closest('.opt'); if(!el) return;
+                clearActive(coresOpts); setActive(el);
+                const c = el.dataset.color;
+                if(c === 'white'){
+                    shirtImg.src = 'easy-style/imagens/camiseta-branca-natal.png';
+                    namesOverlay.classList.remove('dark'); namesOverlay.classList.add('light');
+                    shirtImg.dataset.color = 'white';
+                } else if(c === 'black'){
+                    shirtImg.src = 'easy-style/imagens/camiseta-preta-natal.png';
+                    namesOverlay.classList.remove('light'); namesOverlay.classList.add('dark');
+                    shirtImg.dataset.color = 'black';
+                }
+            });
+
+            // Tamanhos (visual)
+            tamanhoOpts.addEventListener('click', e=>{
+                const el = e.target.closest('.opt'); if(!el) return;
+                clearActive(tamanhoOpts); setActive(el);
+            });
+
+            // Cor do Texto
+            const textColorOpts = document.getElementById('textColorOpts');
+            textColorOpts.addEventListener('click', e=>{
+                const el = e.target.closest('.text-color-opt'); if(!el) return;
+                Array.from(textColorOpts.querySelectorAll('.text-color-opt')).forEach(x=>x.classList.remove('active'));
+                el.classList.add('active');
+                const c = el.dataset.color;
+                namesOverlay.classList.remove('text-white', 'text-green', 'text-red');
+                namesOverlay.classList.add('text-' + c);
+            });
+
+            // Acessórios (miniaturas) - seleção exclusiva e reposicionamento dinâmico
+            const accessoriesOpts = document.getElementById('accessoriesOpts');
+            const accFloral = document.getElementById('accFloral');
+            const accFloralGreen = document.getElementById('accFloralGreen');
+            const accFloralRosas = document.getElementById('accFloralRosas');
+            const accPresents = document.getElementById('accPresents');
+            accessoriesOpts.addEventListener('click', e=>{
+                const el = e.target.closest('.acc-thumb'); if(!el) return;
+                // visual: marcar miniatura ativa
+                Array.from(accessoriesOpts.querySelectorAll('.acc-thumb')).forEach(x=>{ x.classList.remove('active'); x.setAttribute('aria-pressed','false'); });
+                el.classList.add('active'); el.setAttribute('aria-pressed','true');
+                const a = el.dataset.acc;
+                // esconder todas as camadas
+                [accFloral, accFloralGreen, accFloralRosas, accPresents].forEach(acc=>{ if(acc) acc.classList.remove('active'); });
+                // mostrar somente a selecionada
+                if(a === 'floral' && accFloral) accFloral.classList.add('active');
+                else if(a === 'florals' && accFloralGreen) accFloralGreen.classList.add('active');
+                else if(a === 'floral_rosas' && accFloralRosas) accFloralRosas.classList.add('active');
+                else if(a === 'presents' && accPresents) accPresents.classList.add('active');
+                // atualizar posição do acessório visível
+                layoutNameLines();
+                updateAccessoryPositions();
+            });
+
+            // Tamanhos (visual)
+            tamanhoOpts.addEventListener('click', e=>{
+                const el = e.target.closest('.opt'); if(!el) return;
+                clearActive(tamanhoOpts); setActive(el);
+            });
+
+            // Quantidade selecionada
+            let currentQty = 3; // default
+            function selectQty(n, btn){
+                currentQty = n;
+                // marcar ativo
+                Array.from(qtyButtons.children).forEach(b=>b.classList.toggle('active', +b.dataset.qty===n));
+                renderNameInputs(n);
+            }
+
+            // Render inputs: create N input fields and corresponding name-line spans
+            function renderNameInputs(n){
+                namesInputs.innerHTML='';
+                // clear any existing name lines
+                namesOverlay.innerHTML='';
+                for(let i=0;i<n;i++){
+                    const input=document.createElement('input');
+                    input.type='text'; input.placeholder = 'Nome ' + (i+1);
+                    input.dataset.idx = i;
+                    input.addEventListener('input', onNameInput);
+                    namesInputs.appendChild(input);
+
+                    const span=document.createElement('span');
+                    span.className='name-line';
+                    span.dataset.idx=i; span.textContent='';
+                    namesOverlay.appendChild(span);
+                }
+                layoutNameLines();
+                updateAccessoryPositions();
+            }
+
+            // layout lines in a 'tree' shape vertically
+            function layoutNameLines(){
+                // compute font-size based on number of names
+                const nameLines = Array.from(namesOverlay.querySelectorAll('.name-line'));
+                const n = nameLines.length;
+                const baseFont = 26;
+                const size = Math.max(12, Math.round(baseFont - Math.max(0, n - 3) * 2));
+                nameLines.forEach((ln)=>{ ln.style.fontSize = size + 'px'; });
+
+                // Center the whole block of names vertically on the chest area
+                const chestRatio = 0.38; // center line relative to shirtSurface height
+                if(shirtSurface && namesOverlay){
+                    // reset top to measure accurate overlay height
+                    namesOverlay.style.top = '0px';
+                    const overlayHeight = namesOverlay.offsetHeight || 0;
+                    const desiredCenter = Math.round(shirtSurface.clientHeight * chestRatio);
+                    const desiredTop = Math.max(0, Math.round(desiredCenter - overlayHeight / 2));
+                    namesOverlay.style.top = desiredTop + 'px';
+                }
+            }
+
+            // Position accessories below the last name (or below title when no names)
+            function updateAccessoryPositions(){
+                if(!shirtSurface) return;
+                const overlayTop = parseInt(namesOverlay.style.top || 0, 10);
+                const overlayHeight = namesOverlay.offsetHeight || 0;
+                const lastBottom = overlayTop + overlayHeight;
+                // place accessories a little below the last bottom (gap 8px)
+                const gap = 8;
+                const topPx = Math.round(lastBottom + gap);
+                [accFloral, accFloralGreen, accFloralRosas, accPresents].forEach(acc=>{ if(acc){ acc.style.top = topPx + 'px'; acc.style.width = Math.round(shirtSurface.clientWidth * 0.6) + 'px'; } });
+            }
+
+            function onNameInput(e){
+                const idx = e.target.dataset.idx; const txt = e.target.value || '';
+                const span = namesOverlay.querySelector('.name-line[data-idx="'+idx+'"]');
+                if(span) span.textContent = txt.toUpperCase();
+                // recalc layout and accessory positions when text changes size
+                layoutNameLines();
+                updateAccessoryPositions();
+            }
+
+            function updateOverlayColors(){
+                // on white shirt use dark text, on black use light text (handled in CSS)
+                // nothing to change here as classes adjust color
+            }
+
+            // Accordion
+            document.getElementById('accordion').addEventListener('click', function(e){
+                const btn = e.target.closest('button'); if(!btn) return;
+                const key = btn.dataset.acc; const panel = document.getElementById(key);
+                if(!panel) return;
+                panel.style.display = panel.style.display==='block' ? 'none' : 'block';
+            });
+
+            // Zoom modal
+            const zoomBtn = document.getElementById('zoomBtn');
+            const zoomModal = document.getElementById('zoomModal');
+            const zoomContent = document.getElementById('zoomContent');
+            document.getElementById('closeZoom').addEventListener('click', ()=> zoomModal.style.display='none');
+            zoomBtn.addEventListener('click', ()=> openZoom());
+            document.getElementById('visualizarAction').addEventListener('click', ()=> openZoom());
+
+            function openZoom(){
+                // clone shirtSurface for zoom
+                const clone = shirtSurface.cloneNode(true);
+                clone.style.width='60%'; clone.style.height='auto';
+                zoomContent.innerHTML=''; zoomContent.appendChild(clone);
+                zoomModal.style.display='flex';
+            }
+
+            // Add to cart / calc frete (stubs)
+            document.getElementById('addCart').addEventListener('click', ()=>{
+                alert('Produto adicionado ao carrinho (simulação)');
+            });
+            document.getElementById('calcFrete').addEventListener('click', ()=>{
+                const cep = prompt('Informe seu CEP para calcular o frete:');
+                if(cep) alert('Frete estimado para ' + cep + ': R$ 19,90 (simulado)');
+            });
+
+            // inicializações finais
+            selectQty(currentQty, qtyButtons.children[ currentQty-2 ] );
+
+            // Accessibility: allow keyboard selection of qty (left/right)
+            qtyButtons.addEventListener('keydown', (ev)=>{
+                const active = Array.from(qtyButtons.children).findIndex(c=>c.classList.contains('active'));
+                if(ev.key==='ArrowRight'){
+                    const next = Math.min(qtyButtons.children.length-1, active+1);
+                    qtyButtons.children[next].click(); qtyButtons.children[next].focus();
+                } else if(ev.key==='ArrowLeft'){
+                    const prev = Math.max(0, active-1);
+                    qtyButtons.children[prev].click(); qtyButtons.children[prev].focus();
+                }
+            });
+
+            // ensure overlay re-layout on resize
+            window.addEventListener('resize', ()=> { layoutNameLines(); updateAccessoryPositions(); });
+
+            // small: allow clicking name lines to edit corresponding input (UX)
+            namesOverlay.addEventListener('click', (e)=>{
+                const ln = e.target.closest('.name-line'); if(!ln) return;
+                const idx = ln.dataset.idx; const input = namesInputs.querySelector('input[data-idx="'+idx+'"]'); if(input){ input.focus(); }
+            });
+
+            // Atualiza layout on resize
+            // (não é necessário observar o elemento de imagem aqui)
+
+        })();
+    </script>
+    <script>
+    (function () {
+      // Copiado do index.html: comportamento do menu / dropdowns
+      // MOBILE TOGGLE
+      const header = document.querySelector('.main-header');
+      const toggleBtn = document.querySelector('.menu-toggle');
+      toggleBtn?.addEventListener('click', (e) => {
+        e.preventDefault();
+        const expanded = toggleBtn.getAttribute('aria-expanded') === 'false';
+        toggleBtn.setAttribute('aria-expanded', String(!expanded));
+        header.classList.toggle('header-mobile');
+      });
+
+      function setupDropdowns(root = document) {
+        const main = root.querySelector('header') || root;
+        const dropdowns = Array.from(main.querySelectorAll('.dropdown'));
+        const subDropdowns = Array.from(main.querySelectorAll('.sub-dropdown'));
+
+        dropdowns.forEach(dd => dd.setAttribute('aria-expanded', 'false'));
+        subDropdowns.forEach(sd => {
+            const btn = sd.querySelector('.btn');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+
+        function closeAll(except = null) {
+            dropdowns.forEach(dd => { if (dd !== except) dd.setAttribute('aria-expanded', 'false'); });
+            subDropdowns.forEach(sd => { const btn = sd.querySelector('.btn'); if (btn && sd !== except) btn.setAttribute('aria-expanded', 'false'); });
+        }
+
+        dropdowns.forEach((dropdown) => {
+            const toggle = dropdown.querySelector('.dropdown-toggle');
+            if (!toggle) return;
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault(); e.stopPropagation();
+                const isOpen = dropdown.getAttribute('aria-expanded') === 'true';
+                closeAll(dropdown);
+                const novoEstado = !isOpen ? 'true' : 'false';
+                dropdown.setAttribute('aria-expanded', novoEstado);
+                toggle.blur();
+            });
+        });
+
+        subDropdowns.forEach((subDropdown) => {
+            const btn = subDropdown.querySelector('.btn'); if (!btn) return;
+            btn.addEventListener('click', (e) => {
+                e.preventDefault(); e.stopPropagation();
+                const isOpen = btn.getAttribute('aria-expanded') === 'true';
+                subDropdowns.forEach(sd => { const b = sd.querySelector('.btn'); if (b && b !== btn) b.setAttribute('aria-expanded', 'false'); });
+                btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+                btn.blur();
+            });
+        });
+
+        document.addEventListener('click', (e) => { if (!e.target.closest('header')) closeAll(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAll(); });
+      }
+
+      if (document.readyState !== 'loading') { setupDropdowns(); } else { document.addEventListener('DOMContentLoaded', () => setupDropdowns()); }
+    })();
+    </script>
+</body>
+</html>
