@@ -1,4 +1,4 @@
-/* produtos.css - Estilos específicos para página de produtos */
+/* produtos.css - Estilos especÃ­ficos para pÃ¡gina de produtos */
 
 /* ===== BREADCRUMB ===== */
 .breadcrumb-section {
@@ -48,7 +48,7 @@
     font-weight: 600;
 }
 
-/* ===== SEÇÃO DE PRODUTOS ===== */
+/* ===== SEÃ‡ÃƒO DE PRODUTOS ===== */
 .produtos-section {
     padding: 60px 40px;
     background-color: white;
@@ -109,7 +109,7 @@
     display: block;
 }
 
-/* Placeholder para imagem (caso não tenha imagem) */
+/* Placeholder para imagem (caso nÃ£o tenha imagem) */
 .produto-imagem-placeholder {
     width: 100%;
     height: 280px;
@@ -121,7 +121,7 @@
     font-size: 3em;
 }
 
-/* Conteúdo do card */
+/* ConteÃºdo do card */
 .produto-info {
     padding: 20px;
     flex-grow: 1;
@@ -162,7 +162,7 @@
     font-weight: 400;
 }
 
-/* Botão de compra */
+/* BotÃ£o de compra */
 .btn-comprar {
     background-color: #f70a31;
     color: white;
@@ -327,7 +327,7 @@
     }
 }
 
-/* ===== ANIMAÇÃO DE CARREGAMENTO ===== */
+/* ===== ANIMAÃ‡ÃƒO DE CARREGAMENTO ===== */
 @keyframes pulse {
     0%, 100% {
         opacity: 1;
@@ -354,7 +354,7 @@
     border-width: 0;
 }
 
-/* Focus visível para navegação por teclado */
+/* Focus visÃ­vel para navegaÃ§Ã£o por teclado */
 .produto-card:focus-visible {
     outline: 3px solid #f70a31;
     outline-offset: 3px;

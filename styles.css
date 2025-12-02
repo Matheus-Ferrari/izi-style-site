@@ -8,10 +8,10 @@
     --text-light: #555;
     --bg-light: #f9f9f9;
     --bg-white: #ffffff;
-    --testimonial-row-height: 240px; /* altura para uma linha de 2 cards (ajustável) */
+    --testimonial-row-height: 240px; /* altura para uma linha de 2 cards (ajustÃ¡vel) */
 }
 
-/* Fundo do corpo agora é branco */
+/* Fundo do corpo agora Ã© branco */
 body {
     background-color: var(--bg-white); 
     background-image: none;
@@ -34,7 +34,7 @@ ul {
     list-style: none;
 }
 
-/* 2. ESTILIZAÇÃO DO CABEÇALHO (HEADER) - MANTIDO ORIGINAL */
+/* 2. ESTILIZAÃ‡ÃƒO DO CABEÃ‡ALHO (HEADER) - MANTIDO ORIGINAL */
 .main-header {
     display: flex;
     justify-content: space-between;
@@ -131,7 +131,7 @@ ul {
 }
 
 
-/* 3. CONTEÚDO PRINCIPAL (HERO SECTION) - FUNDO BRANCO SÓLIDO */
+/* 3. CONTEÃšDO PRINCIPAL (HERO SECTION) - FUNDO BRANCO SÃ“LIDO */
 .home-hero {
     position: relative;
     min-height: 50vh; 
@@ -279,7 +279,7 @@ ul {
 }
 
 
-/* 4. SEÇÃO DE DESTAQUE (Coleções) - FUNDO BRANCO SÓLIDO (MANTIDO ORIGINAL) */
+/* 4. SEÃ‡ÃƒO DE DESTAQUE (ColeÃ§Ãµes) - FUNDO BRANCO SÃ“LIDO (MANTIDO ORIGINAL) */
 .featured-sections {
     padding: 60px 40px;
     background-color: white; 
@@ -338,7 +338,7 @@ ul {
 }
 
 /* ==========================
-   Seção: Coleção de Natal
+   SeÃ§Ã£o: ColeÃ§Ã£o de Natal
    ========================== */
 .christmas-collection {
     padding: 60px 40px;
@@ -429,7 +429,7 @@ ul {
     .collection-top { align-items: flex-start; }
 }
 
-/* Estilos específicos para a página natal.html (produtos e neve) */
+/* Estilos especÃ­ficos para a pÃ¡gina natal.html (produtos e neve) */
 .colecao-natal-main { padding: 40px 20px 80px; background: transparent; }
 .produtos-natal-grid { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 18px; }
 .produto-card {
@@ -439,7 +439,7 @@ ul {
     background: #ffffff; /* fundo branco */
     border: none; /* sem bordas grossas */
     border-radius: 12px;
-    padding: 12px; /* padding reduzido para maximizar área de imagem */
+    padding: 12px; /* padding reduzido para maximizar Ã¡rea de imagem */
     box-shadow: 0 14px 30px rgba(0,0,0,0.06); /* sombra sutil */
     transition: transform 0.22s ease, box-shadow 0.22s ease;
     display:flex;
@@ -476,7 +476,7 @@ ul {
     display:flex;
     align-items:center;
     gap:8px;
-    margin: 4px 0 8px 0; /* alinhada logo abaixo do nome, espaço mínimo */
+    margin: 4px 0 8px 0; /* alinhada logo abaixo do nome, espaÃ§o mÃ­nimo */
 }
 .produto-rating .stars { display:inline-flex; gap:6px }
 .produto-rating .stars .fa-star { color: #f5c518; font-size: 1rem }
@@ -494,13 +494,13 @@ ul {
 /* Snow canvas */
 #snow-canvas, #snow-canvas { position: fixed; left:0; top:0; width:100%; height:100%; pointer-events: none; z-index: 1000; }
 
-/* === Página Natal: fundo e hero banner === */
+/* === PÃ¡gina Natal: fundo e hero banner === */
 body.natal-page {
     background-color: #FBF8F0; /* bege claro */
 }
 
 .natal-hero-banner {
-    padding: 80px 40px; /* espaçamento amplo nas laterais e vertical */
+    padding: 80px 40px; /* espaÃ§amento amplo nas laterais e vertical */
     background: transparent;
     border-bottom: 1px solid rgba(0,0,0,0.04);
 }
@@ -562,7 +562,7 @@ body.natal-page {
 @media (max-width: 1024px) { .produto-card { flex: 1 1 calc(50% - 20px); max-width: 520px; } .produto-thumb { height: 280px } }
 @media (max-width: 768px) { .produto-card { flex: 1 1 100%; max-width:100%; } .produto-thumb { height: 220px } }
 
-/* 5. SEÇÃO DE BENEFÍCIOS (BENEFITS) - FUNDO ESCURO SÓLIDO STREETWEAR */
+/* 5. SEÃ‡ÃƒO DE BENEFÃ�CIOS (BENEFITS) - FUNDO ESCURO SÃ“LIDO STREETWEAR */
 .benefits-section {
     padding: 20px 40px;
     background-color: var(--bg-white);
@@ -649,7 +649,7 @@ body.natal-page {
 
 .carousel-track {
     display: flex;
-    flex-wrap: nowrap; /* força os cards em única linha horizontal para que o overflow esconda o restante */
+    flex-wrap: nowrap; /* forÃ§a os cards em Ãºnica linha horizontal para que o overflow esconda o restante */
     gap: 20px;
     transition: transform 0.35s ease-in-out;
     width: auto;
@@ -772,7 +772,7 @@ body.natal-page {
 }
 
 
-/* 7. RODAPÉ (FOOTER) - FUNDO ESCURO ORIGINAL */
+/* 7. RODAPÃ‰ (FOOTER) - FUNDO ESCURO ORIGINAL */
 .main-footer {
     background-color: var(--secondary-color); 
     color: white; 
@@ -794,7 +794,7 @@ body.natal-page {
     margin-bottom: 20px;
 }
 
-/* Estilo para ícones de formas de pagamento no rodapé */
+/* Estilo para Ã­cones de formas de pagamento no rodapÃ© */
 .payment-icons {
     display: flex;
     align-items: center;
@@ -803,7 +803,7 @@ body.natal-page {
     margin: 6px 0 12px 0;
 }
 .payment-icons i {
-    font-size: 1.25rem; /* tamanho legível */
+    font-size: 1.25rem; /* tamanho legÃ­vel */
     color: #333; /* cor neutra */
     display: inline-block;
     vertical-align: middle;
@@ -812,16 +812,16 @@ body.natal-page {
     opacity: 0.95;
 }
 
-/* Imagens locais de formas de pagamento (substitui ícones Font Awesome) */
+/* Imagens locais de formas de pagamento (substitui Ã­cones Font Awesome) */
 .icones-pagamento {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 .icone-pagamento {
-    height: 25px; /* Define a altura padrão para 25 pixels */
-    width: auto;  /* Mantém a proporção da imagem */
-    margin-right: 8px; /* Espaço entre ícones */
+    height: 25px; /* Define a altura padrÃ£o para 25 pixels */
+    width: auto;  /* MantÃ©m a proporÃ§Ã£o da imagem */
+    margin-right: 8px; /* EspaÃ§o entre Ã­cones */
     vertical-align: middle;
     display: inline-block;
 }
@@ -882,7 +882,7 @@ body.natal-page {
     color: var(--primary-color);
 }
 
-/* 8. ÍCONE FLUTUANTE DO WHATSAPP */
+/* 8. Ã�CONE FLUTUANTE DO WHATSAPP */
 .whatsapp-float {
     position: fixed;
     width: 50px;
@@ -1027,11 +1027,11 @@ body.natal-page {
     .carousel-btn { width: 30px; height: 30px; font-size: 1em; }
     .carousel-btn.prev { left: -10px; }
     .carousel-btn.next { right: -10px; }
-    /* Depoimentos em coluna única em telas pequenas */
+    /* Depoimentos em coluna Ãºnica em telas pequenas */
     .carousel-track .testimonial-card { flex: 0 0 100%; }
 }
 
-/* Reduz ícones de pagamento em telas muito pequenas */
+/* Reduz Ã­cones de pagamento em telas muito pequenas */
 @media (max-width: 480px) {
     .icones-pagamento { gap: 6px; }
     .icone-pagamento { height: 20px; }
@@ -1041,7 +1041,7 @@ body.natal-page {
     10. Aliases de compatibilidade - MANTIDO ORIGINAL
    ============================ */
 
-/* Header / ações */
+/* Header / aÃ§Ãµes */
 .actions { display: flex; align-items: center; gap: 20px; }
 .btn { font-size: 0.95em; }
 .btn--primary { background: var(--primary-color); color: #fff; padding: 10px 18px; border-radius: 5px; font-weight: 700; border: none; cursor: pointer; }
@@ -1066,7 +1066,7 @@ body.natal-page {
 
 .device { display: none; }
 
-/* Seções */
+/* SeÃ§Ãµes */
 .featured { padding: 60px 40px; background: #fff; text-align: center; }
 .featured h2 { font-size: 2em; color: var(--text-dark); margin-bottom: 40px; }
 .grid-3 { display: flex; justify-content: space-around; gap: 30px; max-width: 1200px; margin: 0 auto; }
@@ -1096,7 +1096,7 @@ body.natal-page {
 .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
 
-/* ===== HEADER NORMALIZE – overrides seguros (Mantido) ===== */
+/* ===== HEADER NORMALIZE â€“ overrides seguros (Mantido) ===== */
 .main-header,
 .main-header .bar.container {
     display: flex;
@@ -1131,7 +1131,7 @@ body.natal-page {
     list-style: none;
 }
 
-/* Controles do topo padronizados (selects, inputs, botões) */
+/* Controles do topo padronizados (selects, inputs, botÃµes) */
 .main-header select,
 .main-header input[type="text"],
 .main-header button,
@@ -1193,7 +1193,7 @@ body > header.main-header + * {
     .menu-toggle { display: inline-flex; }
 }
 
-/* Ajuste fino de espaçamento entre selects/botões da barra */
+/* Ajuste fino de espaÃ§amento entre selects/botÃµes da barra */
 .main-header .actions,
 .main-header .controls,
 .main-header .cta-row {
@@ -1203,7 +1203,7 @@ body > header.main-header + * {
 }
 
 
-/* Foco: só exibir quando for realmente via teclado (focus-visible) */
+/* Foco: sÃ³ exibir quando for realmente via teclado (focus-visible) */
 .main-header a,
 .main-header button {
     outline: none;
@@ -1215,7 +1215,7 @@ body > header.main-header + * {
     outline-offset: 2px;
 }
 
-/* Inputs/selects do header não ficam "ativos" sem interação */
+/* Inputs/selects do header nÃ£o ficam "ativos" sem interaÃ§Ã£o */
 .main-header select:focus,
 .main-header input[type="text"]:focus,
 .main-header button:focus {
@@ -1238,7 +1238,7 @@ body > header.main-header + * {
     box-shadow: none !important;
 }
 
-/* Evita "seleção" residual em itens ativos ao clicar */
+/* Evita "seleÃ§Ã£o" residual em itens ativos ao clicar */
 .main-header a:focus-visible,
 .main-header button:focus-visible,
 .search-box input:focus-visible {
@@ -1246,19 +1246,19 @@ body > header.main-header + * {
     outline-offset: 2px;
 }
 
-/* Não aplicar cor de 'active' herdada em links do menu */
+/* NÃ£o aplicar cor de 'active' herdada em links do menu */
 .main-nav a:active {
     color: inherit;
 }
 
 
-/* === FIX DROPDOWN: não é 'fica selecionado' após clique, abre só com aria-expanded === */
+/* === FIX DROPDOWN: nÃ£o Ã© 'fica selecionado' apÃ³s clique, abre sÃ³ com aria-expanded === */
 
 /* garante que o header fica acima do hero/menus */
 header.main-header { position: relative; z-index: 1200; }
 
 /* ===================================================
-    DROPDOWN SYSTEM - Método visibility + opacity (Mantido)
+    DROPDOWN SYSTEM - MÃ©todo visibility + opacity (Mantido)
    =================================================== */
 
 /* garante que o header fica acima do hero/menus */
@@ -1272,7 +1272,7 @@ header.main-header {
     position: relative;
 }
 
-/* DROPDOWN MENU - Estado padrão (fechado) */
+/* DROPDOWN MENU - Estado padrÃ£o (fechado) */
 .dropdown-menu,
 header.main-header .dropdown-menu {
     position: absolute;
@@ -1284,12 +1284,12 @@ header.main-header .dropdown-menu {
     box-shadow: 0 8px 24px rgba(0,0,0,.12);
     padding: 8px 0;
     
-    /* FORÇA LAYOUT VERTICAL */
+    /* FORÃ‡A LAYOUT VERTICAL */
     display: flex;
     flex-direction: column;
     align-items: stretch;
     
-    /* Fechado por padrão - usa visibility ao invés de display */
+    /* Fechado por padrÃ£o - usa visibility ao invÃ©s de display */
     visibility: hidden;
     opacity: 0;
     transform: translateY(8px);
@@ -1342,7 +1342,7 @@ header.main-header .dropdown-menu a {
     }
 }
 
-/* Limpa estados que "grudam" após clique */
+/* Limpa estados que "grudam" apÃ³s clique */
 header.main-header .dropdown-menu a:focus,
 header.main-header .dropdown-menu a:active {
     background: transparent !important;
@@ -1351,7 +1351,7 @@ header.main-header .dropdown-menu a:active {
     box-shadow: none !important;
 }
 
-/* Mantém acessibilidade por teclado */
+/* MantÃ©m acessibilidade por teclado */
 header.main-header .dropdown-menu a:focus-visible {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
@@ -1369,7 +1369,7 @@ header.main-header .dropdown-menu a:focus-visible {
     padding: 0;
 }
 
-/* Botão do sub-dropdown */
+/* BotÃ£o do sub-dropdown */
 .sub-dropdown > .btn {
     width: 100%;
     text-align: left;
@@ -1387,7 +1387,7 @@ header.main-header .dropdown-menu a:focus-visible {
     box-sizing: border-box;
 }
 
-/* Hover no botão do sub-dropdown */
+/* Hover no botÃ£o do sub-dropdown */
 @media (hover: hover) and (pointer: fine) {
     .sub-dropdown > .btn:hover {
         background-color: var(--bg-light);
@@ -1395,7 +1395,7 @@ header.main-header .dropdown-menu a:focus-visible {
     }
 }
 
-/* SUB-DROPDOWN MENU - Estado padrão (fechado) */
+/* SUB-DROPDOWN MENU - Estado padrÃ£o (fechado) */
 .sub-dropdown-menu {
     position: absolute;
     left: 100%;
@@ -1407,12 +1407,12 @@ header.main-header .dropdown-menu a:focus-visible {
     padding: 8px 0;
     z-index: 1400;
     
-    /* FORÇA LAYOUT VERTICAL */
+    /* FORÃ‡A LAYOUT VERTICAL */
     display: flex;
     flex-direction: column;
     align-items: stretch;
     
-    /* Fechado por padrão */
+    /* Fechado por padrÃ£o */
     visibility: hidden;
     opacity: 0;
     transform: translateX(-8px);
@@ -1461,7 +1461,7 @@ header.main-header .dropdown-menu a:focus-visible {
     }
 }
 
-/* Limpa estados que "grudam" após clique */
+/* Limpa estados que "grudam" apÃ³s clique */
 .sub-dropdown > .btn:focus,
 .sub-dropdown > .btn:active,
 .sub-dropdown-menu a:focus,
@@ -1472,7 +1472,7 @@ header.main-header .dropdown-menu a:focus-visible {
     box-shadow: none !important;
 }
 
-/* Mantém acessibilidade por teclado */
+/* MantÃ©m acessibilidade por teclado */
 .sub-dropdown > .btn:focus-visible,
 .sub-dropdown-menu a:focus-visible {
     outline: 2px solid var(--primary-color);

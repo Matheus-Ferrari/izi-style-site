@@ -3,30 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Produtos | IZI STYLE - Criação Personalizada</title>
+  <title>Produtos | IZI STYLE - CriaÃ§Ã£o Personalizada</title>
 
   <!-- CSS da home (reutilizado) -->
   <link rel="stylesheet" href="../styles.css" />
   
-  <!-- CSS específico de produtos -->
+  <!-- CSS especÃ­fico de produtos -->
   <link rel="stylesheet" href="produtos.css" />
 
-  <!-- Font Awesome (ícones) -->
+  <!-- Font Awesome (Ã­cones) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 </head>
 <body>
 
   <!-- HEADER (REUTILIZADO DO INDEX.HTML) -->
-  <header class="main-header" id="topo" aria-label="Cabeçalho principal">
+  <header class="main-header" id="topo" aria-label="CabeÃ§alho principal">
     <div class="bar container">
-      <a class="logo" href="../index.html" aria-label="IZI STYLE - Início">
+      <a class="logo" href="../index.html" aria-label="IZI STYLE - InÃ­cio">
         <img class="site-logo" src="../logo-transparente.jpeg" alt="Logo IZI STYLE" loading="eager" />
       </a>
 
-      <nav class="main-nav" aria-label="Navegação principal">
+      <nav class="main-nav" aria-label="NavegaÃ§Ã£o principal">
         <ul>
           <li><a href="../index.html">Home</a></li>
-          <li><a href="../index.html#colecoes">Coleções</a></li>
+          <li><a href="../index.html#colecoes">ColeÃ§Ãµes</a></li>
 
             <!-- Dropdown 1 -->
             <li class="dropdown">
@@ -35,7 +35,7 @@
               </button>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="produtos.html?categoria=casal">Para Casal</a></li>
-                <li><a href="produtos.html?categoria=familia">Para Família</a></li>
+                <li><a href="produtos.html?categoria=familia">Para FamÃ­lia</a></li>
                 <li><a href="produtos.html?categoria=amigos">Para Amigos</a></li>
 
                 <!-- Sub-dropdown -->
@@ -45,7 +45,7 @@
                   </button>
                   <ul class="sub-dropdown-menu" role="menu">
                     <li><a href="produtos.html?categoria=namorados">Dia dos Namorados</a></li>
-                    <li><a href="produtos.html?categoria=maes">Dia das Mães</a></li>
+                    <li><a href="produtos.html?categoria=maes">Dia das MÃ£es</a></li>
                     <li><a href="produtos.html?categoria=pais">Dia dos Pais</a></li>
                     <li><a href="produtos.html?categoria=carnaval">Carnaval</a></li>
                     <li><a href="produtos.html?categoria=professores">Dia dos Professores</a></li>
@@ -61,7 +61,7 @@
             </button>
             <ul class="dropdown-menu" role="menu">
               <li><a href="../easy-style/index.html">Crie sua Arte</a></li>
-              <li><a href="../easy-style/index.html">Criamos para Você</a></li>
+              <li><a href="../easy-style/index.html">Criamos para VocÃª</a></li>
             </ul>
           </li>
         </ul>
@@ -69,8 +69,8 @@
 
       <div class="header-actions">
         <form class="search-box" role="search" aria-label="Buscar no site" onsubmit="event.preventDefault()">
-          <label for="q" class="sr-only">O que você procura?</label>
-          <input id="q" type="search" placeholder="O que você procura?" />
+          <label for="q" class="sr-only">O que vocÃª procura?</label>
+          <input id="q" type="search" placeholder="O que vocÃª procura?" />
           <button type="submit" aria-label="Buscar"><i class="fas fa-search"></i></button>
         </form>
 
@@ -90,31 +90,31 @@
     <div class="container">
       <nav aria-label="Breadcrumb">
         <ol class="breadcrumb">
-          <li><a href="../index.html"><i class="fas fa-home"></i> Início</a></li>
+          <li><a href="../index.html"><i class="fas fa-home"></i> InÃ­cio</a></li>
           <li><span id="categoria-atual">Produtos</span></li>
         </ol>
       </nav>
     </div>
   </section>
 
-  <!-- SEÇÃO DE PRODUTOS -->
+  <!-- SEÃ‡ÃƒO DE PRODUTOS -->
   <section class="produtos-section">
     <div class="container">
       <div class="produtos-header">
         <h1 id="titulo-categoria">Nossos Produtos</h1>
-        <p class="produtos-subtitle">Escolha o produto perfeito para você!</p>
+        <p class="produtos-subtitle">Escolha o produto perfeito para vocÃª!</p>
       </div>
 
-      <!-- GRID DE PRODUTOS (Será preenchido via JavaScript) -->
+      <!-- GRID DE PRODUTOS (SerÃ¡ preenchido via JavaScript) -->
       <div id="produtos-grid" class="produtos-grid">
-        <!-- Os cards serão inseridos aqui pelo JavaScript -->
+        <!-- Os cards serÃ£o inseridos aqui pelo JavaScript -->
       </div>
 
-      <!-- Mensagem caso não haja produtos -->
+      <!-- Mensagem caso nÃ£o haja produtos -->
       <div id="sem-produtos" class="sem-produtos" style="display: none;">
         <i class="fas fa-box-open"></i>
         <h3>Nenhum produto encontrado</h3>
-        <p>Não encontramos produtos nesta categoria no momento.</p>
+        <p>NÃ£o encontramos produtos nesta categoria no momento.</p>
         <a href="../index.html" class="btn-voltar">Voltar para Home</a>
       </div>
     </div>
@@ -123,7 +123,7 @@
   <!-- FOOTER (REUTILIZADO DO INDEX.HTML) -->
   <footer class="main-footer" id="rodape">
     <div class="footer-newsletter container">
-      <h2>Faça parte do nosso squad</h2>
+      <h2>FaÃ§a parte do nosso squad</h2>
       <p>Cadastre-se na newsletter!</p>
       <form class="newsletter-form" onsubmit="event.preventDefault()">
         <label for="email" class="sr-only">Seu email</label>
@@ -135,8 +135,8 @@
     <div class="footer-columns">
       <div class="footer-column">
         <h4>Atendimento</h4>
-        <p>Horário de funcionamento:</p>
-        <p>Segunda a sexta, 9h às 18h</p>
+        <p>HorÃ¡rio de funcionamento:</p>
+        <p>Segunda a sexta, 9h Ã s 18h</p>
         <div class="contact-info">
           <p><i class="fas fa-phone-alt"></i> (11) 9 7623-1926</p>
           <p><i class="fas fa-envelope"></i> contato@izistyle.com.br</p>
@@ -146,9 +146,9 @@
       <div class="footer-column">
         <h4>Ajuda</h4>
         <ul>
-          <li><a href="#">Políticas de Devolução</a></li>
-          <li><a href="#">Políticas de Imagem</a></li>
-          <li><a href="#">Políticas de Cookies</a></li>
+          <li><a href="#">PolÃ­ticas de DevoluÃ§Ã£o</a></li>
+          <li><a href="#">PolÃ­ticas de Imagem</a></li>
+          <li><a href="#">PolÃ­ticas de Cookies</a></li>
           <li><a href="#">Entregas e Prazos</a></li>
           <li><a href="#">Termos de Uso</a></li>
           <li><a href="#">Seja Criador!</a></li>
@@ -157,9 +157,9 @@
 
       <div class="footer-column">
         <h4>Formas de pagamento</h4>
-        <p>[Ícones de Visa, Master, Elo, Pix]</p>
+        <p>[Ã�cones de Visa, Master, Elo, Pix]</p>
         <h4>Site seguro</h4>
-        <p>[Ícone de Site Seguro]</p>
+        <p>[Ã�cone de Site Seguro]</p>
       </div>
 
       <div class="footer-column">
@@ -173,11 +173,11 @@
 
     <div class="footer-info-base">
       <p class="brand-story">
-        Um casal apaixonado em eternizar momentos criou a IZI STYLE para transformar o comum em extraordinário.
-        Hoje, a marca oferece diversas opções para registrar e compartilhar histórias inesquecíveis. Faça a sua com a gente!
+        Um casal apaixonado em eternizar momentos criou a IZI STYLE para transformar o comum em extraordinÃ¡rio.
+        Hoje, a marca oferece diversas opÃ§Ãµes para registrar e compartilhar histÃ³rias inesquecÃ­veis. FaÃ§a a sua com a gente!
       </p>
       <div class="copyright">
-        <span>© 2025 IZI STYLE GROUP - Todos os Direitos Reservados</span>
+        <span>Â© 2025 IZI STYLE GROUP - Todos os Direitos Reservados</span>
         <span class="footer-logo-w">W</span>
       </div>
     </div>

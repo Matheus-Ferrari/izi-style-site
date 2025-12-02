@@ -29,16 +29,16 @@ const produtosDatabase = [
     },
     {
         id: 4,
-        nome: "Quadro Personalizado - Nossa História",
+        nome: "Quadro Personalizado - Nossa HistÃ³ria",
         categoria: "casal",
         preco: 129.90,
         imagem: "imagens/casal/produto-04.jpg"
     },
 
-    // CATEGORIA: FAMÍLIA
+    // CATEGORIA: FAMÃ�LIA
     {
         id: 5,
-        nome: "Kit Camisetas Família Completa",
+        nome: "Kit Camisetas FamÃ­lia Completa",
         categoria: "familia",
         preco: 199.90,
         precoAntigo: 249.90,
@@ -47,14 +47,14 @@ const produtosDatabase = [
     },
     {
         id: 6,
-        nome: "Quadro Família Feliz",
+        nome: "Quadro FamÃ­lia Feliz",
         categoria: "familia",
         preco: 149.90,
         imagem: "imagens/familia/produto-02.jpg"
     },
     {
         id: 7,
-        nome: "Almofadas Kit Família (4 unidades)",
+        nome: "Almofadas Kit FamÃ­lia (4 unidades)",
         categoria: "familia",
         preco: 179.90,
         imagem: "imagens/familia/produto-03.jpg",
@@ -62,7 +62,7 @@ const produtosDatabase = [
     },
     {
         id: 8,
-        nome: "Canecas Personalizadas Família",
+        nome: "Canecas Personalizadas FamÃ­lia",
         categoria: "familia",
         preco: 119.90,
         imagem: "imagens/familia/produto-04.jpg"
@@ -104,7 +104,7 @@ const produtosDatabase = [
     },
     {
         id: 13,
-        nome: "Kit Presente Romântico Completo",
+        nome: "Kit Presente RomÃ¢ntico Completo",
         categoria: "namorados",
         preco: 189.90,
         precoAntigo: 239.90,
@@ -119,10 +119,10 @@ const produtosDatabase = [
         imagem: "imagens/namorados/produto-03.jpg"
     },
 
-    // CATEGORIA: DIA DAS MÃES
+    // CATEGORIA: DIA DAS MÃƒES
     {
         id: 15,
-        nome: "Camiseta Mãe Especial",
+        nome: "Camiseta MÃ£e Especial",
         categoria: "maes",
         preco: 69.90,
         imagem: "imagens/maes/produto-01.jpg",
@@ -130,7 +130,7 @@ const produtosDatabase = [
     },
     {
         id: 16,
-        nome: "Kit Presente Dia das Mães",
+        nome: "Kit Presente Dia das MÃ£es",
         categoria: "maes",
         preco: 149.90,
         precoAntigo: 189.90,
@@ -141,7 +141,7 @@ const produtosDatabase = [
     // CATEGORIA: DIA DOS PAIS
     {
         id: 17,
-        nome: "Camiseta Pai Herói",
+        nome: "Camiseta Pai HerÃ³i",
         categoria: "pais",
         preco: 69.90,
         imagem: "imagens/pais/produto-01.jpg"
@@ -195,20 +195,20 @@ const produtosDatabase = [
 // ===== MAPEAMENTO DE NOMES DE CATEGORIAS =====
 const categoriasNomes = {
     'casal': 'Para Casal',
-    'familia': 'Para Família',
+    'familia': 'Para FamÃ­lia',
     'amigos': 'Para Amigos',
     'namorados': 'Dia dos Namorados',
-    'maes': 'Dia das Mães',
+    'maes': 'Dia das MÃ£es',
     'pais': 'Dia dos Pais',
     'carnaval': 'Carnaval',
     'professores': 'Dia dos Professores',
     'todos': 'Todos os Produtos'
 };
 
-// ===== FUNÇÕES PRINCIPAIS =====
+// ===== FUNÃ‡Ã•ES PRINCIPAIS =====
 
 /**
- * Obtém a categoria da URL
+ * ObtÃ©m a categoria da URL
  * Exemplo: produtos.html?categoria=casal retorna "casal"
  */
 function obterCategoriaURL() {
@@ -227,7 +227,7 @@ function filtrarProdutos(categoria) {
 }
 
 /**
- * Formata preço para Real brasileiro
+ * Formata preÃ§o para Real brasileiro
  */
 function formatarPreco(preco) {
     return preco.toLocaleString('pt-BR', {
@@ -285,12 +285,12 @@ function renderizarProdutos() {
     const tituloCategoria = document.getElementById('titulo-categoria');
     const categoriaAtual = document.getElementById('categoria-atual');
 
-    // Atualiza título e breadcrumb
+    // Atualiza tÃ­tulo e breadcrumb
     const nomeCategoria = categoriasNomes[categoria] || 'Produtos';
     tituloCategoria.textContent = nomeCategoria;
     categoriaAtual.textContent = nomeCategoria;
 
-    // Verifica se há produtos
+    // Verifica se hÃ¡ produtos
     if (produtos.length === 0) {
         produtosGrid.style.display = 'none';
         semProdutos.style.display = 'block';
@@ -313,7 +313,7 @@ function adicionarEventosCards() {
     const cards = document.querySelectorAll('.produto-card');
     
     cards.forEach(card => {
-        // Clique no card (exceto no botão)
+        // Clique no card (exceto no botÃ£o)
         card.addEventListener('click', (e) => {
             if (!e.target.closest('.btn-comprar')) {
                 const produtoId = card.dataset.produtoId;
@@ -335,14 +335,14 @@ function adicionarEventosCards() {
  * Visualiza detalhes do produto
  */
 function visualizarProduto(produtoId) {
-    // Aqui você pode redirecionar para uma página de detalhes
+    // Aqui vocÃª pode redirecionar para uma pÃ¡gina de detalhes
     // Por enquanto, vamos mostrar um alerta
     console.log('Visualizando produto:', produtoId);
     
-    // Exemplo de redirecionamento (descomente quando tiver a página de detalhes):
+    // Exemplo de redirecionamento (descomente quando tiver a pÃ¡gina de detalhes):
     // window.location.href = `produto-detalhes.html?id=${produtoId}`;
     
-    alert(`Visualizando produto ID: ${produtoId}\n\nEm breve você será redirecionado para a página de detalhes!`);
+    alert(`Visualizando produto ID: ${produtoId}\n\nEm breve vocÃª serÃ¡ redirecionado para a pÃ¡gina de detalhes!`);
 }
 
 /**
@@ -352,33 +352,33 @@ function comprarProduto(produtoId) {
     const produto = produtosDatabase.find(p => p.id === produtoId);
     
     if (!produto) {
-        alert('Produto não encontrado!');
+        alert('Produto nÃ£o encontrado!');
         return;
     }
 
     console.log('Comprando produto:', produto);
     
-    // Aqui você pode:
+    // Aqui vocÃª pode:
     // 1. Adicionar ao carrinho
     // 2. Redirecionar para WhatsApp
     // 3. Redirecionar para checkout
     
-    // Exemplo: Redirecionar para WhatsApp com mensagem pré-preenchida
-    const mensagem = `Olá! Gostaria de comprar:\n*${produto.nome}*\nPreço: ${formatarPreco(produto.preco)}`;
+    // Exemplo: Redirecionar para WhatsApp com mensagem prÃ©-preenchida
+    const mensagem = `OlÃ¡! Gostaria de comprar:\n*${produto.nome}*\nPreÃ§o: ${formatarPreco(produto.preco)}`;
     const whatsappURL = `https://wa.me/5511976231926?text=${encodeURIComponent(mensagem)}`;
     
-    // Pergunta ao usuário
-    if (confirm(`Deseja comprar "${produto.nome}" por ${formatarPreco(produto.preco)}?\n\nVocê será redirecionado para o WhatsApp.`)) {
+    // Pergunta ao usuÃ¡rio
+    if (confirm(`Deseja comprar "${produto.nome}" por ${formatarPreco(produto.preco)}?\n\nVocÃª serÃ¡ redirecionado para o WhatsApp.`)) {
         window.open(whatsappURL, '_blank');
     }
 }
 
-// ===== INICIALIZAÇÃO =====
+// ===== INICIALIZAÃ‡ÃƒO =====
 document.addEventListener('DOMContentLoaded', () => {
     renderizarProdutos();
     
     // Log para debug
-    console.log('🛍️ Sistema de produtos carregado!');
-    console.log('📦 Total de produtos:', produtosDatabase.length);
-    console.log('📂 Categoria atual:', obterCategoriaURL());
+    console.log('ðŸ›�ï¸� Sistema de produtos carregado!');
+    console.log('ðŸ“¦ Total de produtos:', produtosDatabase.length);
+    console.log('ðŸ“‚ Categoria atual:', obterCategoriaURL());
 });
