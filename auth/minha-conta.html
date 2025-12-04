@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Minha Conta | IZI STYLE - Criação Personalizada</title>
+
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../css/auth-styles.css" />
+  <link rel="stylesheet" href="../css/session-styles.css" />
+  <link rel="stylesheet" href="../css/conta-styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+
+  <header class="main-header" id="topo" aria-label="Cabeçalho principal">
+    <div class="bar container">
+      <a class="logo" href="../index.html" aria-label="IZI STYLE - Início">
+        <img class="site-logo" src="../logo-transparente.jpeg" alt="Logo IZI STYLE" loading="eager" />
+      </a>
+
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../index.html#colecoes">Coleções</a></li>
+
+          <li class="dropdown">
+            <button class="dropdown-toggle btn" aria-haspopup="true" aria-expanded="false">
+              Momentos Especiais <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Para Casal</a></li>
+              <li><a href="#">Para Família</a></li>
+              <li><a href="#">Para Amigos</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <button class="dropdown-toggle btn" aria-haspopup="true" aria-expanded="false">
+              Criar Arte <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="../easy-style/index.html">Crie sua Arte</a></li>
+              <li><a href="../easy-style/index.html">Criamos para Você</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <form class="search-box" role="search" aria-label="Buscar no site" onsubmit="event.preventDefault()">
+          <label for="q" class="sr-only">O que você procura?</label>
+          <input id="q" type="search" placeholder="O que você procura?" />
+          <button type="submit" aria-label="Buscar"><i class="fas fa-search"></i></button>
+        </form>
+
+        <a class="btn btn--ghost" href="login.html">Minha conta</a>
+        <a class="btn btn--ghost" href="#">Ajuda</a>
+        <a class="btn btn--primary" href="cadastro.html">CRIAR SUA CONTA</a>
+
+        <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-area" aria-label="Abrir menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Loading inicial -->
+  <div id="loading-page" class="loading-page">
+    <i class="fas fa-spinner fa-spin"></i>
+    <p>Carregando...</p>
+  </div>
+
+  <!-- Seção Minha Conta -->
+  <section class="conta-section" id="conta-content" style="display: none;">
+    <div class="conta-container">
+      
+      <!-- Menu Lateral -->
+      <aside class="conta-sidebar">
+        <div class="user-info">
+          <div class="user-avatar">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <h3 id="user-name-sidebar">Carregando...</h3>
+          <p id="user-email-sidebar">...</p>
+        </div>
+
+        <nav class="conta-menu">
+          <a href="#dados-pessoais" class="conta-menu-item active" data-section="dados-pessoais">
+            <i class="fas fa-user"></i>
+            Dados Pessoais
+          </a>
+          <a href="#endereco" class="conta-menu-item" data-section="endereco">
+            <i class="fas fa-map-marker-alt"></i>
+            Endereço
+          </a>
+          <a href="#seguranca" class="conta-menu-item" data-section="seguranca">
+            <i class="fas fa-lock"></i>
+            Segurança
+          </a>
+          <a href="#preferencias" class="conta-menu-item" data-section="preferencias">
+            <i class="fas fa-cog"></i>
+            Preferências
+          </a>
+          <a href="#" id="btn-sair" class="conta-menu-item logout">
+            <i class="fas fa-sign-out-alt"></i>
+            Sair
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Conteúdo Principal -->
+      <main class="conta-content">
+        
+        <!-- Mensagens de alerta -->
+        <div id="mensagem-alerta" class="alert" style="display: none;"></div>
+
+        <!-- Alerta de Email Não Verificado -->
+        <div id="email-verification-alert" class="verification-alert" style="display: none;">
+          <div class="verification-content">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div>
+              <strong>Email não verificado</strong>
+              <p>Por favor, verifique seu email para ter acesso completo à plataforma.</p>
+            </div>
+            <button type="button" class="btn-resend" id="btn-resend-verification">
+              <i class="fas fa-envelope"></i>
+              Reenviar Email
+            </button>
+          </div>
+        </div>
+
+        <!-- Seção: Dados Pessoais -->
+        <div class="conta-section-content active" id="section-dados-pessoais">
+          <div class="section-header">
+            <h2><i class="fas fa-user"></i> Dados Pessoais</h2>
+          </div>
+
+          <div class="conta-card">
+            <form id="form-dados-pessoais">
+              
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="nome_completo">
+                    Nome Completo
+                  </label>
+                  <input 
+                    type="text" 
+                    id="nome_completo" 
+                    name="nome_completo" 
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="email">
+                    E-mail
+                    <span id="email-badge" class="email-badge" style="display: none;"></span>
+                  </label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required
+                  />
+                  <small style="color: #999; font-size: 0.85em;">
+                    Ao alterar o email, você precisará verificá-lo novamente.
+                  </small>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="telefone">
+                    Telefone
+                  </label>
+                  <input 
+                    type="tel" 
+                    id="telefone" 
+                    name="telefone" 
+                    placeholder="(11) 99999-9999"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="cpf">
+                    CPF
+                  </label>
+                  <input 
+                    type="text" 
+                    id="cpf" 
+                    name="cpf" 
+                    placeholder="000.000.000-00"
+                    maxlength="14"
+                  />
+                </div>
+              </div>
+
+              <div class="info-row">
+                <div class="info-item">
+                  <span class="info-label">Membro desde:</span>
+                  <span id="data-cadastro">...</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Último acesso:</span>
+                  <span id="ultimo-acesso">...</span>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn-save">
+                  <i class="fas fa-save"></i>
+                  Salvar Alterações
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Seção: Endereço -->
+        <div class="conta-section-content" id="section-endereco">
+          <div class="section-header">
+            <h2><i class="fas fa-map-marker-alt"></i> Endereço</h2>
+          </div>
+
+          <div class="conta-card">
+            <form id="form-endereco">
+              
+              <div class="form-row">
+                <div class="form-group" style="flex: 0 0 200px;">
+                  <label for="cep">
+                    CEP
+                  </label>
+                  <input 
+                    type="text" 
+                    id="cep" 
+                    name="cep" 
+                    placeholder="00000-000"
+                    maxlength="9"
+                  />
+                  <small style="color: #999; font-size: 0.85em;">
+                    <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank" style="color: #f70a31;">
+                      Não sei meu CEP
+                    </a>
+                  </small>
+                </div>
+
+                <div class="form-group">
+                  <label for="endereco">
+                    Endereço
+                  </label>
+                  <input 
+                    type="text" 
+                    id="endereco" 
+                    name="endereco" 
+                    placeholder="Rua, Avenida, etc"
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group" style="flex: 0 0 150px;">
+                  <label for="numero">
+                    Número
+                  </label>
+                  <input 
+                    type="text" 
+                    id="numero" 
+                    name="numero" 
+                    placeholder="123"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="complemento">
+                    Complemento
+                  </label>
+                  <input 
+                    type="text" 
+                    id="complemento" 
+                    name="complemento" 
+                    placeholder="Apto, Bloco, etc (opcional)"
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="bairro">
+                    Bairro
+                  </label>
+                  <input 
+                    type="text" 
+                    id="bairro" 
+                    name="bairro" 
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="cidade">
+                    Cidade
+                  </label>
+                  <input 
+                    type="text" 
+                    id="cidade" 
+                    name="cidade" 
+                  />
+                </div>
+
+                <div class="form-group" style="flex: 0 0 100px;">
+                  <label for="estado">
+                    Estado
+                  </label>
+                  <input 
+                    type="text" 
+                    id="estado" 
+                    name="estado" 
+                    placeholder="SP"
+                    maxlength="2"
+                    style="text-transform: uppercase;"
+                  />
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn-save">
+                  <i class="fas fa-save"></i>
+                  Salvar Endereço
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Seção: Segurança -->
+        <div class="conta-section-content" id="section-seguranca">
+          <div class="section-header">
+            <h2><i class="fas fa-lock"></i> Segurança</h2>
+          </div>
+
+          <div class="conta-card">
+            <h3>Alterar Senha</h3>
+            <p style="color: #666; margin-bottom: 20px;">Use uma senha forte e única para proteger sua conta.</p>
+            
+            <form id="form-alterar-senha">
+              
+              <div class="form-group">
+                <label for="senha_atual">
+                  Senha Atual
+                </label>
+                <div class="input-password">
+                  <input 
+                    type="password" 
+                    id="senha_atual" 
+                    name="senha_atual" 
+                    required
+                  />
+                  <button type="button" class="toggle-password">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="nova_senha">
+                  Nova Senha
+                </label>
+                <div class="input-password">
+                  <input 
+                    type="password" 
+                    id="nova_senha" 
+                    name="nova_senha" 
+                    placeholder="Mínimo 6 caracteres"
+                    required
+                  />
+                  <button type="button" class="toggle-password">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="confirmar_nova_senha">
+                  Confirmar Nova Senha
+                </label>
+                <div class="input-password">
+                  <input 
+                    type="password" 
+                    id="confirmar_nova_senha" 
+                    name="confirmar_nova_senha" 
+                    required
+                  />
+                  <button type="button" class="toggle-password">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn-save">
+                  <i class="fas fa-key"></i>
+                  Alterar Senha
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Seção: Preferências -->
+        <div class="conta-section-content" id="section-preferencias">
+          <div class="section-header">
+            <h2><i class="fas fa-cog"></i> Preferências</h2>
+          </div>
+
+          <div class="conta-card">
+            <form id="form-preferencias">
+              
+              <div class="preference-item">
+                <div>
+                  <h4>Newsletter</h4>
+                  <p>Receba ofertas exclusivas e novidades por e-mail</p>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="aceita_newsletter" name="aceita_newsletter">
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="preference-item">
+                <div>
+                  <h4>Notificações de Pedidos</h4>
+                  <p>Receba atualizações sobre seus pedidos</p>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="notif_pedidos" name="notif_pedidos" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn-save">
+                  <i class="fas fa-save"></i>
+                  Salvar Preferências
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </section>
+
+  <footer class="main-footer" id="rodape">
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h4>Atendimento</h4>
+        <p>Horário de funcionamento:</p>
+        <p>Segunda a sexta, 9h às 18h</p>
+        <div class="contact-info">
+          <p><i class="fas fa-phone-alt"></i> (11) 9 7623-1926</p>
+          <p><i class="fas fa-envelope"></i> contato@izistyle.com.br</p>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h4>Ajuda</h4>
+        <ul>
+          <li><a href="#">Políticas de Devolução</a></li>
+          <li><a href="#">Políticas de Imagem</a></li>
+          <li><a href="#">Políticas de Cookies</a></li>
+          <li><a href="#">Entregas e Prazos</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">Seja Criador!</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Formas de pagamento</h4>
+        <div class="icones-pagamento">
+          <img src="../easy-style/Icones/Visa.png" alt="Visa" class="icone-pagamento">
+          <img src="../easy-style/Icones/Mastercard.png" alt="Mastercard" class="icone-pagamento">
+          <img src="../easy-style/Icones/Pix.png" alt="Pix" class="icone-pagamento">
+          <img src="../easy-style/Icones/Boleto.png" alt="Boleto" class="icone-pagamento">
+        </div>
+        <h4>Site seguro</h4>
+        <p><i class="fas fa-shield-alt" aria-hidden="true"></i> Site seguro</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Onde nos encontrar</h4>
+        <div class="social-links">
+          <p><i class="fab fa-instagram"></i> @izistyleoficial</p>
+          <p><i class="fab fa-tiktok"></i> @izistyleoficial</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-info-base">
+      <p class="brand-story">
+        IZISTYLE: Nascida de uma visão de estilo e inovação, somos dedicados a transformar suas ideias em peças únicas. Nossa prioridade é a personalização, a qualidade e a sua total satisfação.
+      </p>
+      <div class="copyright">
+        <span>© 2025 IZI STYLE GROUP - Todos os Direitos Reservados</span>
+        <span class="footer-logo-w">W</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/5511976231926" target="_blank" aria-label="Conversar no WhatsApp">
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+  </a>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/session.js"></script>
+  <script src="../js/conta.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+/* =====================================================
+   ESTILOS DE SESSÃO - DROPDOWN USUÁRIO
+   Estilos para header quando usuário está logado
+   ===================================================== */
+
+/* =====================================================
+   DROPDOWN DO USUÁRIO
+   ===================================================== */
+
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.btn--user {
+    background: transparent;
+    border: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+    font-size: 0.95em;
+}
+
+.btn--user:hover {
+    background: #f5f5f5;
+    color: var(--primary-color);
+}
+
+.btn--user i:first-child {
+    font-size: 1.3em;
+}
+
+.btn--user i:last-child {
+    font-size: 0.8em;
+    transition: transform 0.3s;
+}
+
+.user-dropdown.active .btn--user i:last-child {
+    transform: rotate(180deg);
+}
+
+/* Menu dropdown do usuário */
+.user-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    min-width: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    list-style: none;
+    padding: 8px 0;
+    margin: 0;
+}
+
+.user-dropdown.active .user-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-dropdown-menu li {
+    margin: 0;
+}
+
+.user-dropdown-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: all 0.2s;
+    font-size: 0.95em;
+}
+
+.user-dropdown-menu li a:hover {
+    background: #f5f5f5;
+    color: var(--primary-color);
+}
+
+.user-dropdown-menu li a i {
+    width: 18px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+/* Divisor no menu */
+.user-dropdown-menu li.divider {
+    height: 1px;
+    background: #eee;
+    margin: 8px 0;
+}
+
+/* Botão de logout mobile (substitui CRIAR SUA CONTA) */
+.btn-logout-mobile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.btn-logout-mobile:hover {
+    color: var(--primary-hover);
+}
+
+/* =====================================================
+   RESPONSIVIDADE
+   ===================================================== */
+
+@media (max-width: 968px) {
+    .user-dropdown-menu {
+        right: auto;
+        left: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .btn--user span {
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    .user-dropdown-menu {
+        min-width: 200px;
+    }
+}
+
+/* =====================================================
+   AJUSTES NO HEADER PARA USUÁRIO LOGADO
+   ===================================================== */
+
+/* Quando logado, ajustar espaçamento */
+.header-actions .user-dropdown {
+    margin: 0;
+}
+
+/* Seta do dropdown */
+.user-dropdown .fa-chevron-down {
+    color: var(--text-muted);
+}
+
+.user-dropdown.active .fa-chevron-down {
+    color: var(--primary-color);
+}
+
+/* Hover no item de logout */
+.user-dropdown-menu li:last-child a {
+    color: var(--primary-color);
+}
+
+.user-dropdown-menu li:last-child a:hover {
+    background: #fff5f6;
+}
+
+/* Ícone de usuário */
+.btn--user .fa-user-circle {
+    color: var(--primary-color);
+}
+
+/* =====================================================
+   ANIMAÇÕES
+   ===================================================== */
+
+@keyframes dropdownSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.user-dropdown.active .user-dropdown-menu {
+    animation: dropdownSlide 0.3s ease;
+}

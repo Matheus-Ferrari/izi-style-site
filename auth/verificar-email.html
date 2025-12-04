@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Verificar Email | IZI STYLE - Criação Personalizada</title>
+
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../css/auth-styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+
+  <header class="main-header" id="topo" aria-label="Cabeçalho principal">
+    <div class="bar container">
+      <a class="logo" href="../index.html" aria-label="IZI STYLE - Início">
+        <img class="site-logo" src="../logo-transparente.jpeg" alt="Logo IZI STYLE" loading="eager" />
+      </a>
+
+      <nav class="main-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../index.html#colecoes">Coleções</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn--ghost" href="login.html">Minha conta</a>
+        <a class="btn btn--primary" href="cadastro.html">CRIAR SUA CONTA</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Seção de Verificação -->
+  <section class="auth-section">
+    <div class="auth-container" style="max-width: 600px;">
+      <div class="auth-box">
+        
+        <!-- Loading -->
+        <div id="loading-verification" style="text-align: center; padding: 40px 0;">
+          <i class="fas fa-spinner fa-spin" style="font-size: 3em; color: #f70a31; margin-bottom: 20px;"></i>
+          <p style="color: #666; font-size: 1.1em;">Verificando seu email...</p>
+        </div>
+
+        <!-- Sucesso -->
+        <div id="success-verification" style="display: none; text-align: center; padding: 40px 20px;">
+          <div style="width: 80px; height: 80px; background: #d4edda; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-check" style="font-size: 3em; color: #155724;"></i>
+          </div>
+          <h2 style="color: #155724; margin-bottom: 15px;">Email Verificado!</h2>
+          <p style="color: #666; font-size: 1.1em; margin-bottom: 30px;">
+            Seu email foi verificado com sucesso. Agora você tem acesso completo à plataforma.
+          </p>
+          <a href="login.html" class="btn-submit" style="display: inline-block; text-decoration: none;">
+            <i class="fas fa-sign-in-alt"></i>
+            Ir para Login
+          </a>
+        </div>
+
+        <!-- Erro -->
+        <div id="error-verification" style="display: none; text-align: center; padding: 40px 20px;">
+          <div style="width: 80px; height: 80px; background: #f8d7da; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-times" style="font-size: 3em; color: #721c24;"></i>
+          </div>
+          <h2 style="color: #721c24; margin-bottom: 15px;">Erro na Verificação</h2>
+          <p id="error-message" style="color: #666; font-size: 1.1em; margin-bottom: 30px;">
+            Não foi possível verificar seu email.
+          </p>
+          <a href="login.html" class="btn-submit" style="display: inline-block; text-decoration: none; background: #6c757d;">
+            <i class="fas fa-arrow-left"></i>
+            Voltar para Login
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="main-footer" id="rodape">
+    <div class="footer-columns">
+      <div class="footer-column">
+        <h4>Atendimento</h4>
+        <p>Horário de funcionamento:</p>
+        <p>Segunda a sexta, 9h às 18h</p>
+        <div class="contact-info">
+          <p><i class="fas fa-phone-alt"></i> (11) 9 7623-1926</p>
+          <p><i class="fas fa-envelope"></i> contato@izistyle.com.br</p>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h4>Ajuda</h4>
+        <ul>
+          <li><a href="#">Políticas de Devolução</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Onde nos encontrar</h4>
+        <div class="social-links">
+          <p><i class="fab fa-instagram"></i> @izistyleoficial</p>
+          <p><i class="fab fa-tiktok"></i> @izistyleoficial</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-info-base">
+      <p class="brand-story">
+        IZISTYLE: Nascida de uma visão de estilo e inovação, somos dedicados a transformar suas ideias em peças únicas.
+      </p>
+      <div class="copyright">
+        <span>© 2025 IZI STYLE GROUP - Todos os Direitos Reservados</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/5511976231926" target="_blank" aria-label="Conversar no WhatsApp">
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+  </a>
+
+  <script>
+    // Verificar email ao carregar página
+    document.addEventListener('DOMContentLoaded', async function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('token');
+      
+      const loadingDiv = document.getElementById('loading-verification');
+      const successDiv = document.getElementById('success-verification');
+      const errorDiv = document.getElementById('error-verification');
+      const errorMessage = document.getElementById('error-message');
+      
+      if (!token) {
+        loadingDiv.style.display = 'none';
+        errorDiv.style.display = 'block';
+        errorMessage.textContent = 'Token de verificação não encontrado.';
+        return;
+      }
+      
+      try {
+        // Verificar token no servidor
+        const response = await fetch(`../api/verificar-email.php?token=${token}`);
+        const data = await response.json();
+        
+        loadingDiv.style.display = 'none';
+        
+        if (data.sucesso) {
+          // Sucesso!
+          successDiv.style.display = 'block';
+        } else {
+          // Erro
+          errorDiv.style.display = 'block';
+          errorMessage.textContent = data.mensagem || 'Erro ao verificar email.';
+        }
+      } catch (error) {
+        loadingDiv.style.display = 'none';
+        errorDiv.style.display = 'block';
+        errorMessage.textContent = 'Erro ao conectar com o servidor. Tente novamente mais tarde.';
+        console.error('Erro:', error);
+      }
+    });
+  </script>
+</body>
+</html>
