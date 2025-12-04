@@ -9,9 +9,10 @@
   <link rel="stylesheet" href="styles.css" />
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
-
+  <canvas id="snow-canvas" aria-hidden="true"></canvas>
   <header class="main-header" id="topo" aria-label="Cabeçalho principal">
     <div class="bar container">
       <a class="logo" href="#" aria-label="IZI STYLE - Início">
@@ -94,6 +95,92 @@
       </div>
     </div>
   </section>
+  <div style="background: linear-gradient(180deg, #FBF8F0 0%, #FFF 100%); padding: 40px 0;">
+    <section class="natal-hero-banner" aria-label="Destaque da Coleção de Natal">
+      <div class="container natal-hero-inner">
+        <div class="natal-hero-left">
+          <img src="easy-style/imagens/Imagem-natal.png" alt="Destaque Natal" class="natal-hero-image" loading="eager" />
+        </div>
+
+        <div class="natal-hero-right">
+          <h3 style="letter-spacing:2px; font-weight:700; color:var(--primary-color); margin:0 0 6px;">NATAL É NA IZI STYLE</h3>
+          <h1 class="natal-hero-title">Garanta o melhor natal da sua vida!</h1>
+          <p class="natal-hero-sub">Para o Natal, compre com segurança dentro de:</p>
+
+          <div class="countdown" aria-live="polite" aria-atomic="true">
+            <div class="countdown-item">
+              <div class="countdown-value" id="cd-days">0</div>
+              <div class="countdown-label">Dias</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-value" id="cd-hours">00</div>
+              <div class="countdown-label">Horas</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-value" id="cd-minutes">00</div>
+              <div class="countdown-label">Minutos</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-value" id="cd-seconds">00</div>
+              <div class="countdown-label">Segundos</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="produtos-natal-grid">
+      <a href="produto-natal.html" class="link-card-produto" style="text-decoration:none;display:block;">
+        <article class="produto-card">
+          <img src="easy-style/imagens/familia-unida.png" alt="Personalização Nomes Família" class="card-imagem-produto produto-thumb" loading="eager" />
+          <h2 class="produto-nome">Personalização Nomes Família</h2>
+          <div class="produto-rating" aria-label="Avaliação do produto">
+            <span class="stars" aria-hidden="true">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </span>
+            <span class="reviews">(1103)</span>
+          </div>
+          <p class="produto-preco">A partir de R$ 79,90</p>
+        </article>
+      </a>
+
+      <article class="produto-card">
+        <img src="easy-style/imagens/Imagem-natal.png" alt="Presente de Natal Personalizado" class="card-imagem-produto produto-thumb" loading="lazy" />
+        <h2 class="produto-nome">Presente de Natal Personalizado</h2>
+        <div class="produto-rating" aria-label="Avaliação do produto">
+          <span class="stars" aria-hidden="true">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </span>
+          <span class="reviews">(1250)</span>
+        </div>
+        <p class="produto-preco">A partir de R$ 99,90</p>
+      </article>
+
+      <article class="produto-card">
+        <img src="easy-style/imagens/imagem-nataldois.png" alt="Kit Camiseta + Touca Natal" class="card-imagem-produto produto-thumb" loading="lazy" />
+        <h2 class="produto-nome">Kit Camiseta + Touca Natal</h2>
+        <div class="produto-rating" aria-label="Avaliação do produto">
+          <span class="stars" aria-hidden="true">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </span>
+          <span class="reviews">(2500)</span>
+        </div>
+        <p class="produto-preco">A partir de R$ 149,90</p>
+      </article>
+    </section>
+  </div>
   <section class="brand-video-section" aria-label="Vídeo de apresentação da marca">
     <div class="video-placeholder-large">
       <i class="fas fa-play-circle" aria-hidden="true"></i>
@@ -502,6 +589,127 @@
       }
       
       //console.log('?? Script configurado!');
+    })();
+  </script>
+  <script>
+    (function() {
+      function pad(n) { return n < 10 ? '0' + n : n; }
+      
+      function updateCountdown() {
+        const now = new Date();
+        let year = now.getFullYear();
+        let target = new Date(year, 11, 25, 0, 0, 0);
+        if (now > target) target = new Date(year + 1, 11, 25, 0, 0, 0);
+        const diff = Math.max(0, target - now);
+        const seconds = Math.floor(diff / 1000);
+        const days = Math.floor(seconds / (3600 * 24));
+        const hours = Math.floor((seconds % (3600 * 24)) / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const secs = Math.floor(seconds % 60);
+
+        const elDays = document.getElementById('cd-days');
+        const elHours = document.getElementById('cd-hours');
+        const elMin = document.getElementById('cd-minutes');
+        const elSec = document.getElementById('cd-seconds');
+        if (elDays) elDays.textContent = days;
+        if (elHours) elHours.textContent = pad(hours);
+        if (elMin) elMin.textContent = pad(minutes);
+        if (elSec) elSec.textContent = pad(secs);
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    })();
+  </script>
+  <script>
+    (function() {
+      const canvas = document.getElementById('snow-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+      let flakes = [];
+      
+      function calcFlakeCount(w, h) {
+        const base = Math.floor((w * h) / 21500) || 140;
+        if (w < 360) return Math.max(35, Math.floor(base / 3));
+        if (w < 480) return Math.max(49, Math.floor(base / 2.5));
+        return base;
+      }
+      let flakeCountBase = calcFlakeCount(width, height);
+
+      function rand(min, max) { return Math.random() * (max - min) + min; }
+
+      function createFlakes() {
+        for (let i = 0; i < flakeCountBase; i++) {
+          flakes.push({ 
+            x: Math.random() * width, 
+            y: Math.random() * height, 
+            r: rand(1.2, 5.5), 
+            d: rand(0.5, 2.2), 
+            vx: rand(-0.7, 0.7),
+            crystal: Math.random() > 0.7
+          });
+        }
+      }
+
+      function resize() { 
+        width = canvas.width = window.innerWidth; 
+        height = canvas.height = window.innerHeight; 
+        flakes = []; 
+        flakeCountBase = calcFlakeCount(width, height); 
+        createFlakes(); 
+      }
+
+      function drawCrystal(x, y, r) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.strokeStyle = 'rgba(255,255,255,0.9)';
+        ctx.lineWidth = 0.8;
+        for (let i = 0; i < 6; i++) {
+          ctx.rotate(Math.PI / 3);
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.lineTo(0, -r * 1.8);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(0, -r * 0.9);
+          ctx.lineTo(-r * 0.4, -r * 1.2);
+          ctx.moveTo(0, -r * 0.9);
+          ctx.lineTo(r * 0.4, -r * 1.2);
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      function update() {
+        ctx.clearRect(0,0,width,height);
+        
+        for (let i = 0; i < flakes.length; i++) {
+          const f = flakes[i];
+          if (f.crystal) {
+            drawCrystal(f.x, f.y, f.r);
+          } else {
+            ctx.fillStyle = 'rgba(255,255,255,0.95)';
+            ctx.beginPath();
+            ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        for (let i = 0; i < flakes.length; i++) {
+          const f = flakes[i];
+          f.y += f.d + 0.3;
+          f.x += Math.sin(f.y * 0.008) * 0.7 + f.vx;
+          if (f.y > height + 15) { f.y = -15; f.x = Math.random() * width; }
+          if (f.x > width + 15) { f.x = -15; }
+          if (f.x < -15) { f.x = width + 15; }
+        }
+        requestAnimationFrame(update);
+      }
+
+      window.addEventListener('resize', resize);
+      createFlakes();
+      requestAnimationFrame(update);
     })();
   </script>
   <script src="js/session.js"></script>
